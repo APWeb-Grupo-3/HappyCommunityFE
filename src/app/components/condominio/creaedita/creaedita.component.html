@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="registro-container" style="text-align: center">
+      <h2>Registro de Condominios</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>idCondominio</mat-label>
+          <input matInput placeholder="Id" formControlName="idCondominio" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>nombre</mat-label>
+          <input matInput placeholder="nombre" formControlName="nombre" />
+          <mat-error
+            *ngIf="obtenerControlCampo('nombre')?.errors?.['required']"
+          >
+            El nombre es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>departamento</mat-label>
+            <input matInput placeholder="departamento" formControlName="departamento" />
+            <mat-error
+              *ngIf="obtenerControlCampo('departamento')?.errors?.['required']"
+            >
+              El departamento es obligatorio.
+            </mat-error>
+          </mat-form-field>
+          <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>distrito</mat-label>
+            <input matInput placeholder="distrito" formControlName="distrito" />
+            <mat-error
+              *ngIf="obtenerControlCampo('distrito')?.errors?.['required']"
+            >
+              El distrito es obligatorio.
+            </mat-error>
+          </mat-form-field>
+          <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>direccion</mat-label>
+            <input matInput placeholder="direccion" formControlName="direccion" />
+            <mat-error
+              *ngIf="obtenerControlCampo('direccion')?.errors?.['required']"
+            >
+              La direccion es obligatorio.
+            </mat-error>
+          </mat-form-field>
+        <br />
+        <button mat-raised-button class="aceptarbtn" >Aceptar</button>
+        <br>
+        
+        <a mat-raised-text class="cancelarbtn" routerLink="/condominios">
+          Cancelar
+        </a>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </body>
+</html>
