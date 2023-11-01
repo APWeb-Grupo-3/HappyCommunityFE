@@ -13,7 +13,7 @@
 <mat-toolbar >
 
   <mat-icon >menu</mat-icon>
-  
+  <button mat-button routerLink="/">Happy Community</button>  
   <button mat-button [matMenuTriggerFor]="menuCondomino">Condominio</button>
   <button mat-button [matMenuTriggerFor]="menuTipoDocPago">Tipo Doc Pago</button>
   <button mat-button [matMenuTriggerFor]="menuTipoServicio">Tipo Servicio</button>
@@ -27,16 +27,17 @@
 </mat-menu>
 <mat-menu #menuTipoDocPago="matMenu">
   <button mat-menu-item routerLink="/TipoDocPago/nuevo">Registrar</button>
-  <button mat-menu-item routerLink="/condominios">Listar</button>
+  <button mat-menu-item routerLink="/TipoDocPago">Listarr</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 <mat-menu #menuTipoServicio="matMenu">
   <button mat-menu-item routerLink="/TipoServicio/nuevo">Registrar</button>
-  <button mat-menu-item routerLink="/condominios">Listar</button>
+  <button mat-menu-item routerLink="/TipoServicio">Listar</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 
 <router-outlet></router-outlet>
   
 </body>
+
 </html>
