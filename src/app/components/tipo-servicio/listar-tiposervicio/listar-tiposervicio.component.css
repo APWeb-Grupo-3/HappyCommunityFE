@@ -1,0 +1,44 @@
+
+
+.container{
+    align-items: center;
+    border-radius: 5%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 80%;
+
+}
+
+.mat-elevation-z8 {
+    width: 100%;
+    border-radius: 5%;
+
+  }
+
+  .nuevobtn{
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    background: rgb(45, 45, 56);
+    color: #ffffff;
+  }
+  .accion01btn
+  {
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    background: rgb(7, 100, 77);
+    color: #ffffff;
+  }
+  .accion02btn
+  {
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    background: rgb(184, 2, 2);
+    color: #ffffff;
+  }

@@ -22,10 +22,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreaeditaComponent } from './components/condominio/creaedita/creaedita.component';
 import { ListarCondominioComponent } from './components/condominio/listar-condominio/listar-condominio.component';
 import { TipoDocumentoPagoComponent } from './components/tipo-documento-pago/tipo-documento-pago.component';
+import { CreaditaTDPComponent } from './components/tipo-documento-pago/creadita-tdp/creadita-tdp.component';
+import { ListarTDPComponent } from './components/tipo-documento-pago/listar-tdp/listar-tdp.component';
+import { TipoServicioComponent } from './components/tipo-servicio/tipo-servicio.component';
+import { CreaeditaTiposervicioComponent } from './components/tipo-servicio/creaedita-tiposervicio/creaedita-tiposervicio.component';
+import { ListarTiposervicioComponent } from './components/tipo-servicio/listar-tiposervicio/listar-tiposervicio.component';
 
 
 @NgModule({
-  declarations: [AppComponent, CondominioComponent, CreaeditaComponent, ListarCondominioComponent, TipoDocumentoPagoComponent],
+  declarations: [AppComponent, CondominioComponent, CreaeditaComponent, ListarCondominioComponent, TipoDocumentoPagoComponent, CreaditaTDPComponent, ListarTDPComponent, TipoServicioComponent, CreaeditaTiposervicioComponent, ListarTiposervicioComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
