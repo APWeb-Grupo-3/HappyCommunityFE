@@ -20,6 +20,10 @@
   <button mat-button [matMenuTriggerFor]="menuRolUsuario">Rol Usuario</button>
   <button mat-button [matMenuTriggerFor]="menuUsuario">Usuario</button>
   <button mat-button [matMenuTriggerFor]="menuDocumentoPago">Documento Pago</button>
+  <button mat-button [matMenuTriggerFor]="menuPlanConvivencia">Plan Convivencia</button>
+  <button mat-button [matMenuTriggerFor]="menuSolicitudacceso">Solicitud Acceso</button>
+
+  
 
 </mat-toolbar>
 
@@ -51,6 +55,16 @@
 <mat-menu #menuDocumentoPago="matMenu">
   <button mat-menu-item routerLink="/DocumentoPago/nuevo">Registrar</button>
   <button mat-menu-item routerLink="/DocumentoPago">Listar</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+<mat-menu #menuPlanConvivencia="matMenu">
+  <button mat-menu-item routerLink="/planconvivencia/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/planconvivencia">Listar</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+<mat-menu #menuSolicitudacceso="matMenu">
+  <button mat-menu-item routerLink="/solicitudacceso/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/solicitudacceso">Listar</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 <router-outlet></router-outlet>

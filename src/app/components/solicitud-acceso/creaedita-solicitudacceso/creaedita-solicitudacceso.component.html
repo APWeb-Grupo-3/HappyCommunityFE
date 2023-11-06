@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <mat-dialog-content>
+            <div style="text-align: center">
+              <h2>Registro de Solicitudes de Acceso</h2>
+              <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+                <mat-form-field class="example-full-width" *ngIf="edicion">
+                  <mat-label>idSolicitudAcceso</mat-label>
+                  <input matInput placeholder="Id" formControlName="idSolicitudAcceso" />
+                </mat-form-field>
+               
+        
+                  <br />
+                <br />
+                <mat-form-field class="example-full-width">
+                    <mat-label>estado</mat-label>
+                    <mat-select formControlName="estado">
+                      <mat-option *ngFor="let p of estados" [value]="p.value">
+                        {{p.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="obtenerControlCampo('estado')?.errors?.['required']">
+                      El estado es obligatorio.
+                    </mat-error>
+                  </mat-form-field>
+                  <br />
+        
+                  <mat-form-field class="example-full-width">
+                      <mat-label>Usuario</mat-label>
+                      <mat-select formControlName="usuario">
+                        <mat-option *ngFor="let p of listausuario" [value]="p.idUsuario">
+                          {{p.nombreUsuario}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">
+                        El Usuario es obligatorio.
+                      </mat-error>
+                    </mat-form-field>
+        
+                    <br />
+                    <mat-form-field class="example-full-width">
+                        <mat-label>condominio</mat-label>
+                        <mat-select formControlName="condominio">
+                          <mat-option *ngFor="let p of listarcondominios" [value]="p.idCondominio">
+                            {{p.nombre}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="obtenerControlCampo('condominio')?.errors?.['required']">
+                          El condominio   es obligatorio.
+                        </mat-error>
+                      </mat-form-field>
+        
+                <br />
+                <button mat-raised-button class="aceptarbtn" >Aceptar</button>
+                <br>
+                
+                <a mat-raised-text class="cancelarbtn" (click)="cancelar()">
+                  Cancelar
+                </a>
+                <p>{{ mensaje }}</p>
+              </form>
+            </div>
+          </mat-dialog-content>
+        
+
+    </div>
+</body>
+</html>
