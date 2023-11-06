@@ -6,6 +6,7 @@ import {
   FormBuilder,
   AbstractControl,
 } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Condominio } from 'src/app/models/condominio';
 import { CondominioService } from 'src/app/services/condominio.service';
@@ -26,7 +27,9 @@ export class CreaeditaComponent implements OnInit{
     private cS: CondominioService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private matDialog: MatDialog,
+
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -89,6 +92,19 @@ export class CreaeditaComponent implements OnInit{
         });
       });
     }
+  }
+
+  cancelar() {
+    
+
+    // Verifica si estás en la página principal o en la ruta de edición
+    if (this.router.url === '/condominios/nuevo' || this.router.url.startsWith('/condominios/edicion/')) {
+      // Redirige a la página de edición
+    this.router.navigate(['/condominios']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
+  } else {
+
+   this.matDialog.closeAll(); // Cierra el diálogo
+  }
   }
 
 }

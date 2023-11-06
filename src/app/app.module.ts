@@ -37,9 +37,15 @@ import { CreaeditaUsuarioComponent } from './components/usuario/creaedita-usuari
 import { DocumentopagoComponent } from './components/documentopago/documentopago.component';
 import { ListarDocumentopagoComponent } from './components/documentopago/listar-documentopago/listar-documentopago.component';
 import { CreaeditaDocumentopagoComponent } from './components/documentopago/creaedita-documentopago/creaedita-documentopago.component';
+import { PlanConvivenciaComponent } from './components/plan-convivencia/plan-convivencia.component';
+import { ListarPlanconvivenciaComponent } from './components/plan-convivencia/listar-planconvivencia/listar-planconvivencia.component';
+import { CreaeditaPlanconvivenciaComponent } from './components/plan-convivencia/creaedita-planconvivencia/creaedita-planconvivencia.component';
+import { SolicitudAccesoComponent } from './components/solicitud-acceso/solicitud-acceso.component';
+import { CreaeditaSolicitudaccesoComponent } from './components/solicitud-acceso/creaedita-solicitudacceso/creaedita-solicitudacceso.component';
+import { ListarSolicitudaccesoComponent } from './components/solicitud-acceso/listar-solicitudacceso/listar-solicitudacceso.component';
 
 @NgModule({
-  declarations: [AppComponent, CondominioComponent, CreaeditaComponent, ListarCondominioComponent, TipoDocumentoPagoComponent, CreaditaTDPComponent, ListarTDPComponent, TipoServicioComponent, CreaeditaTiposervicioComponent, ListarTiposervicioComponent, RolusuarioComponent, ListarRolusuarioComponent, CreaeditaRolusuarioComponent, UsuarioComponent, ListarUsuarioComponent, CreaeditaUsuarioComponent, DocumentopagoComponent, ListarDocumentopagoComponent, CreaeditaDocumentopagoComponent],
+  declarations: [AppComponent, CondominioComponent, CreaeditaComponent, ListarCondominioComponent, TipoDocumentoPagoComponent, CreaditaTDPComponent, ListarTDPComponent, TipoServicioComponent, CreaeditaTiposervicioComponent, ListarTiposervicioComponent, RolusuarioComponent, ListarRolusuarioComponent, CreaeditaRolusuarioComponent, UsuarioComponent, ListarUsuarioComponent, CreaeditaUsuarioComponent, DocumentopagoComponent, ListarDocumentopagoComponent, CreaeditaDocumentopagoComponent, PlanConvivenciaComponent, ListarPlanconvivenciaComponent, CreaeditaPlanconvivenciaComponent, SolicitudAccesoComponent, CreaeditaSolicitudaccesoComponent, ListarSolicitudaccesoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -60,7 +66,8 @@ import { CreaeditaDocumentopagoComponent } from './components/documentopago/crea
     ReactiveFormsModule,
     MatListModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
