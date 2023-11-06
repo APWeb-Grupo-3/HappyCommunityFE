@@ -1,0 +1,42 @@
+<mat-dialog-content>
+
+    <div style="text-align: center">
+      <h2>Registro de Rol Usuarios</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>idRolUsuario</mat-label>
+          <input matInput placeholder="Id" formControlName="idRolUsuario" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>nombreTipo</mat-label>
+          <input matInput placeholder="nombreTipo" formControlName="nombreTipo" />
+          <mat-error
+            *ngIf="obtenerControlCampo('nombreTipo')?.errors?.['required']"
+          >
+            El tipo de usuario es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>descripcion</mat-label>
+            <input matInput placeholder="descripcion" formControlName="descripcion" />
+            <mat-error
+              *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"
+            >
+              La descripcion es obligatorio.
+            </mat-error>
+          </mat-form-field>
+          <br />
+        <br />
+        <button mat-raised-button class="aceptarbtn" >Aceptar</button>
+        <br>
+        
+        <a mat-raised-text class="cancelarbtn" routerLink="/RolUsuario">
+          Cancelar
+        </a>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+<mat-dialog-content>
+

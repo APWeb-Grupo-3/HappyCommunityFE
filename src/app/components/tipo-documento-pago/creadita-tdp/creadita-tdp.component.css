@@ -1,3 +1,4 @@
+
 body {
     margin: 0;
     padding: 0;
@@ -18,8 +19,6 @@ body {
       padding-block-end: 2%;
   }
   
-  
-  
   .registro-container button {
     margin: 5%;
     text-align: center;
@@ -37,7 +36,6 @@ body {
     border-radius: 25px;
     border: none;
     background: rgb(45, 45, 56);
-    padding: 10px 15%;
     -webkit-text-fill-color: #ffffff;
   }
   .example-full-width{

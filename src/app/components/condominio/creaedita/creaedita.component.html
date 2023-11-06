@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="registro-container" style="text-align: center">
+<mat-dialog-content>
+
+    <div style="text-align: center">
       <h2>Registro de Condominios</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
         <mat-form-field class="example-full-width" *ngIf="edicion">
@@ -63,5 +57,5 @@
         <p>{{ mensaje }}</p>
       </form>
     </div>
-  </body>
-</html>
+<mat-dialog-content>
+

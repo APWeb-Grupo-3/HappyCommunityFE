@@ -1,0 +1,135 @@
+<mat-dialog-content>
+    <div style="text-align: center">
+      <h2>Registro de Usuarios</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>idDocumentoPago</mat-label>
+          <input matInput placeholder="Id" formControlName="idDocumentoPago" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>idReceptor</mat-label>
+          <input matInput placeholder="idReceptor" formControlName="idReceptor" />
+          <mat-error
+            *ngIf="obtenerControlCampo('idReceptor')?.errors?.['required']"
+          >
+            El receptor es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <br />
+        <mat-form-field appearance="fill" class="example-full-width">
+            <input
+              matInput
+              placeholder="Ingrese fecha de emision"
+              [matDatepicker]="pickerEmision"
+              formControlName="fechaEmision"
+            />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="pickerEmision"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #pickerEmision></mat-datepicker>
+            <mat-error
+              *ngIf="obtenerControlCampo('fechaEmision')?.errors?.['required']"
+            >
+             La fecha de emisión es obligatoria.
+            </mat-error>
+          </mat-form-field>
+
+          <br />
+          <mat-form-field appearance="fill" class="example-full-width">
+              <input
+                matInput
+                placeholder="Ingrese fecha de vencimiento"
+                [matDatepicker]="pickerVencimiento"
+                formControlName="fechaVencimiento"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="pickerVencimiento"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #pickerVencimiento></mat-datepicker>
+              <mat-error
+                *ngIf="obtenerControlCampo('fechaVencimiento')?.errors?.['required']"
+              >
+               La fecha de vencimiento es obligatoria.
+              </mat-error>
+            </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+            <mat-label>Moneda</mat-label>
+            <mat-select formControlName="moneda">
+              <mat-option *ngFor="let p of tipos" [value]="p.value">
+                {{p.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="obtenerControlCampo('moneda')?.errors?.['required']">
+              La moneda es obligatorio.
+            </mat-error>
+          </mat-form-field>
+          <br />
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Total</mat-label>
+            <input matInput placeholder="total" formControlName="total" />
+            <mat-error
+              *ngIf="obtenerControlCampo('total')?.errors?.['required']"
+            >
+              El total es obligatorio.
+            </mat-error>
+          </mat-form-field>
+
+
+          <br />
+          <mat-form-field class="example-full-width">
+              <mat-label>Estado</mat-label>
+              <mat-select formControlName="estado">
+                <mat-option *ngFor="let p of tipos1" [value]="p.value">
+                  {{p.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="obtenerControlCampo('estado')?.errors?.['required']">
+                El estado es obligatorio.
+              </mat-error>
+            </mat-form-field>
+
+        <br />
+          <mat-form-field class="example-full-width">
+              <mat-label>Emisor</mat-label>
+              <mat-select formControlName="usuario">
+                <mat-option *ngFor="let p of listaUsuarios" [value]="p.idUsuario">
+                  {{p.nombres}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">
+                El emisor es obligatorio.
+              </mat-error>
+            </mat-form-field>
+
+            <br />
+            <mat-form-field class="example-full-width">
+                <mat-label>Tipo de Documento</mat-label>
+                <mat-select formControlName="tipoDocPago">
+                  <mat-option *ngFor="let p of listaTipoDocumentoPagos" [value]="p.idTipoDocPago">
+                    {{p.nombre}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="obtenerControlCampo('tipoDocPago')?.errors?.['required']">
+                  El tipo de documento es obligatorio.
+                </mat-error>
+              </mat-form-field>
+
+        <br />
+        <button mat-raised-button class="aceptarbtn" >Aceptar</button>
+        <br>
+        
+        <a mat-raised-text class="cancelarbtn" routerLink="/Usuario">
+          Cancelar
+        </a>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </mat-dialog-content>

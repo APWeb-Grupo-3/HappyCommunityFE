@@ -34,7 +34,7 @@ export class CreaeditaTiposervicioComponent implements OnInit {
       this.init();
     });
     this.form = this.formBuilder.group({
-      idTipoDocPago: [''],
+      idTipoServicio: [''],
       nombreTipoServicio: ['', Validators.required],
     });
   }
@@ -74,7 +74,7 @@ export class CreaeditaTiposervicioComponent implements OnInit {
     if (this.edicion) {
       this.tsS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
-          idTipoDocPago: new FormControl(data.idTipoServicio),
+          idTipoServicio: new FormControl(data.idTipoServicio),
           nombreTipoServicio: new FormControl(data.nombreTipoServicio),
         });
       });

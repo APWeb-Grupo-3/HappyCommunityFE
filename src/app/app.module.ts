@@ -27,10 +27,19 @@ import { ListarTDPComponent } from './components/tipo-documento-pago/listar-tdp/
 import { TipoServicioComponent } from './components/tipo-servicio/tipo-servicio.component';
 import { CreaeditaTiposervicioComponent } from './components/tipo-servicio/creaedita-tiposervicio/creaedita-tiposervicio.component';
 import { ListarTiposervicioComponent } from './components/tipo-servicio/listar-tiposervicio/listar-tiposervicio.component';
-
+import { MatDialogModule} from '@angular/material/dialog';
+import { RolusuarioComponent } from './components/rolusuario/rolusuario.component';
+import { ListarRolusuarioComponent } from './components/rolusuario/listar-rolusuario/listar-rolusuario.component';
+import { CreaeditaRolusuarioComponent } from './components/rolusuario/creaedita-rolusuario/creaedita-rolusuario.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { ListarUsuarioComponent } from './components/usuario/listar-usuario/listar-usuario.component';
+import { CreaeditaUsuarioComponent } from './components/usuario/creaedita-usuario/creaedita-usuario.component';
+import { DocumentopagoComponent } from './components/documentopago/documentopago.component';
+import { ListarDocumentopagoComponent } from './components/documentopago/listar-documentopago/listar-documentopago.component';
+import { CreaeditaDocumentopagoComponent } from './components/documentopago/creaedita-documentopago/creaedita-documentopago.component';
 
 @NgModule({
-  declarations: [AppComponent, CondominioComponent, CreaeditaComponent, ListarCondominioComponent, TipoDocumentoPagoComponent, CreaditaTDPComponent, ListarTDPComponent, TipoServicioComponent, CreaeditaTiposervicioComponent, ListarTiposervicioComponent],
+  declarations: [AppComponent, CondominioComponent, CreaeditaComponent, ListarCondominioComponent, TipoDocumentoPagoComponent, CreaditaTDPComponent, ListarTDPComponent, TipoServicioComponent, CreaeditaTiposervicioComponent, ListarTiposervicioComponent, RolusuarioComponent, ListarRolusuarioComponent, CreaeditaRolusuarioComponent, UsuarioComponent, ListarUsuarioComponent, CreaeditaUsuarioComponent, DocumentopagoComponent, ListarDocumentopagoComponent, CreaeditaDocumentopagoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,6 +60,7 @@ import { ListarTiposervicioComponent } from './components/tipo-servicio/listar-t
     ReactiveFormsModule,
     MatListModule,
     MatToolbarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent],

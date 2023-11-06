@@ -3,6 +3,8 @@ import { TipoDocPago } from 'src/app/models/tipodocpago';
 import { TipodocpagoService } from 'src/app/services/tipodocpago.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { CreaditaTDPComponent } from '../creadita-tdp/creadita-tdp.component';
 
 @Component({
   selector: 'app-listar-tdp',
@@ -18,7 +20,7 @@ export class ListarTDPComponent implements OnInit{
     'accion02',
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private cS: TipodocpagoService) {}
+  constructor(private cS: TipodocpagoService,private matDialog:MatDialog) {}
   ngOnInit(): void {
     this.cS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
@@ -36,6 +38,8 @@ export class ListarTDPComponent implements OnInit{
       });
     });
   }
-  
+  openDialog(){
+    this.matDialog.open(CreaditaTDPComponent)
+  }
 
 }

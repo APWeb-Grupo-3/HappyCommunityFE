@@ -8,7 +8,7 @@
   <body>
     <div class="container">
       <br />
-      <h2 style="text-align: center">Lista de Condominios</h2>
+      <h2 style="text-align: center">Lista de Roles</h2>
       <div style="text-align: right">
         <button mat-raised-button class="nuevobtn" (click)="openDialog()">
           Nuevo
@@ -21,40 +21,29 @@ The actual rendered columns are set as a property on the row definition" --
 >
     < !-- Position Column -->
         <ng-container matColumnDef="codigo">
-          <th mat-header-cell *matHeaderCellDef>codigo</th>
-          <td mat-cell *matCellDef="let element">{{ element.idCondominio }}</td>
+          <th mat-header-cell *matHeaderCellDef>Código</th>
+          <td mat-cell *matCellDef="let element">{{ element.idRolUsuario }}</td>
         </ng-container>
         <!-- Name Column -->
-        <ng-container matColumnDef="nombre">
-          <th mat-header-cell *matHeaderCellDef>nombre</th>
-          <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+        <ng-container matColumnDef="rol">
+          <th mat-header-cell *matHeaderCellDef>Rol</th>
+          <td mat-cell *matCellDef="let element">{{ element.nombreTipo }}</td>
         </ng-container>
         <!-- Weight Column -->
-        <ng-container matColumnDef="departamento">
-          <th mat-header-cell *matHeaderCellDef>departamento</th>
+        <ng-container matColumnDef="descripcion">
+          <th mat-header-cell *matHeaderCellDef>Descripción</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.departamento }}
+            {{ element.descripcion }}
           </td>
         </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="distrito">
-          <th mat-header-cell *matHeaderCellDef>distrito</th>
-          <td mat-cell *matCellDef="let element">{{ element.distrito }}</td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="direccion">
-          <th mat-header-cell *matHeaderCellDef>direccion</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.direccion }}
-          </td>
-        </ng-container>
+
         <ng-container matColumnDef="accion01">
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
             <button
               mat-raised-button
               class="accion01btn"
-              [routerLink]="['edicion', element.idCondominio]"
+              [routerLink]="['edicion', element.idRolUsuario]"
             >
               Actualizar
             </button>
@@ -66,7 +55,7 @@ The actual rendered columns are set as a property on the row definition" --
             <button
               mat-raised-button
               class="accion02btn"
-              (click)="eliminar(element.idCondominio)"
+              (click)="eliminar(element.idRolUsuario)"
             >
               Eliminar
             </button>
