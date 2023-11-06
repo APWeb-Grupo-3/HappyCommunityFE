@@ -16,6 +16,10 @@ import { PlanConvivenciaComponent } from './components/plan-convivencia/plan-con
 import { CreaeditaPlanconvivenciaComponent } from './components/plan-convivencia/creaedita-planconvivencia/creaedita-planconvivencia.component';
 import { SolicitudAccesoComponent } from './components/solicitud-acceso/solicitud-acceso.component';
 import { CreaeditaSolicitudaccesoComponent } from './components/solicitud-acceso/creaedita-solicitudacceso/creaedita-solicitudacceso.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
+import { CreaeditaServicioComponent } from './components/servicio/creaedita-servicio/creaedita-servicio.component';
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { CreaeditaDetalleComponent } from './components/detalle/creaedita-detalle/creaedita-detalle.component';
 
 const routes: Routes = [
   {
@@ -93,6 +97,26 @@ const routes: Routes = [
     children: [
       { path: 'nuevo', component: CreaeditaSolicitudaccesoComponent },
       { path: 'edicion/:id', component: CreaeditaSolicitudaccesoComponent },
+
+    ],
+    
+  },
+  {
+    path: 'Servicio',
+    component: ServicioComponent,
+    children: [
+      { path: 'nuevo', component: CreaeditaServicioComponent },
+      { path: 'edicion/:id', component: CreaeditaServicioComponent },
+
+    ],
+    
+  },
+  {
+    path: 'Detalle',
+    component: DetalleComponent,
+    children: [
+      { path: 'nuevo', component: CreaeditaDetalleComponent },
+      { path: 'edicion/:id', component: CreaeditaDetalleComponent },
 
     ],
     

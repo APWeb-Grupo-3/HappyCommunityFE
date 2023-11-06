@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <h2 style="text-align: center">Lista de Detalles</h2>
+      <div style="text-align: right">
+        <button mat-raised-button class="nuevobtn" (click)="openDialog()">
+          Nuevo
+        </button>
+      </div>
+     
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+The actual rendered columns are set as a property on the row definition" --
+>
+    < !-- Position Column -->
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef>Código</th>
+          <td mat-cell *matCellDef="let element">{{ element.idDetalle }}</td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="subtotal">
+          <th mat-header-cell *matHeaderCellDef>Subtotal</th>
+          <td mat-cell *matCellDef="let element">{{ element.subtotalDetalle }}</td>
+        </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="documentopago">
+          <th mat-header-cell *matHeaderCellDef>Documento Pago</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.documentoPago.idDocumentoPago }}
+          </td>
+        </ng-container>
+
+ <!-- Weight Column -->
+        <ng-container matColumnDef="servicio">
+          <th mat-header-cell *matHeaderCellDef>Servicio</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.servicio.descripcionServicio }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="accion01">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              class="accion01btn"
+              [routerLink]="['edicion', element.idDetalle]"
+            >
+              Actualizar
+            </button>
+          </td></ng-container
+        >
+        <ng-container matColumnDef="accion02">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              class="accion02btn"
+              (click)="eliminar(element.idDetalle)"
+            >
+              Eliminar
+            </button>
+          </td></ng-container
+        >
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </body>
+</html>

@@ -43,9 +43,15 @@ import { CreaeditaPlanconvivenciaComponent } from './components/plan-convivencia
 import { SolicitudAccesoComponent } from './components/solicitud-acceso/solicitud-acceso.component';
 import { CreaeditaSolicitudaccesoComponent } from './components/solicitud-acceso/creaedita-solicitudacceso/creaedita-solicitudacceso.component';
 import { ListarSolicitudaccesoComponent } from './components/solicitud-acceso/listar-solicitudacceso/listar-solicitudacceso.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
+import { ListarServicioComponent } from './components/servicio/listar-servicio/listar-servicio.component';
+import { CreaeditaServicioComponent } from './components/servicio/creaedita-servicio/creaedita-servicio.component';
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { ListarDetalleComponent } from './components/detalle/listar-detalle/listar-detalle.component';
+import { CreaeditaDetalleComponent } from './components/detalle/creaedita-detalle/creaedita-detalle.component';
 
 @NgModule({
-  declarations: [AppComponent, CondominioComponent, CreaeditaComponent, ListarCondominioComponent, TipoDocumentoPagoComponent, CreaditaTDPComponent, ListarTDPComponent, TipoServicioComponent, CreaeditaTiposervicioComponent, ListarTiposervicioComponent, RolusuarioComponent, ListarRolusuarioComponent, CreaeditaRolusuarioComponent, UsuarioComponent, ListarUsuarioComponent, CreaeditaUsuarioComponent, DocumentopagoComponent, ListarDocumentopagoComponent, CreaeditaDocumentopagoComponent, PlanConvivenciaComponent, ListarPlanconvivenciaComponent, CreaeditaPlanconvivenciaComponent, SolicitudAccesoComponent, CreaeditaSolicitudaccesoComponent, ListarSolicitudaccesoComponent],
+  declarations: [AppComponent, CondominioComponent, CreaeditaComponent, ListarCondominioComponent, TipoDocumentoPagoComponent, CreaditaTDPComponent, ListarTDPComponent, TipoServicioComponent, CreaeditaTiposervicioComponent, ListarTiposervicioComponent, RolusuarioComponent, ListarRolusuarioComponent, CreaeditaRolusuarioComponent, UsuarioComponent, ListarUsuarioComponent, CreaeditaUsuarioComponent, DocumentopagoComponent, ListarDocumentopagoComponent, CreaeditaDocumentopagoComponent, PlanConvivenciaComponent, ListarPlanconvivenciaComponent, CreaeditaPlanconvivenciaComponent, SolicitudAccesoComponent, CreaeditaSolicitudaccesoComponent, ListarSolicitudaccesoComponent, ServicioComponent, ListarServicioComponent, CreaeditaServicioComponent, DetalleComponent, ListarDetalleComponent, CreaeditaDetalleComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

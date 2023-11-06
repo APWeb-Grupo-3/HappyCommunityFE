@@ -1,0 +1,47 @@
+<mat-dialog-content>
+    <div style="text-align: center">
+      <h2>Registro de servicios</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>idServicio</mat-label>
+          <input matInput placeholder="Id" formControlName="idServicio" />
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label>descripcionServicio</mat-label>
+          <input matInput placeholder="descripcionServicio" formControlName="descripcionServicio" />
+          <mat-error
+            *ngIf="obtenerControlCampo('descripcionServicio')?.errors?.['required']"
+          >
+            La descripción es obligatorio.
+          </mat-error>
+        </mat-form-field>
+
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Tipo Servicio</mat-label>
+          <mat-select formControlName="tipoServicio">
+            <mat-option *ngFor="let p of listaTipoServicios" [value]="p.idTipoServicio">
+              {{ p.nombreTipoServicio }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="obtenerControlCampo('tipoServicio')?.errors?.['required']"
+          >
+            El tipo de servicio es obligatorio.
+          </mat-error>
+
+        </mat-form-field>
+
+        <br />
+        <button mat-raised-button class="aceptarbtn" >Aceptar</button>
+        <br>
+        
+        <a mat-raised-text class="cancelarbtn" routerLink="/Usuario">
+          Cancelar
+        </a>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </mat-dialog-content>
