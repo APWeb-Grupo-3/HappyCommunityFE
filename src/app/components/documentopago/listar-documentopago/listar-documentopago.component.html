@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <h2 style="text-align: center">Lista de documentos de pago</h2>
+      <div style="text-align: right">
+        <button mat-raised-button class="nuevobtn" (click)="openDialog()">Nuevo
+        </button>         
+      </div>
+     
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+The actual rendered columns are set as a property on the row definition" --
+>
+    < !-- Position Column -->
+        <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef>Código</th>
+          <td mat-cell *matCellDef="let element">{{ element.idDocumentoPago }}</td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="receptor">
+          <th mat-header-cell *matHeaderCellDef>Receptor</th>
+          <td mat-cell *matCellDef="let element">{{ element.idReceptor }}</td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="emision">
+            <th mat-header-cell *matHeaderCellDef>Fecha Emision</th>
+            <td mat-cell *matCellDef="let element">{{ element.fechaEmision }}</td>
+          </ng-container>
+          <!-- Name Column -->
+        <ng-container matColumnDef="vencimiento">
+            <th mat-header-cell *matHeaderCellDef>Fecha Vencimiento</th>
+            <td mat-cell *matCellDef="let element">{{ element.fechaVencimiento }}</td>
+          </ng-container>
+          <!-- Name Column -->
+        <ng-container matColumnDef="moneda">
+            <th mat-header-cell *matHeaderCellDef>Moneda</th>
+            <td mat-cell *matCellDef="let element">{{ element.moneda }}</td>
+          </ng-container>
+          <!-- Name Column -->
+        <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef>Total</th>
+            <td mat-cell *matCellDef="let element">{{ element.total }}</td>
+          </ng-container>
+          <!-- Name Column -->
+        <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef>Estado</th>
+            <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
+          </ng-container>
+          <!-- Name Column -->
+        <ng-container matColumnDef="usuario">
+            <th mat-header-cell *matHeaderCellDef>Emisor</th>
+            <td mat-cell *matCellDef="let element">{{ element.usuario.nombres }}</td>
+          </ng-container>
+          <!-- Name Column -->
+        <ng-container matColumnDef="tipoDocPago">
+            <th mat-header-cell *matHeaderCellDef>Tipo de Documento</th>
+            <td mat-cell *matCellDef="let element">{{ element.tipoDocPago.nombre }}</td>
+          </ng-container>
+
+        <!-- Weight Column -->
+    
+        <ng-container matColumnDef="accion01">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              class="accion01btn"
+              [routerLink]="['edicion', element.idDocumentoPago]"
+            >
+              Actualizar
+            </button>
+          </td></ng-container
+        >
+
+        <ng-container matColumnDef="accion02">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              class="accion02btn"
+              (click)="eliminar(element.idDocumentoPago)"
+            >
+              Eliminar
+            </button>
+          </td></ng-container
+        >
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </body>
+</html>

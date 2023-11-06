@@ -10,9 +10,8 @@
       <br />
       <h2 style="text-align: center">Lista de Tipos de Servicio</h2>
       <div style="text-align: right">
-        <button mat-raised-button class="nuevobtn" routerLink="/TipoServicio/nuevo">
-          Nuevo
-        </button>
+        <button mat-raised-button class="nuevobtn" (click)="openDialog()">Nuevo
+        </button>         
       </div>
      
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

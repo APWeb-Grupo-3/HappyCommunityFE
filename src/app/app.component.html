@@ -17,6 +17,9 @@
   <button mat-button [matMenuTriggerFor]="menuCondomino">Condominio</button>
   <button mat-button [matMenuTriggerFor]="menuTipoDocPago">Tipo Doc Pago</button>
   <button mat-button [matMenuTriggerFor]="menuTipoServicio">Tipo Servicio</button>
+  <button mat-button [matMenuTriggerFor]="menuRolUsuario">Rol Usuario</button>
+  <button mat-button [matMenuTriggerFor]="menuUsuario">Usuario</button>
+  <button mat-button [matMenuTriggerFor]="menuDocumentoPago">Documento Pago</button>
 
 </mat-toolbar>
 
@@ -35,7 +38,21 @@
   <button mat-menu-item routerLink="/TipoServicio">Listar</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
-
+<mat-menu #menuRolUsuario="matMenu">
+  <button mat-menu-item routerLink="/RolUsuario/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/RolUsuario">Listar</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+<mat-menu #menuUsuario="matMenu">
+  <button mat-menu-item routerLink="/Usuario/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/Usuario">Listar</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+<mat-menu #menuDocumentoPago="matMenu">
+  <button mat-menu-item routerLink="/DocumentoPago/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/DocumentoPago">Listar</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
 <router-outlet></router-outlet>
   
 </body>

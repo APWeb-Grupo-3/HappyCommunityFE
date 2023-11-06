@@ -3,6 +3,8 @@ import { TipoServicio } from 'src/app/models/tiposervicio';
 import { TiposervicioService } from 'src/app/services/tiposervicio.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { CreaeditaTiposervicioComponent } from '../creaedita-tiposervicio/creaedita-tiposervicio.component';
 
 
 @Component({
@@ -19,7 +21,7 @@ export class ListarTiposervicioComponent implements OnInit{
     'accion02',
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private cS: TiposervicioService) {}
+  constructor(private cS: TiposervicioService,private matDialog:MatDialog) {}
   ngOnInit(): void {
     this.cS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
@@ -37,5 +39,7 @@ export class ListarTiposervicioComponent implements OnInit{
       });
     });
   }
-
+  openDialog(){
+    this.matDialog.open(CreaeditaTiposervicioComponent)
+  }
 }

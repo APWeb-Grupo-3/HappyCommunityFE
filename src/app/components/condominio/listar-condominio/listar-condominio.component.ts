@@ -3,6 +3,8 @@ import { Condominio } from 'src/app/models/condominio';
 import { CondominioService } from 'src/app/services/condominio.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { CreaeditaComponent } from '../creaedita/creaedita.component';
 
 @Component({
   selector: 'app-listar-condominio',
@@ -21,7 +23,7 @@ export class ListarCondominioComponent implements OnInit{
     'accion02',
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private cS: CondominioService) {}
+  constructor(private cS: CondominioService, private matDialog:MatDialog) {}
   ngOnInit(): void {
     this.cS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
@@ -39,6 +41,8 @@ export class ListarCondominioComponent implements OnInit{
       });
     });
   }
-  
+  openDialog(){
+    this.matDialog.open(CreaeditaComponent)
+  }
 
 }
