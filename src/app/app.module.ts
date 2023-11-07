@@ -52,9 +52,14 @@ import { ListarMensajeComponent } from './components/mensaje/listar-mensaje/list
 import { AvisoComponent } from './components/aviso/aviso.component';
 import { CreaeditaAvisoComponent } from './components/aviso/creaedita-aviso/creaedita-aviso.component';
 import { ListarAvisoComponent } from './components/aviso/listar-aviso/listar-aviso.component';
-
+import { DetalleComponent } from './components/detalle/detalle.component';
+import { CreaeditaDetalleComponent } from './components/detalle/creaedita-detalle/creaedita-detalle.component';
+import { ListarDetalleComponent } from './components/detalle/listar-detalle/listar-detalle.component';
+import { ServicioComponent } from './components/servicio/servicio.component';
+import { CreaeditaServicioComponent } from './components/servicio/creaedita-servicio/creaedita-servicio.component';
+import { ListarServicioComponent } from './components/servicio/listar-servicio/listar-servicio.component';
 @NgModule({
-  declarations: [AppComponent, CondominioComponent, CreaeditaComponent, ListarCondominioComponent, TipoDocumentoPagoComponent, CreaditaTDPComponent, ListarTDPComponent, TipoServicioComponent, CreaeditaTiposervicioComponent, ListarTiposervicioComponent, RolusuarioComponent, ListarRolusuarioComponent, CreaeditaRolusuarioComponent, UsuarioComponent, ListarUsuarioComponent, CreaeditaUsuarioComponent, DocumentopagoComponent, ListarDocumentopagoComponent, CreaeditaDocumentopagoComponent, PlanConvivenciaComponent, ListarPlanconvivenciaComponent, CreaeditaPlanconvivenciaComponent, SolicitudAccesoComponent, CreaeditaSolicitudaccesoComponent, ListarSolicitudaccesoComponent, TarjetaComponent, CreaeditaTarjetaComponent, ListarTarjetaComponent, MensajeComponent, CreaeditaMensajeComponent, ListarMensajeComponent, AvisoComponent, CreaeditaAvisoComponent, ListarAvisoComponent],
+  declarations: [AppComponent, CondominioComponent, CreaeditaComponent, ListarCondominioComponent, TipoDocumentoPagoComponent, CreaditaTDPComponent, ListarTDPComponent, TipoServicioComponent, CreaeditaTiposervicioComponent, ListarTiposervicioComponent, RolusuarioComponent, ListarRolusuarioComponent, CreaeditaRolusuarioComponent, UsuarioComponent, ListarUsuarioComponent, CreaeditaUsuarioComponent, DocumentopagoComponent, ListarDocumentopagoComponent, CreaeditaDocumentopagoComponent, PlanConvivenciaComponent, ListarPlanconvivenciaComponent, CreaeditaPlanconvivenciaComponent, SolicitudAccesoComponent, CreaeditaSolicitudaccesoComponent, ListarSolicitudaccesoComponent, TarjetaComponent, CreaeditaTarjetaComponent, ListarTarjetaComponent, MensajeComponent, CreaeditaMensajeComponent, ListarMensajeComponent, AvisoComponent, CreaeditaAvisoComponent, ListarAvisoComponent, DetalleComponent, CreaeditaDetalleComponent, ListarDetalleComponent, ServicioComponent, CreaeditaServicioComponent, ListarServicioComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
