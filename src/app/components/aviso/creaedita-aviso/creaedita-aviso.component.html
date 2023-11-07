@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Aviso</title>
+  </head>
+  <body>
+    <div class="container" style="text-align: center">
+      <h2>Registro de Aviso</h2>
+      <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+        <mat-form-field class="example-full-width" *ngIf="edicion">
+          <mat-label>idAviso</mat-label>
+          <input matInput placeholder="Id" formControlName="idAviso" />
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Titulo</mat-label>
+          <input matInput placeholder="Titulo" formControlName="titulo" />
+          <mat-error
+            *ngIf="obtenerControlCampo('titulo')?.errors?.['required']"
+          >
+            El nombre es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>descripcion</mat-label>
+          <input
+            matInput
+            placeholder="Descripcion"
+            formControlName="descripcion"
+          />
+          <mat-error
+            *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"
+          >
+            El nombre es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>usuario</mat-label>
+          <mat-select formControlName="usuario">
+            <mat-option *ngFor="let p of listarUsuarios" [value]="p.idUsuario">
+              {{ p.nombreUsuario }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="obtenerControlCampo('usuario')?.errors?.['required']"
+          >
+            El Usuario es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>condominio</mat-label>
+          <mat-select formControlName="condominio">
+            <mat-option
+              *ngFor="let p of listarcondominios"
+              [value]="p.idCondominio"
+            >
+              {{ p.nombre }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="obtenerControlCampo('condominio')?.errors?.['required']"
+          >
+            El condominio es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+
+        <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button color="warn" routerLink="/aviso">
+          Cancelar
+        </button>
+        <p>{{ mensaje }}</p>
+      </form>
+    </div>
+  </body>
+</html>

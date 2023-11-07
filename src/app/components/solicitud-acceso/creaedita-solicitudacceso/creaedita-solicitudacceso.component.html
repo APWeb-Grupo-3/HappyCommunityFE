@@ -10,7 +10,9 @@
         <mat-dialog-content>
             <div style="text-align: center">
               <h2>Registro de Solicitudes de Acceso</h2>
+
               <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+                
                 <mat-form-field class="example-full-width" *ngIf="edicion">
                   <mat-label>idSolicitudAcceso</mat-label>
                   <input matInput placeholder="Id" formControlName="idSolicitudAcceso" />

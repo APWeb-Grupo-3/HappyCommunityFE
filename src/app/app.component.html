@@ -22,9 +22,9 @@
   <button mat-button [matMenuTriggerFor]="menuDocumentoPago">Documento Pago</button>
   <button mat-button [matMenuTriggerFor]="menuPlanConvivencia">Plan Convivencia</button>
   <button mat-button [matMenuTriggerFor]="menuSolicitudacceso">Solicitud Acceso</button>
-  <button mat-button [matMenuTriggerFor]="menuServicio">Servicio</button>
-  <button mat-button [matMenuTriggerFor]="menuDetalle">Detalle</button>
-
+  <button mat-button [matMenuTriggerFor]="menuTarjeta">Tarjeta</button>
+  <button mat-button [matMenuTriggerFor]="menuMensaje">Mensaje</button>
+  <button mat-button [matMenuTriggerFor]="menuAviso">Aviso</button>
   
 
 </mat-toolbar>
@@ -69,16 +69,23 @@
   <button mat-menu-item routerLink="/solicitudacceso">Listar</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
-<mat-menu #menuServicio="matMenu">
-  <button mat-menu-item routerLink="/Servicio/nuevo">Registrar</button>
-  <button mat-menu-item routerLink="/Servicio">Listar</button>
+<mat-menu #menuTarjeta="matMenu">
+  <button mat-menu-item routerLink="/tarjeta/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/tarjeta">Listar</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
-<mat-menu #menuDetalle="matMenu">
-  <button mat-menu-item routerLink="/Detalle/nuevo">Registrar</button>
-  <button mat-menu-item routerLink="/Detalle">Listar</button>
+<mat-menu #menuMensaje="matMenu">
+  <button mat-menu-item routerLink="/mensajes/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/mensajes">Listar</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
+<mat-menu #menuAviso="matMenu">
+  <button mat-menu-item routerLink="/aviso/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/aviso">Listar</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+
+
 
 <router-outlet></router-outlet>
   
