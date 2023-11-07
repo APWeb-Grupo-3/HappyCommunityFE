@@ -16,12 +16,6 @@ import { PlanConvivenciaComponent } from './components/plan-convivencia/plan-con
 import { CreaeditaPlanconvivenciaComponent } from './components/plan-convivencia/creaedita-planconvivencia/creaedita-planconvivencia.component';
 import { SolicitudAccesoComponent } from './components/solicitud-acceso/solicitud-acceso.component';
 import { CreaeditaSolicitudaccesoComponent } from './components/solicitud-acceso/creaedita-solicitudacceso/creaedita-solicitudacceso.component';
-import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
-import { CreaeditaTarjetaComponent } from './components/tarjeta/creaedita-tarjeta/creaedita-tarjeta.component';
-import { MensajeComponent } from './components/mensaje/mensaje.component';
-import { CreaeditaMensajeComponent } from './components/mensaje/creaedita-mensaje/creaedita-mensaje.component';
-import { AvisoComponent } from './components/aviso/aviso.component';
-import { CreaeditaAvisoComponent } from './components/aviso/creaedita-aviso/creaedita-aviso.component';
 
 const routes: Routes = [
   {
@@ -103,37 +97,6 @@ const routes: Routes = [
     ],
     
   },
-  {
-    path: 'tarjeta',
-    component: TarjetaComponent,
-    children: [
-      { path: 'nuevo', component: CreaeditaTarjetaComponent },
-      { path: 'edicion/:id', component: CreaeditaTarjetaComponent },
-
-    ],
-    
-  },
-  {
-    path: 'mensajes',
-    component: MensajeComponent,
-    children: [
-      { path: 'nuevo', component: CreaeditaMensajeComponent },
-      { path: 'edicion/:id', component: CreaeditaMensajeComponent },
-
-    ],
-    
-  },
-  {
-    path: 'aviso',
-    component: AvisoComponent,
-    children: [
-      { path: 'nuevo', component: CreaeditaAvisoComponent },
-      { path: 'edicion/:id', component: CreaeditaAvisoComponent },
-
-    ],
-    
-  },
-
 ];
 
 @NgModule({
