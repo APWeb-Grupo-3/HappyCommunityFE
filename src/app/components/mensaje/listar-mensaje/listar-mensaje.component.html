@@ -63,7 +63,7 @@ The actual rendered columns are set as a property on the row definition" --
             <button
               mat-raised-button
               class="accion01btn"
-              [routerLink]="['edicion', element.idSolicitudAcceso]"
+              [routerLink]="['edicion', element.idMensaje]"
             >
               Actualizar
             </button>
@@ -76,7 +76,7 @@ The actual rendered columns are set as a property on the row definition" --
             <button
               mat-raised-button
               class="accion02btn"
-              (click)="eliminar(element.idSolicitudAcceso)"
+              (click)="eliminar(element.idMensaje)"
             >
               Eliminar
             </button>

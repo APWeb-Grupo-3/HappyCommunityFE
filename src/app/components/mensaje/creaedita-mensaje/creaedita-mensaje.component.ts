@@ -63,7 +63,7 @@ export class CreaeditaMensajeComponent  implements OnInit{
           this.mS.list().subscribe((data) => {
             this.mS.setList(data);
           });
-        });
+        });        
       } else {
         this.mS.insert(this.mensajes).subscribe((data) => {
           this.mS.list().subscribe((data) => {
