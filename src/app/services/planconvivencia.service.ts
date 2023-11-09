@@ -11,7 +11,7 @@ const base_url = environment.base;
 })
 export class PlanconvivenciaService {
 
-  private url = `${base_url}/PlanConvivencia`;
+  private url = `${base_url}/planconvivencia`;
   private listaCambio = new Subject<PlanConvivencia[]>();
   constructor(private http: HttpClient) {}
 

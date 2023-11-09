@@ -12,7 +12,7 @@ const base_url = environment.base;
 })
 export class SolicitudaccesoService {
 
-  private url = `${base_url}/SolicitudAcceso`;
+  private url = `${base_url}/solicitudacceso`;
   private listaCambio = new Subject<SolicitudAcceso[]>();
   constructor(private http: HttpClient) {}
 

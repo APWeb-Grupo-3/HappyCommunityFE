@@ -11,7 +11,7 @@ const base_url = environment.base;
 })
 export class DetalleService {
 
-  private url = `${base_url}/Detalle`;
+  private url = `${base_url}/detalles`;
   private listaCambio = new Subject<Detalle[]>();
   constructor(private http: HttpClient) {}
 
