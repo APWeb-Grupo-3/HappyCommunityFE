@@ -10,7 +10,7 @@ const base_url= environment.base;
   providedIn: 'root'
 })
 export class AvisoService {
-  private url = `${base_url}/avisos`;
+  private url = `${base_url}/aviso`;
   private listaCambio = new Subject<Aviso[]>();
   constructor(private http: HttpClient) {}
 
