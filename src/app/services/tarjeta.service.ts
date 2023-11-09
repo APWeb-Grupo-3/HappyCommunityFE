@@ -10,7 +10,7 @@ const base_url= environment.base;
   providedIn: 'root'
 })
 export class TarjetaService {
-  private url = `${base_url}/tarjeta`;
+  private url = `${base_url}/tarjetas`;
   private listaCambio = new Subject<Tarjeta[]>();
   constructor(private http: HttpClient) {}
 

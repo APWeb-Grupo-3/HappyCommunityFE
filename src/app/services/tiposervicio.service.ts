@@ -14,7 +14,7 @@ export class TiposervicioService {
 
 
 
-  private url = `${base_url}/TipoServicio`;
+  private url = `${base_url}/tiposervicio`;
   private listaCambio = new Subject<TipoServicio[]>();
   constructor(private http: HttpClient) {}
 
