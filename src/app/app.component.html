@@ -14,22 +14,28 @@
 
   <mat-icon >menu</mat-icon>
   <button mat-button routerLink="/">Happy Community</button>  
-  <button mat-button [matMenuTriggerFor]="menuCondomino">Condominio</button>
-  <button mat-button [matMenuTriggerFor]="menuTipoDocPago">Tipo Doc Pago</button>
-  <button mat-button [matMenuTriggerFor]="menuTipoServicio">Tipo Servicio</button>
-  <button mat-button [matMenuTriggerFor]="menuRolUsuario">Rol Usuario</button>
-  <button mat-button [matMenuTriggerFor]="menuUsuario">Usuario</button>
-  <button mat-button [matMenuTriggerFor]="menuDocumentoPago">Documento Pago</button>
-  <button mat-button [matMenuTriggerFor]="menuPlanConvivencia">Plan Convivencia</button>
-  <button mat-button [matMenuTriggerFor]="menuSolicitudacceso">Solicitud Acceso</button>
-  <button mat-button [matMenuTriggerFor]="menuTarjeta">Tarjeta</button>
-  <button mat-button [matMenuTriggerFor]="menuMensaje">Mensaje</button>
-  <button mat-button [matMenuTriggerFor]="menuAviso">Aviso</button>
-  <button mat-button [matMenuTriggerFor]="menuDetalle">Detalle</button>
-  <button mat-button [matMenuTriggerFor]="menuServicio">Servicio</button>
-  
+  <button mat-button [matMenuTriggerFor]="menuGeneral">Servicios</button>
 
 </mat-toolbar>
+
+<mat-menu #menuGeneral = "matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="menuCondomino">Condominio</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuTipoDocPago">Tipo Doc Pago</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuTipoServicio">Tipo Servicio</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuRolUsuario">Rol Usuario</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuUsuario">Usuario</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuDocumentoPago">Documento Pago</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuPlanConvivencia">Plan Convivencia</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuSolicitudacceso">Solicitud Acceso</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuTarjeta">Tarjeta</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuMensaje">Mensaje</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuAviso">Aviso</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuDetalle">Detalle</button>
+  <button mat-menu-item [matMenuTriggerFor]="menuServicio">Servicio</button>
+
+
+</mat-menu>
+
 
 <mat-menu #menuCondomino="matMenu">
   <button mat-menu-item routerLink="/condominios/nuevo">Registrar</button>
