@@ -1,39 +1,26 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="app.component.css" />
-
-</head>
-<body>
-  
-<mat-toolbar >
+<mat-toolbar *ngIf="verificar()">
 
   <mat-icon >menu</mat-icon>
   <button mat-button routerLink="/">Happy Community</button>  
-  <button mat-button [matMenuTriggerFor]="menuCondomino">Condominio</button>
-  <button mat-button [matMenuTriggerFor]="menuTipoDocPago">Tipo Doc Pago</button>
-  <button mat-button [matMenuTriggerFor]="menuTipoServicio">Tipo Servicio</button>
-  <button mat-button [matMenuTriggerFor]="menuRolUsuario">Rol Usuario</button>
-  <button mat-button [matMenuTriggerFor]="menuUsuario">Usuario</button>
-  <button mat-button [matMenuTriggerFor]="menuDocumentoPago">Documento Pago</button>
-  <button mat-button [matMenuTriggerFor]="menuPlanConvivencia">Plan Convivencia</button>
-  <button mat-button [matMenuTriggerFor]="menuSolicitudacceso">Solicitud Acceso</button>
-  <button mat-button [matMenuTriggerFor]="menuTarjeta">Tarjeta</button>
-  <button mat-button [matMenuTriggerFor]="menuMensaje">Mensaje</button>
-  <button mat-button [matMenuTriggerFor]="menuAviso">Aviso</button>
-  <button mat-button [matMenuTriggerFor]="menuDetalle">Detalle</button>
-  <button mat-button [matMenuTriggerFor]="menuServicio">Servicio</button>
-  
-
+  <button mat-button [matMenuTriggerFor]="menuCondomino" *ngIf="validarRol()">Condominio</button>
+  <button mat-button [matMenuTriggerFor]="menuTipoDocPago" *ngIf="validarRol()">Tipo Doc Pago</button>
+  <button mat-button [matMenuTriggerFor]="menuTipoServicio" *ngIf="validarRol()">Tipo Servicio</button>
+  <button mat-button [matMenuTriggerFor]="menuRolUsuario" *ngIf="validarRol()">Rol Usuario</button>
+  <button mat-button [matMenuTriggerFor]="menuUsuario" *ngIf="validarRol()">Usuario</button>
+  <button mat-button [matMenuTriggerFor]="menuDocumentoPago" *ngIf="validarRol()">Documento Pago</button>
+  <button mat-button [matMenuTriggerFor]="menuPlanConvivencia" *ngIf="validarRol()">Plan Convivencia</button>
+  <button mat-button [matMenuTriggerFor]="menuSolicitudacceso" *ngIf="validarRol()">Solicitud Acceso</button>
+  <button mat-button [matMenuTriggerFor]="menuTarjeta" *ngIf="validarRol()">Tarjeta</button>
+  <button mat-button [matMenuTriggerFor]="menuMensaje" *ngIf="validarRol()">Mensaje</button>
+  <button mat-button [matMenuTriggerFor]="menuAviso" *ngIf="validarRol()">Aviso</button>
+  <button mat-button [matMenuTriggerFor]="menuDetalle" *ngIf="validarRol()">Detalle</button>
+  <button mat-button [matMenuTriggerFor]="menuServicio" *ngIf="validarRol()">Servicio</button>
+  <button mat-button [matMenuTriggerFor]="menuSalir" *ngIf="validarRol()">Usuario</button>
 </mat-toolbar>
 
 <mat-menu #menuCondomino="matMenu">
-  <button mat-menu-item routerLink="/condominios/nuevo">Registrar</button>
-  <button mat-menu-item routerLink="/condominios">Listar</button>
+  <button mat-menu-item routerLink="components/condominios/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="components/condominios">Listar</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 <mat-menu #menuTipoDocPago="matMenu">
@@ -82,13 +69,8 @@
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 <mat-menu #menuAviso="matMenu">
-  <button mat-menu-item routerLink="/aviso/nuevo">Registrar</button>
-  <button mat-menu-item routerLink="/aviso">Listar</button>
-  <!-- Agrega más elementos de menú si es necesario -->
-</mat-menu>
-<mat-menu #menuAviso="matMenu">
-  <button mat-menu-item routerLink="/aviso/nuevo">Registrar</button>
-  <button mat-menu-item routerLink="/aviso">Listar</button>
+  <button mat-menu-item routerLink="components/avisos/nuevo" *ngIf="role == 'ADMINISTRADOR'">Registrar</button>
+  <button mat-menu-item routerLink="components/avisos" *ngIf="role == 'ADMINISTRADOR'">Listar</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 <mat-menu #menuDetalle="matMenu">
@@ -97,16 +79,23 @@
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 <mat-menu #menuServicio="matMenu">
-  <button mat-menu-item routerLink="/Servicio/nuevo">Registrar</button>
-  <button mat-menu-item routerLink="/Servicio">Listar</button>
+  <button mat-menu-item routerLink="components/Servicio/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="components/Servicio">Listar</button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
+
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+
+  </button>
+  <button mat-menu-item >Rol:
+    <span>{{role}}</span>
+  </button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 
 
-
-
 <router-outlet></router-outlet>
   
-</body>
-
-</html>
