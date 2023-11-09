@@ -2,7 +2,7 @@ import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Aviso } from '../models/aviso';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const base_url= environment.base;
 
@@ -15,11 +15,23 @@ export class AvisoService {
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<Aviso[]>(this.url);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Aviso[]>(this.url,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   insert(av: Aviso) {
-    return this.http.post(this.url, av);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.post(this.url, av,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   setList(listaNueva: Aviso[]) {
@@ -31,14 +43,32 @@ export class AvisoService {
   }
 
   listId(id: number) {
-    return this.http.get<Aviso>(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Aviso>(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   update(av: Aviso) {
-    return this.http.put(this.url, av);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.put(this.url, av,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 
   delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.delete(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
   }
 }

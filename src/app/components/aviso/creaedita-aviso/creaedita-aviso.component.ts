@@ -78,7 +78,7 @@ export class CreaeditaAvisoComponent implements OnInit{
         });
       }
       //this.dialogRef.close();
-      this.router.navigate(['aviso']);
+      this.router.navigate(['components/aviso']);
     } else {
       this.mensaje = 'Por favor complete los campos obligatorios';
     }
