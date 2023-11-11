@@ -27,12 +27,12 @@ import { CondominioComponent } from './condominio/condominio.component';
 import { CreaeditaDocumentopagoComponent } from './documentopago/creaedita-documentopago/creaedita-documentopago.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {    
     path: 'condominios',
     component: CondominioComponent,
-    canActivate: [GuardService],
     children: [
       { path: 'nuevo', component: CreaeditaComponent },
       { path: 'edicion/:id', component: CreaeditaComponent },
@@ -172,7 +172,6 @@ const routes: Routes = [
   },
   {
     path: 'Detalle',
-    canActivate: [GuardService],
 
     component: DetalleComponent,
     children: [
@@ -181,6 +180,11 @@ const routes: Routes = [
 
     ],
     
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+
   },
 ];
 

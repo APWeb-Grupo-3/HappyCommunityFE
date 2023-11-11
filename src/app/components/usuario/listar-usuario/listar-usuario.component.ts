@@ -16,14 +16,15 @@ export class ListarUsuarioComponent implements OnInit{
   displayedColumns: string[] = [
     'codigo',
     'username',
+    'clave',
+    'habilitado',
+    'rol',
     'nombres',
     'apellidos',
     'correo',
-    'clave',
     'edad',
     'telefono',
     'genero',
-    'rol',
     'accion01',
     'accion02',
   ];

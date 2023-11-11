@@ -28,4 +28,8 @@ export class LoginComponent {
       this.snackBar.open(this.mensaje, "Aviso",{duration:2000});
     });
   }
+  dirigir() {
+
+      this.router.navigate(['components/Detalle']);
+  }
 }

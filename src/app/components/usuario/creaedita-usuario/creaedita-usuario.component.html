@@ -95,13 +95,13 @@
         <br />
         <mat-form-field class="example-full-width">
           <mat-label>Rol</mat-label>
-          <mat-select formControlName="rolUsuario">
+          <mat-select formControlName="rol">
             <mat-option *ngFor="let p of listaRolUsuarios" [value]="p.idRolUsuario">
-              {{ p.nombreTipo }}
+              {{ p.rol }}
             </mat-option>
           </mat-select>
           <mat-error
-            *ngIf="obtenerControlCampo('rolUsuario')?.errors?.['required']"
+            *ngIf="obtenerControlCampo('rol')?.errors?.['required']"
           >
             El rol es obligatorio.
           </mat-error>
