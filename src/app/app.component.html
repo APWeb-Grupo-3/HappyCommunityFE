@@ -10,11 +10,11 @@
 </head>
 <body>
   
-<mat-toolbar >
+<mat-toolbar *ngIf="verificar()">
 
   <mat-icon >menu</mat-icon>
   <button mat-button routerLink="/">Happy Community</button>  
-  <button mat-button [matMenuTriggerFor]="menuCondomino">Condominio</button>
+  <button mat-button [matMenuTriggerFor]="menuCondomino" *ngIf="validarRol()">Condominio</button>
   <button mat-button [matMenuTriggerFor]="menuTipoDocPago">Tipo Doc Pago</button>
   <button mat-button [matMenuTriggerFor]="menuTipoServicio">Tipo Servicio</button>
   <button mat-button [matMenuTriggerFor]="menuRolUsuario">Rol Usuario</button>
@@ -27,13 +27,14 @@
   <button mat-button [matMenuTriggerFor]="menuAviso">Aviso</button>
   <button mat-button [matMenuTriggerFor]="menuDetalle">Detalle</button>
   <button mat-button [matMenuTriggerFor]="menuServicio">Servicio</button>
-  
+  <button mat-button [matMenuTriggerFor]="menuSalir">Usuario</button>
+
 
 </mat-toolbar>
 
 <mat-menu #menuCondomino="matMenu">
-  <button mat-menu-item routerLink="/condominios/nuevo">Registrar</button>
-  <button mat-menu-item routerLink="/condominios">Listar</button>
+  <button mat-menu-item routerLink="components/condominios/nuevo" *ngIf="role == 'ADMINISTRADOR'">Registrar</button>
+  <button mat-menu-item routerLink="components/condominios">Listar</button>
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 <mat-menu #menuTipoDocPago="matMenu">
@@ -102,7 +103,17 @@
   <!-- Agrega más elementos de menú si es necesario -->
 </mat-menu>
 
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
 
+  </button>
+  <button mat-menu-item >Rol:
+    <span>{{role}}</span>
+  </button>
+  <!-- Agrega más elementos de menú si es necesario -->
+</mat-menu>
 
 
 <router-outlet></router-outlet>
