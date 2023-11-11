@@ -1,123 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="app.component.css" />
-  </head>
-  <body>
-    <mat-toolbar>
-      <mat-icon>menu</mat-icon>
-      <button mat-button routerLink="/">Happy Community</button>
-      <button mat-button [matMenuTriggerFor]="menuGeneral">Servicios</button>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <mat-toolbar *ngIf="verificar()">
+      <button
+        (click)="toggleSubMenu()"
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Happy Community</span>
+      <span class="center-content">
+        <button mat-button class="btn1" [matMenuTriggerFor]="menuSalir">
+          <i class="fa-solid fa-user"></i> Usuario
+          <mat-menu #menuSalir="matMenu">
+            <button mat-menu-item routerLink="components/Usuario">Ver perfil
+            </button>
+            <button mat-menu-item routerLink="/login" (click)="cerrar()">
+              <mat-icon>logout</mat-icon>
+              <span>Cerrar sesión</span>
+          
+            </button>
+            
+            <!-- Agrega más elementos de menú si es necesario -->
+          </mat-menu>
+        </button>
+      </span>
     </mat-toolbar>
 
-    <mat-menu #menuGeneral="matMenu">
-      <button mat-menu-item [matMenuTriggerFor]="menuCondomino">
-        Condominio
-      </button>
-      <button mat-menu-item [matMenuTriggerFor]="menuTipoDocPago">
-        Tipo Doc Pago
-      </button>
-      <button mat-menu-item [matMenuTriggerFor]="menuTipoServicio">
-        Tipo Servicio
-      </button>
-      <button mat-menu-item [matMenuTriggerFor]="menuRolUsuario">
-        Rol Usuario
-      </button>
-      <button mat-menu-item [matMenuTriggerFor]="menuUsuario">Usuario</button>
-      <button mat-menu-item [matMenuTriggerFor]="menuDocumentoPago">
-        Documento Pago
-      </button>
-      <button mat-menu-item [matMenuTriggerFor]="menuPlanConvivencia">
-        Plan Convivencia
-      </button>
-      <button mat-menu-item [matMenuTriggerFor]="menuSolicitudacceso">
-        Solicitud Acceso
-      </button>
-      <button mat-menu-item [matMenuTriggerFor]="menuTarjeta">Tarjeta</button>
-      <button mat-menu-item [matMenuTriggerFor]="menuMensaje">Mensaje</button>
-      <button mat-menu-item [matMenuTriggerFor]="menuAviso">Aviso</button>
-      <button mat-menu-item [matMenuTriggerFor]="menuDetalle">Detalle</button>
-      <button mat-menu-item [matMenuTriggerFor]="menuServicio">Servicio</button>
-    </mat-menu>
+    <mat-toolbar
+      [ngClass]="{ 'hide-menu': !isSubMenuOpen }"
+      [ngStyle]="{
+        transform: isSubMenuOpen ? 'translateX(0)' : 'translateX(-100%)'
+      }"
+      color="primary"
+      class="animated-menu"
+      *ngIf="verificar()"
+    >
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <span>
+          <button mat-menu-item [matMenuTriggerFor]="menuCondomino">
+            <i class="fa-solid fa-house"></i>   Condominios
+          </button>
+        </span>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row>
+        <span>
+          <button mat-menu-item [matMenuTriggerFor]="menuPago">
+            <i class="fa-solid fa-piggy-bank"></i>     Pagos
+          </button>
+        </span>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row>
+        <span>
+          <button mat-menu-item [matMenuTriggerFor]="menuServicio">
+            <i class="fa-solid fa-clipboard"></i>   Servicios
+          </button>
+        </span>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row>
+        <span>
+          <button mat-menu-item routerLink="components/mensajes">
+            <i class="fa-solid fa-comments"></i>     Mensajes
+          </button>
+        </span>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row>
+        <span>
+          <button mat-menu-item routerLink="components/tarjeta">
+            <i class="fa-solid fa-credit-card"></i>     Tarjetas
+          </button>
+        </span>
+      </mat-toolbar-row>
+
+    </mat-toolbar>
 
     <mat-menu #menuCondomino="matMenu">
-      <button mat-menu-item routerLink="/condominios/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/condominios">Listar</button>
+      <button mat-menu-item routerLink="components/solicitudacceso">Solicitud de Acceso</button>
+      <button mat-menu-item routerLink="components/condominios">Lista de condominios</button>
+      <button mat-menu-item routerLink="components/planconvivencia">Plan de Convivencia</button>
+      <button mat-menu-item routerLink="components/aviso">Aviso</button>
       <!-- Agrega más elementos de menú si es necesario -->
     </mat-menu>
-    <mat-menu #menuTipoDocPago="matMenu">
-      <button mat-menu-item routerLink="/TipoDocPago/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/TipoDocPago">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuTipoServicio="matMenu">
-      <button mat-menu-item routerLink="/TipoServicio/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/TipoServicio">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuRolUsuario="matMenu">
-      <button mat-menu-item routerLink="/RolUsuario/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/RolUsuario">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuUsuario="matMenu">
-      <button mat-menu-item routerLink="/Usuario/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/Usuario">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuDocumentoPago="matMenu">
-      <button mat-menu-item routerLink="/DocumentoPago/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/DocumentoPago">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuPlanConvivencia="matMenu">
-      <button mat-menu-item routerLink="/planconvivencia/nuevo">
-        Registrar
-      </button>
-      <button mat-menu-item routerLink="/planconvivencia">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuSolicitudacceso="matMenu">
-      <button mat-menu-item routerLink="/solicitudacceso/nuevo">
-        Registrar
-      </button>
-      <button mat-menu-item routerLink="/solicitudacceso">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuTarjeta="matMenu">
-      <button mat-menu-item routerLink="/tarjeta/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/tarjeta">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuMensaje="matMenu">
-      <button mat-menu-item routerLink="/mensajes/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/mensajes">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuAviso="matMenu">
-      <button mat-menu-item routerLink="/aviso/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/aviso">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuAviso="matMenu">
-      <button mat-menu-item routerLink="/aviso/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/aviso">Listar</button>
-      <!-- Agrega más elementos de menú si es necesario -->
-    </mat-menu>
-    <mat-menu #menuDetalle="matMenu">
-      <button mat-menu-item routerLink="/Detalle/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/Detalle">Listar</button>
+    <mat-menu #menuPago="matMenu">
+      <button mat-menu-item routerLink="components/TipoDocPago">Tipo de Documento</button>
+      <button mat-menu-item routerLink="components/DocumentoPago">Documento de Pago</button>
+      <button mat-menu-item routerLink="components/Detalle">Detalle</button>
       <!-- Agrega más elementos de menú si es necesario -->
     </mat-menu>
     <mat-menu #menuServicio="matMenu">
-      <button mat-menu-item routerLink="/Servicio/nuevo">Registrar</button>
-      <button mat-menu-item routerLink="/Servicio">Listar</button>
+      <button mat-menu-item routerLink="components/TipoServicio">Tipo de Servicio</button>
+      <button mat-menu-item routerLink="components/Servicio">Lista servicios</button>
       <!-- Agrega más elementos de menú si es necesario -->
     </mat-menu>
+    
+
+    
+    </mat-toolbar>
 
     <router-outlet></router-outlet>
-  </body>
-</html>
