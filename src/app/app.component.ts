@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { LoginService } from './services/login.service';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'HappyCommunity';
   role:string="";
+  isSubMenuOpen: boolean = false;
 
   constructor(private loginService: LoginService) {
   }
-
+  
   cerrar() {
     sessionStorage.clear();
   }
@@ -28,4 +30,8 @@ export class AppComponent {
       return false;
     }
   }
+  toggleSubMenu() {
+    this.isSubMenuOpen = !this.isSubMenuOpen;
+  }
+
 }

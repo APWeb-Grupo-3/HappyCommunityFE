@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { TipoServicio } from '../models/tiposervicio';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {  Subject } from 'rxjs';
 
 
@@ -14,15 +14,27 @@ export class TiposervicioService {
 
 
 
-  private url = `${base_url}/TipoServicio`;
+  private url = `${base_url}/tiposervicio`;
   private listaCambio = new Subject<TipoServicio[]>();
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<TipoServicio[]>(this.url);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<TipoServicio[]>(this.url,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
   }
   insert(de: TipoServicio) {
-    return this.http.post(this.url, de);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.post(this.url, de,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
   }
   setList(listaNueva: TipoServicio[]) {
     this.listaCambio.next(listaNueva);
@@ -34,11 +46,29 @@ export class TiposervicioService {
 
 
   listId(id: number) {
-    return this.http.get<TipoServicio>(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<TipoServicio>(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
   }
   update(d: TipoServicio) {
-    return this.http.put(this.url, d);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.put(this.url, d,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
   }
   delete(id: number) {
-    return this.http.delete(`${this.url}/${id}`);
+    let token = sessionStorage.getItem('token');
+
+    return this.http.delete(`${this.url}/${id}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
   }}

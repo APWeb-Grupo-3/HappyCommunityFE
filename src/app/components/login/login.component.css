@@ -13,5 +13,8 @@
 }
 .small {
   text-align: center;
-  padding: 10px;
+}
+
+.img-fluid{
+  height: 100%;
 }
