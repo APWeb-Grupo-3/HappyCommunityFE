@@ -4,9 +4,14 @@
 }
 
 .nuevobtn{
+  width: 100%;
   text-align: center;
   border-radius: 15px;
   border: none;
   background: rgb(45, 45, 56);
   color: #ffffff;
+}
+.small {
+  text-align: center;
+  padding: 10px;
 }
