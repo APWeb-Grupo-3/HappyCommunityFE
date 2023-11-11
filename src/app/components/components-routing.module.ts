@@ -1,3 +1,4 @@
+import { GuardService } from './../services/guard.service';
 import { CreaeditaDetalleComponent } from './detalle/creaedita-detalle/creaedita-detalle.component';
 import { DetalleComponent } from './detalle/detalle.component';
 import { CreaeditaServicioComponent } from './servicio/creaedita-servicio/creaedita-servicio.component';
@@ -28,9 +29,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
+  {    
     path: 'condominios',
     component: CondominioComponent,
+    canActivate: [GuardService],
     children: [
       { path: 'nuevo', component: CreaeditaComponent },
       { path: 'edicion/:id', component: CreaeditaComponent },
@@ -39,6 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'TipoDocPago',
+    canActivate: [GuardService],
     component: TipoDocumentoPagoComponent,
     children: [
       { path: 'nuevo', component: CreaditaTDPComponent },
@@ -49,6 +52,8 @@ const routes: Routes = [
   
   {
     path: 'TipoServicio',
+    canActivate: [GuardService],
+
     component: TipoServicioComponent,
     children: [
       { path: 'nuevo', component: CreaeditaTiposervicioComponent },
@@ -59,6 +64,8 @@ const routes: Routes = [
   },
   {
     path: 'RolUsuario',
+    canActivate: [GuardService],
+
     component: RolusuarioComponent,
     children: [
       { path: 'nuevo', component: CreaeditaRolusuarioComponent },
@@ -69,6 +76,8 @@ const routes: Routes = [
   },
   {
     path: 'Usuario',
+    canActivate: [GuardService],
+
     component: UsuarioComponent,
     children: [
       { path: 'nuevo', component: CreaeditaUsuarioComponent },
@@ -79,6 +88,8 @@ const routes: Routes = [
   },
   {
     path: 'DocumentoPago',
+    canActivate: [GuardService],
+
     component: DocumentopagoComponent,
     children: [
       { path: 'nuevo', component: CreaeditaDocumentopagoComponent },
@@ -89,6 +100,8 @@ const routes: Routes = [
   },
   {
     path: 'planconvivencia',
+    canActivate: [GuardService],
+
     component: PlanConvivenciaComponent,
     children: [
       { path: 'nuevo', component: CreaeditaPlanconvivenciaComponent },
@@ -99,6 +112,8 @@ const routes: Routes = [
   },
   {
     path: 'solicitudacceso',
+    canActivate: [GuardService],
+
     component: SolicitudAccesoComponent,
     children: [
       { path: 'nuevo', component: CreaeditaSolicitudaccesoComponent },
@@ -109,6 +124,8 @@ const routes: Routes = [
   },
   {
     path: 'tarjeta',
+    canActivate: [GuardService],
+
     component: TarjetaComponent,
     children: [
       { path: 'nuevo', component: CreaeditaTarjetaComponent },
@@ -119,6 +136,8 @@ const routes: Routes = [
   },
   {
     path: 'mensajes',
+    canActivate: [GuardService],
+
     component: MensajeComponent,
     children: [
       { path: 'nuevo', component: CreaeditaMensajeComponent },
@@ -129,6 +148,8 @@ const routes: Routes = [
   },
   {
     path: 'aviso',
+    canActivate: [GuardService],
+
     component: AvisoComponent,
     children: [
       { path: 'nuevo', component: CreaeditaAvisoComponent },
@@ -139,6 +160,8 @@ const routes: Routes = [
   },
   {
     path: 'Servicio',
+    canActivate: [GuardService],
+
     component: ServicioComponent,
     children: [
       { path: 'nuevo', component: CreaeditaServicioComponent },
@@ -149,6 +172,8 @@ const routes: Routes = [
   },
   {
     path: 'Detalle',
+    canActivate: [GuardService],
+
     component: DetalleComponent,
     children: [
       { path: 'nuevo', component: CreaeditaDetalleComponent },
