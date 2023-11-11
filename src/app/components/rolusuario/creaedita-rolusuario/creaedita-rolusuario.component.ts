@@ -30,16 +30,14 @@ export class CreaeditaRolusuarioComponent implements OnInit{
     });
     this.form = this.formBuilder.group({
       idRolUsuario: [''],
-      nombreTipo: ['', Validators.required],
-      descripcion: ['', Validators.required],
+      rol: ['', Validators.required],
     });
   }
 
   aceptar(): void {
     if (this.form.valid) {
       this.rolusuario.idRolUsuario = this.form.value.idRolUsuario;
-      this.rolusuario.nombreTipo = this.form.value.nombreTipo;
-      this.rolusuario.descripcion = this.form.value.descripcion;
+      this.rolusuario.rol = this.form.value.rol;
       if (this.edicion) {
         this.rS.update(this.rolusuario).subscribe(() => {
           this.rS.list().subscribe((data) => {
@@ -72,8 +70,7 @@ export class CreaeditaRolusuarioComponent implements OnInit{
       this.rS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           idRolUsuario: new FormControl(data.idRolUsuario),
-          nombreTipo: new FormControl(data.nombreTipo),
-          descripcion: new FormControl(data.descripcion),
+          rol: new FormControl(data.rol),
         });
       });
     }

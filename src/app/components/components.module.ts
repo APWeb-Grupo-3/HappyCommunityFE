@@ -54,6 +54,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -98,6 +99,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     ServicioComponent,
     CreaeditaServicioComponent,
     ListarServicioComponent,
+    RegisterComponent,
   ],
   imports: [
     CommonModule,

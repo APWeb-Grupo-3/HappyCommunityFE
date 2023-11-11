@@ -15,7 +15,7 @@ export class RolusuarioService {
   constructor(private http: HttpClient) {}
 
   list() {
-    return this.http.get<RolUsuario[]>(this.url);
+    return this.http.get<RolUsuario[]>(`${this.url}/getroles`);
   }
   insert(ru: RolUsuario) {
     return this.http.post(this.url, ru);
