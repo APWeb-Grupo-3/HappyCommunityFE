@@ -1,69 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-        <div style="text-align: center">
-          <h2>Registro de Usuarios</h2>
-          <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+  </head>
+  <body>
+    <div>
+      <mat-stepper #stepper class="formgeneral">
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Creación de usuario</ng-template>
             <br />
             <mat-form-field class="example-full-width">
-              <mat-label>nombreUsuario</mat-label>
-              <input matInput placeholder="nombreUsuario" formControlName="nombreUsuario" />
+              <mat-label>Nombre de Usuario</mat-label>
+              <input
+                matInput
+                placeholder="nombreUsuario"
+                formControlName="nombreUsuario"
+              />
               <mat-error
                 *ngIf="obtenerControlCampo('nombreUsuario')?.errors?.['required']"
               >
                 El username es obligatorio.
               </mat-error>
             </mat-form-field>
-            <br />
-            <mat-form-field class="example-full-width">
-              <mat-label>Rol</mat-label>
-              <mat-select formControlName="rol">
-                <mat-option *ngFor="let p of listaRolUsuarios" [value]="p.idRolUsuario">
-                  {{ p.rol }}
-                </mat-option>
-              </mat-select>
-              <mat-error
-                *ngIf="obtenerControlCampo('rol')?.errors?.['required']"
-              >
-                El rol es obligatorio.
-              </mat-error>
-    
-            </mat-form-field>
-            <br />
-            <mat-form-field class="example-full-width">
-              <mat-label>Nombres</mat-label>
-              <input matInput placeholder="nombres" formControlName="nombres" />
-              <mat-error
-                *ngIf="obtenerControlCampo('nombres')?.errors?.['required']"
-              >
-                El nombre es obligatorio.
-              </mat-error>
-            </mat-form-field>
-            <br />
-            <mat-form-field class="example-full-width">
-              <mat-label>Apellidos</mat-label>
-              <input matInput placeholder="apellidos" formControlName="apellidos" />
-              <mat-error
-                *ngIf="obtenerControlCampo('apellidos')?.errors?.['required']"
-              >
-                El apellido es obligatorio.
-              </mat-error>
-            </mat-form-field>
-            <br />
-            <mat-form-field class="example-full-width">
-              <mat-label>Correo</mat-label>
-              <input matInput placeholder="correo" formControlName="correo" />
-              <mat-error
-                *ngIf="obtenerControlCampo('correo')?.errors?.['required']"
-              >
-                El correo es obligatorio.
-              </mat-error>
-            </mat-form-field>
+
             <br />
             <mat-form-field class="example-full-width">
               <mat-label>Clave</mat-label>
@@ -75,11 +37,80 @@
               </mat-error>
             </mat-form-field>
             <br />
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Rol</mat-label>
+              <mat-select formControlName="rol">
+                <mat-option
+                  *ngFor="let p of listaRolUsuarios"
+                  [value]="p.idRolUsuario"
+                >
+                  {{ p.rol }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="obtenerControlCampo('rol')?.errors?.['required']"
+              >
+                El rol es obligatorio.
+              </mat-error>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Datos del usuario">
+          <form [formGroup]="secondFormGroup">
+            <br />
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Nombres</mat-label>
+              <input matInput placeholder="nombres" formControlName="nombres" />
+              <mat-error
+                *ngIf="obtenerControlCampo2('nombres')?.errors?.['required']"
+              >
+                El nombre es obligatorio.
+              </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field class="example-full-width">
+              <mat-label>Apellidos</mat-label>
+              <input
+                matInput
+                placeholder="apellidos"
+                formControlName="apellidos"
+              />
+              <mat-error
+                *ngIf="obtenerControlCampo2('apellidos')?.errors?.['required']"
+              >
+                El apellido es obligatorio.
+              </mat-error>
+            </mat-form-field>
+            <br />
+            <mat-form-field class="example-full-width">
+              <mat-label>Correo</mat-label>
+              <input matInput placeholder="correo" formControlName="correo" />
+              <mat-error
+                *ngIf="obtenerControlCampo2('correo')?.errors?.['required']"
+              >
+                El correo es obligatorio.
+              </mat-error>
+            </mat-form-field>
+
+            <div>
+              <button mat-button matStepperPrevious>Atrás</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+          <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Datos adicionales</ng-template>
             <mat-form-field class="example-full-width">
               <mat-label>Edad</mat-label>
               <input matInput placeholder="edad" formControlName="edad" />
               <mat-error
-                *ngIf="obtenerControlCampo('edad')?.errors?.['required']"
+                *ngIf="obtenerControlCampo3('edad')?.errors?.['required']"
               >
                 La edad es obligatoria.
               </mat-error>
@@ -87,15 +118,19 @@
             <br />
             <mat-form-field class="example-full-width">
               <mat-label>Teléfono</mat-label>
-              <input matInput placeholder="telefono" formControlName="telefono" />
+              <input
+                matInput
+                placeholder="telefono"
+                formControlName="telefono"
+              />
               <mat-error
-                *ngIf="obtenerControlCampo('telefono')?.errors?.['required']"
+                *ngIf="obtenerControlCampo3('telefono')?.errors?.['required']"
               >
                 El telefono es obligatorio.
               </mat-error>
             </mat-form-field>
-    
             <br />
+
             <mat-form-field class="example-full-width">
               <mat-label>Género</mat-label>
               <mat-select formControlName="genero">
@@ -104,25 +139,19 @@
                 </mat-option>
               </mat-select>
               <mat-error
-                *ngIf="obtenerControlCampo('genero')?.errors?.['required']"
+                *ngIf="obtenerControlCampo3('genero')?.errors?.['required']"
               >
                 El genero es obligatorio.
               </mat-error>
             </mat-form-field>
-    
-            
-    
-            <br />
-            <button mat-raised-button class="aceptarbtn" >Aceptar</button>
-            <br>
-            
-            <a mat-raised-text class="cancelarbtn" routerLink="/login">
-              Cancelar
-            </a>
+            <div>
+              <button mat-button routerLink="/login">Cancelar registro</button>
+              <button mat-button class="btn" (click)="aceptar()">Registrarse</button>
+            </div>
             <p>{{ mensaje }}</p>
           </form>
-        </div>
-    
-</body>
+        </mat-step>
+      </mat-stepper>
+    </div>
+  </body>
 </html>
-

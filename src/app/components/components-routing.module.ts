@@ -28,6 +28,7 @@ import { CreaeditaDocumentopagoComponent } from './documentopago/creaedita-docum
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
+import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
 
 const routes: Routes = [
   {    
@@ -77,11 +78,10 @@ const routes: Routes = [
   {
     path: 'Usuario',
     canActivate: [GuardService],
-
     component: UsuarioComponent,
     children: [
       { path: 'nuevo', component: CreaeditaUsuarioComponent },
-      { path: 'edicion/:id', component: CreaeditaUsuarioComponent },
+      { path: 'edicion/:id', component: CreaeditaUsuarioComponent},
 
     ],
     
@@ -184,7 +184,6 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
-
   },
 ];
 

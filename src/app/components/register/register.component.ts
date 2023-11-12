@@ -18,6 +18,9 @@ export class RegisterComponent implements OnInit {
   id: number = 0;
   edicion: boolean = false;
   listaRolUsuarios:RolUsuario[]=[]
+  firstFormGroup:FormGroup=new FormGroup({})
+  secondFormGroup:FormGroup=new FormGroup({})
+  thirdFormGroup:FormGroup=new FormGroup({})
 
   tipos: { value: string; viewValue: string }[] = [
     { value: 'Varon', viewValue: 'Varon' },
@@ -29,26 +32,27 @@ export class RegisterComponent implements OnInit {
     private uS: UsuarioService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
+
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.init();
-    });
-    this.form = this.formBuilder.group({
+    this.firstFormGroup = this.formBuilder.group({
       idUsuario: [''],
       nombreUsuario: ['', Validators.required],
       clave: ['', Validators.required],
       rol: ['', Validators.required],
+    });
+    this.secondFormGroup = this.formBuilder.group({
       nombres: ['', Validators.required],
       apellidos: ['', Validators.required],
       correo: ['', Validators.required],
+    });
+    this.thirdFormGroup = this.formBuilder.group({
       edad: ['', Validators.required],
       telefono: ['', Validators.required],
       genero: ['', Validators.required],
     });
+
     this.rS.list().subscribe((data)=>{
       this.listaRolUsuarios=data;
     })
@@ -57,35 +61,42 @@ export class RegisterComponent implements OnInit {
   aceptar(): void {
   
 
-    if (this.form.valid) {
+    if (this.firstFormGroup.valid) {
 
-      this.usuario.idUsuario = this.form.value.idUsuario;
-      this.usuario.nombreUsuario = this.form.value.nombreUsuario;
-      this.usuario.clave=this.form.value.clave;
-      this.usuario.rol.idRolUsuario = this.form.value.rol;
-      this.usuario.nombres = this.form.value.nombres;
-      this.usuario.apellidos = this.form.value.apellidos;
-      this.usuario.correo = this.form.value.correo;
-      this.usuario.edad = this.form.value.edad;
-      this.usuario.telefono = this.form.value.telefono;
-      this.usuario.genero = this.form.value.genero;
+      this.usuario.idUsuario = this.firstFormGroup.value.idUsuario;
+      this.usuario.nombreUsuario = this.firstFormGroup.value.nombreUsuario;
+      this.usuario.clave=this.firstFormGroup.value.clave;
+      this.usuario.rol.idRolUsuario = this.firstFormGroup.value.rol;
 
-      if (this.edicion) {
-        this.uS.update(this.usuario).subscribe(() => {
-          this.uS.list().subscribe((data) => {
-            this.uS.setList(data);
-          });
-        });
-      } else {
-        this.uS.insert(this.usuario).subscribe(() => {
-          this.uS.list().subscribe((data) => {
-            this.uS.setList(data);
-          });
-        });
+      if(this.secondFormGroup.valid){
+        this.usuario.nombres = this.secondFormGroup.value.nombres;
+        this.usuario.apellidos = this.secondFormGroup.value.apellidos;
+        this.usuario.correo = this.secondFormGroup.value.correo;
+        
+        if(this.thirdFormGroup.valid){
+          this.usuario.edad = this.thirdFormGroup.value.edad;
+          this.usuario.telefono = this.thirdFormGroup.value.telefono;
+          this.usuario.genero = this.thirdFormGroup.value.genero;
+    
+            this.uS.insert(this.usuario).subscribe(() => {
+              this.uS.list().subscribe((data) => {
+                this.uS.setList(data);
+              });
+            });
+    
+          this.router.navigate(['login']);
+        }
+        else{
+          this.mensaje = 'Por favor complete todos los campos obligatorios del último formulario.';
+
+        }
+      }else{
+        this.mensaje = 'Por favor complete todos los campos obligatorios del segundo formulario.';
+
       }
-      this.router.navigate(['Usuario']);
+      
     } else {
-      this.mensaje = 'Por favor complete todos los campos obligatorios.';
+      this.mensaje = 'Por favor complete todos los campos obligatorios del primer formulario.';
     }
   }
 
@@ -94,30 +105,24 @@ export class RegisterComponent implements OnInit {
 
 
   obtenerControlCampo(nombreCampo: string): AbstractControl {
-    const control = this.form.get(nombreCampo);
+    const control = this.firstFormGroup.get(nombreCampo);
     if (!control) {
       throw new Error(`Control no encontrado para el campo ${nombreCampo}`);
     }
     return control;
   }
-  
-  init() {
-    if (this.edicion) {
-      this.uS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idUsuario: new FormControl(data.idUsuario),
-          nombreUsuario: new FormControl(data.nombreUsuario),
-          habilitado:new FormControl(data.habilitado),
-          rol:new FormControl(data.rol.idRolUsuario),
-          nombres: new FormControl(data.nombres),
-          apellidos: new FormControl(data.apellidos),
-          correo: new FormControl(data.correo),
-          clave: new FormControl(data.clave),
-          edad: new FormControl(data.edad),
-          telefono: new FormControl(data.telefono),
-          genero: new FormControl(data.genero),
-        });
-      });
+  obtenerControlCampo2(nombreCampo: string): AbstractControl {
+    const control = this.secondFormGroup.get(nombreCampo);
+    if (!control) {
+      throw new Error(`Control no encontrado para el campo ${nombreCampo}`);
     }
+    return control;
+  }
+  obtenerControlCampo3(nombreCampo: string): AbstractControl {
+    const control = this.thirdFormGroup.get(nombreCampo);
+    if (!control) {
+      throw new Error(`Control no encontrado para el campo ${nombreCampo}`);
+    }
+    return control;
   }
 }

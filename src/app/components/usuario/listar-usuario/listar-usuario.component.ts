@@ -16,14 +16,8 @@ export class ListarUsuarioComponent implements OnInit{
   displayedColumns: string[] = [
     'codigo',
     'username',
-    'clave',
-    'habilitado',
     'rol',
-    'nombres',
-    'apellidos',
     'correo',
-    'edad',
-    'telefono',
     'genero',
     'accion01',
     'accion02',
@@ -47,7 +41,5 @@ export class ListarUsuarioComponent implements OnInit{
       });
     });
   }
-  openDialog(){
-    this.matDialog.open(CreaeditaUsuarioComponent)
-  }
+  
 }

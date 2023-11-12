@@ -23,7 +23,6 @@ import { LoginComponent } from './components/login/login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
-
 @NgModule({
   declarations: [
     AppComponent,

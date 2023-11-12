@@ -27,10 +27,23 @@
 .btn1 {
     height: 64px;
     width: 10%;
-    font-size: 15px;
+    font-size: 18px;
+}
+.coloritem{
+  color: white;
 }
 .fa-solid{
-  font-size: 20px;
+  font-size: 25px;
 }
 
+mat-sidenav{
+  background: rgb(6, 45, 46);
+  width: 13%;
+}
+mat-sidenav a{
+  color: white;
+}
+.navcolor{
+  color: white;
+}
 
