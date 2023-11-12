@@ -13,10 +13,14 @@
     <h1>Happy Community</h1>
     <div class="center-content">
       <button mat-button class="btn1" [matMenuTriggerFor]="menuSalir">
-        <i class="fa-solid fa-user"></i> Usuario
+        <i class="fa-solid fa-user"></i> {{username}}
         <mat-menu #menuSalir="matMenu">
           <button mat-menu-item routerLink="components/Usuario">
             Ver perfil
+          </button>
+          <button mat-menu-item >Rol:
+            <span>{{role}}</span>
+            
           </button>
           <button
             mat-menu-item
@@ -26,6 +30,8 @@
           >
             <mat-icon>logout</mat-icon>
             <span>Cerrar sesión</span>
+           
+            
           </button>
 
           <!-- Agrega más elementos de menú si es necesario -->

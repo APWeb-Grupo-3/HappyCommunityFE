@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './components/login/login.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatDialogModule,
     MatSnackBarModule,
     MatSidenavModule,
+    MatDividerModule,
     
   ],
   providers: [],

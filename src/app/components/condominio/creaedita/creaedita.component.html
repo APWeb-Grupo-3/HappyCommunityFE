@@ -28,15 +28,18 @@
             </mat-error>
           </mat-form-field>
           <br />
-        <mat-form-field class="example-full-width">
+          <mat-form-field class="example-full-width">
             <mat-label>distrito</mat-label>
-            <input matInput placeholder="distrito" formControlName="distrito" />
-            <mat-error
-              *ngIf="obtenerControlCampo('distrito')?.errors?.['required']"
-            >
+            <mat-select formControlName="distrito">
+              <mat-option *ngFor="let p of distritos" [value]="p.value">
+                {{p.viewValue}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="obtenerControlCampo('distrito')?.errors?.['required']">
               El distrito es obligatorio.
             </mat-error>
           </mat-form-field>
+
           <br />
         <mat-form-field class="example-full-width">
             <mat-label>direccion</mat-label>

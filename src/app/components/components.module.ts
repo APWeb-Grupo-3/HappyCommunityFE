@@ -59,6 +59,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatCardModule} from '@angular/material/card';
 import { CondominoDetallesComponent } from './condominio/condomino-detalles/condomino-detalles.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -104,6 +106,8 @@ import { CondominoDetallesComponent } from './condominio/condomino-detalles/cond
     ListarServicioComponent,
     RegisterComponent,
     CondominoDetallesComponent,
+    
+
   ],
   imports: [
     CommonModule,
@@ -126,6 +130,8 @@ import { CondominoDetallesComponent } from './condominio/condomino-detalles/cond
     MatStepperModule,
     MatButtonModule,
     MatCardModule,
+    MatDividerModule,
+    MatProgressBarModule,
   ]
 })
 export class ComponentsModule { }
