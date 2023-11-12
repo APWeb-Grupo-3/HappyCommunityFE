@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from './services/login.service';
 import { MatMenuTrigger } from '@angular/material/menu';
 
@@ -7,12 +7,15 @@ import { MatMenuTrigger } from '@angular/material/menu';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent{
+export class AppComponent implements OnInit{
   title = 'HappyCommunity';
   role:string="";
   isSubMenuOpen: boolean = false;
+  username:string="";
+  
 
   constructor(private loginService: LoginService) {
+
   }
   
   cerrar() {
@@ -32,6 +35,16 @@ export class AppComponent{
   }
   toggleSubMenu() {
     this.isSubMenuOpen = !this.isSubMenuOpen;
+  }
+  ngOnInit() {
+    this.obtenerUsername();
+    
+  }
+
+  obtenerUsername() {
+    this.username = this.loginService.showUsername();
+console.log('Nombre de usuario obtenido:', this.username);
+
   }
 
 }

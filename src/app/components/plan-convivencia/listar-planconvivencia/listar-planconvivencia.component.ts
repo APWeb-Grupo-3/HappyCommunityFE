@@ -1,7 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 import { PlanConvivencia } from 'src/app/models/planconvivencia';
 import { PlanconvivenciaService } from 'src/app/services/planconvivencia.service';
 import { CreaeditaPlanconvivenciaComponent } from '../creaedita-planconvivencia/creaedita-planconvivencia.component';
@@ -11,29 +9,22 @@ import { CreaeditaPlanconvivenciaComponent } from '../creaedita-planconvivencia/
   templateUrl: './listar-planconvivencia.component.html',
   styleUrls: ['./listar-planconvivencia.component.css']
 })
-export class ListarPlanconvivenciaComponent  {
-  dataSource: MatTableDataSource<PlanConvivencia> = new MatTableDataSource();
+export class ListarPlanconvivenciaComponent  implements OnInit{
 
-  displayedColumns: string[] = [
-    'codigo',
-    'titulo',
-    'descripcion',
-    'condominio',
-    'accion01',
-    'accion02',
-  ];
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private pS: PlanconvivenciaService,private matDialog:MatDialog) {}
+  planconvivencia: PlanConvivencia[]=[];
+
+  constructor(private pS: PlanconvivenciaService, private matDialog: MatDialog) {}
+
   ngOnInit(): void {
     this.pS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.planconvivencia = data;
     });
     this.pS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.planconvivencia = data;
     });
+    
   }
+
   eliminar(id: number) {
     this.pS.delete(id).subscribe((data) => {
       this.pS.list().subscribe((data) => {
@@ -41,10 +32,9 @@ export class ListarPlanconvivenciaComponent  {
       });
     });
   }
-  openDialog(){
-    this.matDialog.open(CreaeditaPlanconvivenciaComponent)
-  }
 
-  
+  openDialog() {
+    this.matDialog.open(CreaeditaPlanconvivenciaComponent);
+  }
   
 }

@@ -23,6 +23,51 @@ export class CreaeditaComponent implements OnInit{
   id: number = 0;
   edicion: boolean = false;
 
+  distritos: { value: string; viewValue: string }[] = [
+    { value: 'Ancón', viewValue: 'Ancón' },
+    { value: 'Ate', viewValue: 'Ate' },
+    { value: 'Barranco', viewValue: 'Barranco' },
+    { value: 'Breña', viewValue: 'Breña' },
+    { value: 'Carabayllo', viewValue: 'Carabayllo' },
+    { value: 'Chaclacayo', viewValue: 'Chaclacayo' },
+    { value: 'Chorrillos', viewValue: 'Chorrillos' },
+    { value: 'Cieneguilla', viewValue: 'Cieneguilla' },
+    { value: 'Comas', viewValue: 'Comas' },
+    { value: 'El Agustino', viewValue: 'El Agustino' },
+    { value: 'Independencia', viewValue: 'Independencia' },
+    { value: 'Jesús María', viewValue: 'Jesús María' },
+    { value: 'La Molina', viewValue: 'La Molina' },
+    { value: 'La Victoria', viewValue: 'La Victoria' },
+    { value: 'Lince', viewValue: 'Lince' },
+    { value: 'Los Olivos', viewValue: 'Los Olivos' },
+    { value: 'Lurigancho-Chosica', viewValue: 'Lurigancho-Chosica' },
+    { value: 'Lurín', viewValue: 'Lurín' },
+    { value: 'Magdalena del Mar', viewValue: 'Magdalena del Mar' },
+    { value: 'Pueblo Libre', viewValue: 'Pueblo Libre' },
+    { value: 'Miraflores', viewValue: 'Miraflores' },
+    { value: 'Pachacamac', viewValue: 'Pachacamac' },
+    { value: 'Pucusana', viewValue: 'Pucusana' },
+    { value: 'Puente Piedra', viewValue: 'Puente Piedra' },
+    { value: 'Punta Hermosa', viewValue: 'Punta Hermosa' },
+    { value: 'Punta Negra', viewValue: 'Punta Negra' },
+    { value: 'Rímac', viewValue: 'Rímac' },
+    { value: 'San Bartolo', viewValue: 'San Bartolo' },
+    { value: 'San Borja', viewValue: 'San Borja' },
+    { value: 'San Isidro', viewValue: 'San Isidro' },
+    { value: 'San Juan de Lurigancho', viewValue: 'San Juan de Lurigancho' },
+    { value: 'San Juan de Miraflores', viewValue: 'San Juan de Miraflores' },
+    { value: 'San Luis', viewValue: 'San Luis' },
+    { value: 'San Martín de Porres', viewValue: 'San Martín de Porres' },
+    { value: 'San Miguel', viewValue: 'San Miguel' },
+    { value: 'Santa Anita', viewValue: 'Santa Anita' },
+    { value: 'Santa María del Mar', viewValue: 'Santa María del Mar' },
+    { value: 'Santa Rosa', viewValue: 'Santa Rosa' },
+    { value: 'Santiago de Surco', viewValue: 'Santiago de Surco' },
+    { value: 'Surquillo', viewValue: 'Surquillo' },
+    { value: 'Villa El Salvador', viewValue: 'Villa El Salvador' },
+    { value: 'Villa María del Triunfo', viewValue: 'Villa María del Triunfo' },
+  ];
+  
   constructor(
     private cS: CondominioService,
     private router: Router,
@@ -39,10 +84,10 @@ export class CreaeditaComponent implements OnInit{
     });
     this.form = this.formBuilder.group({
       idCondominio: [''],
-      nombre: ['', Validators.required],
-      departamento: ['', Validators.required],
-      distrito: ['', [Validators.required]],
-      direccion: ['', Validators.required],
+      nombre: ['', (Validators.required, Validators.maxLength(20))],
+      departamento: ['',  (Validators.required, Validators.maxLength(20))],
+      distrito: ['',  (Validators.required, Validators.maxLength(20))],
+      direccion: ['',  (Validators.required, Validators.maxLength(100))],
     });
   }
 

@@ -41,8 +41,8 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
     this.form = this.formBuilder.group({
       idPlanConvivencia: [''],
       condominio: ['', Validators.required],
-      titulo: ['', Validators.required],
-      descripcion: ['', Validators.required],
+      titulo: ['', (Validators.required, Validators.maxLength(50))],
+      descripcion: ['', (Validators.required, Validators.maxLength(200))],
     });
     this.cS.list().subscribe((data) => {
       this.listarcondominios = data;
@@ -101,9 +101,9 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
     
 
     // Verifica si estás en la página principal o en la ruta de edición
-    if (this.router.url === '/planconvivencia/nuevo' || this.router.url.startsWith('/planconvivencia/edicion/')) {
+    if (this.router.url === '/components/planconvivencia/nuevo' || this.router.url.startsWith('/components/planconvivencia/edicion/')) {
       // Redirige a la página de edición
-    this.router.navigate(['/planconvivencia']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
+    this.router.navigate(['/components/planconvivencia']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
   } else {
 
    this.matDialog.closeAll(); // Cierra el diálogo

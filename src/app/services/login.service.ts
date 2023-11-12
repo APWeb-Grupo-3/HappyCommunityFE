@@ -28,4 +28,20 @@ export class LoginService {
     const decodedToken = helper.decodeToken(token);
     return decodedToken?.role;
   }
+
+  showUsername() {
+    let token = sessionStorage.getItem("token");
+    console.log('Token en showUsername:', token);
+    
+    if (!token) {
+      console.log('Token es nulo. Retornando null.');
+      return null;
+    }
+    
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(token);
+    
+    return decodedToken?.sub;
+  }
+  
 }

@@ -1,82 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
     <title>Document</title>
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="listar-planconvivencia.component.css"
+    />
+  </head>
+  <body>
     <div class="container">
-        <br />
-      <h2 style="text-align: center">Lista de planes de convivencia</h2>
+      <h2 style="text-align: center">Planes de Convivencia</h2>
       <div style="text-align: right">
-        <button mat-raised-button class="nuevobtn" (click)="openDialog()">Nuevo
-        </button>         
+        <button mat-raised-button class="nuevobtn" (click)="openDialog()">
+          Nuevo
+        </button>
       </div>
+      <br />
 
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <!--- Note that these columns can be defined in any order.
-The actual rendered columns are set as a property on the row definition" --
->
-    < !-- Position Column -->
-        <ng-container matColumnDef="codigo">
-          <th mat-header-cell *matHeaderCellDef>Código</th>
-          <td mat-cell *matCellDef="let element">{{ element.idPlanConvivencia }}</td>
+      <div class="card-container">
+        <ng-container *ngFor="let planconvivencia of planconvivencia">
+
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-subtitle>{{
+                planconvivencia.idPlanConvivencia
+                
+              }}
+              <p>{{ planconvivencia.condominio.nombre }}</p>
+            </mat-card-subtitle>
+              <mat-card-title>{{
+                planconvivencia.titulo
+              }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ planconvivencia.descripcion }}</p>
+             
+              <mat-divider></mat-divider>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button class="btneditar" [routerLink]="['edicion', planconvivencia.idPlanConvivencia]" >Editar</button>
+              <span class="separator"></span>
+              <button mat-button class="btneliminar" (click)="eliminar(planconvivencia.idPlanConvivencia)"><i class="fa-solid fa-trash"></i></button>
+            </mat-card-actions>
+            <mat-card-footer>
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+          </mat-card>
         </ng-container>
-        <!-- Name Column -->
-        <ng-container matColumnDef="titulo">
-          <th mat-header-cell *matHeaderCellDef>Titulo</th>
-          <td mat-cell *matCellDef="let element">{{ element.titulo }}</td>
-        </ng-container>
-        <!-- Name Column -->
-        <ng-container matColumnDef="descripcion">
-            <th mat-header-cell *matHeaderCellDef>Descripcion</th>
-            <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
-          </ng-container>
-          <!-- Name Column -->
-        <ng-container matColumnDef="condominio">
-            <th mat-header-cell *matHeaderCellDef>Condominio</th>
-            <td mat-cell *matCellDef="let element">{{ element.condominio.nombre }}</td>
-          </ng-container>
-
-        <!-- Weight Column -->
-    
-        <ng-container matColumnDef="accion01">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              class="accion01btn"
-              [routerLink]="['edicion', element.idPlanConvivencia]"
-            >
-              Actualizar
-            </button>
-          </td></ng-container
-        >
-
-        <ng-container matColumnDef="accion02">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              class="accion02btn"
-              (click)="eliminar(element.idPlanConvivencia)"
-            >
-              Eliminar
-            </button>
-          </td></ng-container
-        >
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-
-      <mat-paginator
-      [pageSizeOptions]="[5, 10, 25]"
-      showFirstLastButtons
-    ></mat-paginator>
-
+      </div>
     </div>
-    
-</body>
+  </body>
 </html>
