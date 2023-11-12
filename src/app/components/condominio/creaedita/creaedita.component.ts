@@ -66,7 +66,7 @@ export class CreaeditaComponent implements OnInit{
           });
         });
       }
-      this.router.navigate(['condominios']);
+      this.router.navigate(['components/condominios']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
@@ -94,17 +94,5 @@ export class CreaeditaComponent implements OnInit{
     }
   }
 
-  cancelar() {
-    
-
-    // Verifica si estás en la página principal o en la ruta de edición
-    if (this.router.url === '/condominios/nuevo' || this.router.url.startsWith('/condominios/edicion/')) {
-      // Redirige a la página de edición
-    this.router.navigate(['/condominios']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
-  } else {
-
-   this.matDialog.closeAll(); // Cierra el diálogo
-  }
-  }
 
 }

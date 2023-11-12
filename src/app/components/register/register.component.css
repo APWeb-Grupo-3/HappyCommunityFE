@@ -1,44 +1,25 @@
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(100deg, #bbb6b6, #ffffff);
-  }
-  
-  .registro-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-    
-     transform: translate(-50%, -40%);
-      width: 500px;
-      background: white;
-      border-radius: 20px;
-      padding-bottom: 5%;
-      padding-top: 2%;
-      padding-block-end: 2%;
-  }
-  
-  
-  
-  .registro-container button {
-    margin: 5%;
-    text-align: center;
-  }
-  
-  .cancelarbtn {
-    cursor: pointer;
-      text-align: center;
-      color: rgb(255, 3, 3);
-      text-decoration: none; 
-  }
-  
-  .aceptarbtn {
-    text-align: center;
-    border-radius: 25px;
-    border: none;
-    background: rgb(45, 45, 56);
-    -webkit-text-fill-color: #ffffff;
-  }
-  .example-full-width{
-    border-radius: 15px;
-  }
+body{
+  background-color: rgb(230,243,246);
+}
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+.formgeneral {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F8F8F8;
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 50%;
+}
+.btn{
+  background: black;
+  -webkit-text-fill-color: #ffffff;
+}

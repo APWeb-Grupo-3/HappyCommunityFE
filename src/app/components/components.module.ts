@@ -55,6 +55,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterComponent } from './register/register.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 
@@ -118,6 +120,8 @@ import { RegisterComponent } from './register/register.component';
     MatListModule,
     MatToolbarModule,
     MatDialogModule,
+    MatGridListModule,
+    MatStepperModule,
   ]
 })
 export class ComponentsModule { }
