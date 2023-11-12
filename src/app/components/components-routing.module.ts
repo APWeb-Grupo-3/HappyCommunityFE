@@ -29,6 +29,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
+import { CondominoDetallesComponent } from './condominio/condomino-detalles/condomino-detalles.component';
 
 const routes: Routes = [
   {    
@@ -37,6 +38,7 @@ const routes: Routes = [
     children: [
       { path: 'nuevo', component: CreaeditaComponent },
       { path: 'edicion/:id', component: CreaeditaComponent },
+      {path: 'detalles/:id', component: CondominoDetallesComponent}
     ],
     
   },

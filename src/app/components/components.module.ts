@@ -57,7 +57,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterComponent } from './register/register.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatStepperModule} from '@angular/material/stepper';
-
+import {MatCardModule} from '@angular/material/card';
+import { CondominoDetallesComponent } from './condominio/condomino-detalles/condomino-detalles.component';
 
 
 @NgModule({
@@ -102,6 +103,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     CreaeditaServicioComponent,
     ListarServicioComponent,
     RegisterComponent,
+    CondominoDetallesComponent,
   ],
   imports: [
     CommonModule,
@@ -122,6 +124,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatDialogModule,
     MatGridListModule,
     MatStepperModule,
+    MatButtonModule,
+    MatCardModule,
   ]
 })
 export class ComponentsModule { }

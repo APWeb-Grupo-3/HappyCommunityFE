@@ -7,8 +7,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./condominio.component.css']
 })
 export class CondominioComponent {
-  constructor(public route: ActivatedRoute) {}
+  constructor(public route: ActivatedRoute) {
+ 
+
+  }
 
   ngOnInit(): void {}
 
+
+
+
 }
+
+
