@@ -15,7 +15,7 @@
       <mat-menu #menuSalir="matMenu">
         <button mat-menu-item routerLink="components/Usuario">Ver perfil
         </button>
-        <button mat-menu-item routerLink="/login" (click)="cerrar()">
+        <button mat-menu-item routerLink="/login" (click)="cerrar()" (click)="sidenav.close()">
           <mat-icon>logout</mat-icon>
           <span>Cerrar sesión</span>
       
@@ -31,7 +31,7 @@
 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav opened="false" mode="side">
-    <mat-nav-list class="navcolor">
+    <mat-nav-list class="navcolor" *ngIf="verificar()">
       <div class="colormenu">
       <a mat-list-item [matMenuTriggerFor]="menuCondomino"><i class="fa-solid fa-house"></i>    Condominios</a>
       <a mat-list-item [matMenuTriggerFor]="menuPago"><i class="fa-solid fa-piggy-bank"></i>     Pagos</a>
