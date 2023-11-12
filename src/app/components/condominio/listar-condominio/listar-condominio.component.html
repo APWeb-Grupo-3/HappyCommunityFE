@@ -7,78 +7,47 @@
   </head>
   <body>
     <div class="container">
-      <br />
-      <h2 style="text-align: center">Lista de Condominios</h2>
+      <h2 style="text-align: center">Condominios</h2>
       <div style="text-align: right">
-        <button mat-raised-button class="nuevobtn" (click)="openDialog()">
-          Nuevo
-        </button>
+        <button mat-raised-button class="nuevobtn" (click)="openDialog()">Nuevo
+        </button>         
       </div>
-     
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <!--- Note that these columns can be defined in any order.
-The actual rendered columns are set as a property on the row definition" --
->
-    < !-- Position Column -->
-        <ng-container matColumnDef="codigo">
-          <th mat-header-cell *matHeaderCellDef>codigo</th>
-          <td mat-cell *matCellDef="let element">{{ element.idCondominio }}</td>
-        </ng-container>
-        <!-- Name Column -->
-        <ng-container matColumnDef="nombre">
-          <th mat-header-cell *matHeaderCellDef>nombre</th>
-          <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
-        </ng-container>
-        <!-- Weight Column -->
-        <ng-container matColumnDef="departamento">
-          <th mat-header-cell *matHeaderCellDef>departamento</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.departamento }}
-          </td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="distrito">
-          <th mat-header-cell *matHeaderCellDef>distrito</th>
-          <td mat-cell *matCellDef="let element">{{ element.distrito }}</td>
-        </ng-container>
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="direccion">
-          <th mat-header-cell *matHeaderCellDef>direccion</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.direccion }}
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="accion01">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              class="accion01btn"
-              [routerLink]="['edicion', element.idCondominio]"
-            >
-              Actualizar
-            </button>
-          </td></ng-container
-        >
-        <ng-container matColumnDef="accion02">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              class="accion02btn"
-              (click)="eliminar(element.idCondominio)"
-            >
-              Eliminar
-            </button>
-          </td></ng-container
-        >
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 25]"
-        showFirstLastButtons
-      ></mat-paginator>
-    </div>
+      <br>  
+
+    <div class="card-container"  >
+
+    <ng-container *ngFor="let condominio of condominios"  >
+      <mat-card class="example-card" >
+        
+        <mat-card-header [routerLink]="['detalles', condominio.idCondominio]">
+          <mat-card-title>{{ condominio.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ condominio.idCondominio }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="condomino">
+        <mat-card-content>
+          <p>{{ condominio.departamento }}</p>
+          <p>{{ condominio.distrito }}</p>
+        </mat-card-content>
+
+        
+        <mat-card-actions>
+          <button mat-button (click)="eliminar(condominio.idCondominio)">Eliminar</button>
+
+          <button mat-button [routerLink]="['edicion', condominio.idCondominio]" >Editar</button>
+          
+          
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>
+
+    
+  </div>
+    
+    
+
+
+
+
   </body>
 </html>

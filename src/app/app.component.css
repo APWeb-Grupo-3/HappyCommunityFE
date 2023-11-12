@@ -40,10 +40,9 @@ mat-sidenav{
   background: rgb(6, 45, 46);
   width: 13%;
 }
-mat-sidenav a{
-  color: white;
-}
-.navcolor{
-  color: white;
+
+
+.colormenu {
+  --mdc-list-list-item-label-text-color: white;
 }
 

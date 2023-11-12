@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="img">
+        <img
+          src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="condomino"
+        />
+      </div>
+
+      <h1>{{ form.get("nombre")?.value }}</h1>
+      <p>{{ form.get("departamento")?.value }}</p>
+      <p>{{ form.get("distrito")?.value }}</p>
+      <p>{{ form.get("direccion")?.value }}</p>
+
+      <div class="pagina2">
+        <div>
+          <button (click)="showContent('usuario')" mat-button>Miembros</button>
+          <button (click)="showContent('aviso')" mat-button>Avisos</button>
+          <button (click)="showContent('planconvivencia')" mat-button>
+            Plan de Convivencia
+          </button>
+        </div>
+
+        <div class="contenido">
+          <div
+            [hidden]="selectedContent !== 'planconvivencia'"
+            id="planconvivencia"
+          >
+            <router-outlet></router-outlet>
+            <div [hidden]="route.children.length !== 0">
+              <app-listar-planconvivencia></app-listar-planconvivencia>
+            </div>
+          </div>
+
+          <div [hidden]="selectedContent !== 'aviso'" id="aviso">
+            <router-outlet></router-outlet>
+            <div [hidden]="route.children.length !== 0">
+              <app-listar-aviso></app-listar-aviso>
+            </div>
+          </div>
+
+          <div [hidden]="selectedContent !== 'usuario'" id="usuario">
+            <router-outlet></router-outlet>
+            <div [hidden]="route.children.length !== 0">
+              <app-listar-usuario></app-listar-usuario>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

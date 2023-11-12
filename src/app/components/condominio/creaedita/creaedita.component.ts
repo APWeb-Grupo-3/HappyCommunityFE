@@ -94,5 +94,18 @@ export class CreaeditaComponent implements OnInit{
     }
   }
 
+  cancelar() {
+    
+
+    // Verifica si estás en la página principal o en la ruta de edición
+    if (this.router.url === '/components/condominios/nuevo' || this.router.url.startsWith('/components/condominios/edicion/')) {
+      // Redirige a la página de edición
+    this.router.navigate(['components/condominios']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
+  } else {
+
+   this.matDialog.closeAll(); // Cierra el diálogo
+  }
+  }
+
 
 }
