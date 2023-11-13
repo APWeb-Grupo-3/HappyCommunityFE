@@ -40,7 +40,7 @@ export class CreaeditaMensajeComponent  implements OnInit{
       titulo: ['', Validators.required],
       descripcion: ['', Validators.required],
       usuario: ['', Validators.required],
-      idReceptor: ['', Validators.required],
+      receptor: ['', Validators.required],
   
     });
     this.uS.list().subscribe((data)=>{
@@ -55,7 +55,7 @@ export class CreaeditaMensajeComponent  implements OnInit{
       this.mensajes.titulo = this.form.value.titulo;
       this.mensajes.descripcion = this.form.value.descripcion;
       this.mensajes.usuario.idUsuario = this.form.value.usuario;
-      this.mensajes.idReceptor = this.form.value.idReceptor;
+      this.mensajes.receptor = this.form.value.receptor;
 
 
       if (this.edicion) {
@@ -94,7 +94,7 @@ export class CreaeditaMensajeComponent  implements OnInit{
           titulo: new FormControl(data.titulo),
           descripcion: new FormControl(data.descripcion),
           usuario: new FormControl(data.usuario),
-          idReceptor: new FormControl(data.idReceptor),          
+          receptor: new FormControl(data.receptor),          
         });
       });
     }

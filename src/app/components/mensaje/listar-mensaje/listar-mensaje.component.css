@@ -1,0 +1,87 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Estilos para el encabezado */
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Estilos para el botón Agregar Mensaje */
+  .nuevobtn {
+    background-color: #000000;
+    color: #fff;
+  }
+  
+  /* Estilos para el contenedor de tarjetas */
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  /* Estilos para cada tarjeta */
+  .example-card {
+    width: 300px;
+    margin: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para el encabezado de la tarjeta */
+  mat-card-header {
+    background-color: #0C262C;
+    color: #fff;
+  }
+  
+  mat-card-title,
+  mat-card-subtitle {
+    color: #fff;
+  }
+  
+  /* Estilos para el contenido de la tarjeta */
+  mat-card-content {
+    padding: 15px;
+  }
+  
+  /* Estilos para los botones de acciones */
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+  }
+  
+  .accion01btn,
+  .accion02btn {
+    background-color: #0C262C;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .accion01btn:hover,
+  .accion02btn:hover {
+    background-color: #1565c0;
+  }
+  
+  /* Estilos para el separador entre botones */
+  .separator {
+    width: 10px;
+  }
+  
+  

@@ -50,7 +50,7 @@ export class CreaeditaTarjetaComponent implements OnInit {
       tipoTarjeta: ['', Validators.required],
       numeroTarjeta: ['', Validators.required],
       fechaVencimiento: ['', Validators.required],
-      codigoSeguridad: ['', Validators.required],
+      codigoSeguridad: ['', [Validators.required, Validators.pattern('^[0-9]{1,3}$')]],
       usuario: ['', Validators.required],
     });
     this.uS.list().subscribe((data)=>{

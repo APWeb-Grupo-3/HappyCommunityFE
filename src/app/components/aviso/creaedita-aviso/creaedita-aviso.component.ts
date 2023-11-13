@@ -43,6 +43,7 @@ export class CreaeditaAvisoComponent implements OnInit{
       idAviso: [''],
       titulo: ['', Validators.required],
       descripcion: ['', Validators.required],
+      fechaPublicacion: ['', Validators.required],
       usuario: ['', Validators.required],
       condominio: ['', Validators.required],
     });
@@ -60,6 +61,7 @@ export class CreaeditaAvisoComponent implements OnInit{
       this.aviso.idAviso = this.form.value.idAviso;
       this.aviso.titulo = this.form.value.titulo;
       this.aviso.descripcion = this.form.value.descripcion;
+      this.aviso.fechaPublicacion = this.form.value.fechaPublicacion;
       this.aviso.usuario.idUsuario = this.form.value.usuario;
       this.aviso.condominio.idCondominio = this.form.value.condominio; 
 
@@ -99,11 +101,25 @@ export class CreaeditaAvisoComponent implements OnInit{
           idAviso: new FormControl(data.idAviso),
           titulo: new FormControl(data.titulo),
           descripcion: new FormControl(data.descripcion),
+          fechaPublicacion: new FormControl(data.fechaPublicacion),
           usuario: new FormControl(data.usuario.idUsuario),
           condominio: new FormControl(data.condominio.idCondominio),
         });
       });
     }
+  }
+
+  cancelar() {
+    
+
+    // Verifica si estás en la página principal o en la ruta de edición
+    if (this.router.url === '/components/condominios/nuevo' || this.router.url.startsWith('/components/condominios/edicion/')) {
+      // Redirige a la página de edición
+    this.router.navigate(['components/condominios']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
+  } else {
+
+   this.matDialog.closeAll(); // Cierra el diálogo
+  }
   }
 
 

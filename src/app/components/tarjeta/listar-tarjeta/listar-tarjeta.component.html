@@ -14,90 +14,35 @@
           Agregar Tarjeta
         </button>
       </div>
+      <br />
 
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <!--- Note that these columns can be defined in any order.
-The actual rendered columns are set as a property on the row definition" --
->
-    < !-- Position Column -->
-        <ng-container matColumnDef="codigo">
-          <th mat-header-cell *matHeaderCellDef>Código</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.idTarjeta }}
-          </td>
+      <div class="card-container">
+        <ng-container *ngFor="let element of tarjeta">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>{{ element.tipoTarjeta }}</mat-card-title>
+              <mat-card-subtitle>Código: {{ element.idTarjeta }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Número de tarjeta: {{ element.numeroTarjeta }}</p>
+              <p>Fecha de Vencimiento: {{ element.fechaVencimiento }}</p>
+              <p>CVV: {{ element.codigoSeguridad }}</p>
+              <p>Usuario: {{ element.usuario.nombreUsuario }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button class="accion01btn" [routerLink]="['edicion', element.idTarjeta]">
+                Actualizar
+              </button>
+              <span class="separator"></span>
+              <button class="accion02btn" (click)="eliminar(element.idTarjeta)">
+                Eliminar
+              </button>
+            </mat-card-actions>
+          </mat-card>
         </ng-container>
-        <!-- Name Column -->
-        <ng-container matColumnDef="tipoTarjeta">
-          <th mat-header-cell *matHeaderCellDef>Tipo de Tarjeta</th>
-          <td mat-cell *matCellDef="let element">{{ element.tipoTarjeta }}</td>
-        </ng-container>      
+      </div>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="numeroTarjeta">
-          <th mat-header-cell *matHeaderCellDef>Numero de tarjeta</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.numeroTarjeta }}
-          </td>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="fechaVencimiento">
-          <th mat-header-cell *matHeaderCellDef>Fecha de Vencimiento</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.fechaVencimiento }}
-          </td>
-        </ng-container>
-
-         <!-- Weight Column -->
-         <ng-container matColumnDef="codigoSeguridad">
-            <th mat-header-cell *matHeaderCellDef>CVV</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.codigoSeguridad }}
-            </td>
-          </ng-container>
-
-        <!-- Weight Column -->
-        
-        <ng-container matColumnDef="usuario">
-            <th mat-header-cell *matHeaderCellDef>Usuario</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.usuario.nombreUsuario }}
-            </td>
-          </ng-container>
-
-        <ng-container matColumnDef="accion01">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              class="accion01btn"
-              [routerLink]="['edicion', element.idTarjeta]"
-            >
-              Actualizar
-            </button>
-          </td></ng-container
-        >
-
-        <ng-container matColumnDef="accion02">
-          <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              class="accion02btn"
-              (click)="eliminar(element.idTarjeta)"
-            >
-              Eliminar
-            </button>
-          </td></ng-container
-        >
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 20]"
-        showFirstLastButtons
-      ></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     </div>
   </body>
 </html>

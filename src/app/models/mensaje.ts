@@ -5,5 +5,5 @@ export class Mensaje {
   titulo: string = '';
   descripcion: string = '';
   usuario: Usuario = new Usuario();
-  idReceptor: number = 0;
+  receptor: string = '';
 }
