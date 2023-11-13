@@ -12,27 +12,16 @@ import { CreaeditaMensajeComponent } from '../creaedita-mensaje/creaedita-mensaj
   styleUrls: ['./listar-mensaje.component.css']
 })
 export class ListarMensajeComponent {
-  dataSource: MatTableDataSource<Mensaje> = new MatTableDataSource();
-  displayedColumns: string[] = [
-    'codigo',
-    'titulo',
-    'descripcion',
-    'usuario',
-    'receptor',    
-    'accion01',
-    'accion02',
-  ];
+  mensajes: Mensaje[]=[];
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private mS: MensajeService,private matDialog:MatDialog) {}
+
   ngOnInit(): void {
-    this.mS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+    this.mS.list().subscribe((data) => {      
+      this.mensajes=data;
     });
     this.mS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.mensajes=data;
     });
   }
   eliminar(id: number) {

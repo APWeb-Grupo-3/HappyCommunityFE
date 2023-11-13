@@ -12,28 +12,16 @@ import { TarjetaService } from 'src/app/services/tarjeta.service';
   styleUrls: ['./listar-tarjeta.component.css']
 })
 export class ListarTarjetaComponent {
-  dataSource: MatTableDataSource<Tarjeta> = new MatTableDataSource();
-  displayedColumns: string[] = [
-    'codigo',
-    'tipoTarjeta',
-    'numeroTarjeta',
-    'fechaVencimiento',
-    'codigoSeguridad',
-    'usuario',
-    'accion01',
-    'accion02',
-  ];
+  tarjeta: Tarjeta[]=[];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private tS: TarjetaService,private matDialog:MatDialog) {}
   ngOnInit(): void {
     this.tS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.tarjeta=data;
     });
     this.tS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.tarjeta=data;
     });
   }
   eliminar(id: number) {

@@ -72,6 +72,8 @@
               matInput
               placeholder="XXX"
               formControlName="codigoSeguridad"
+              inputmode="numeric"
+              maxlength="3"
             />
             <mat-error
               *ngIf="obtenerControlCampo('codigoSeguridad')?.errors?.['required']"

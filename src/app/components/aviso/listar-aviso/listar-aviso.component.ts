@@ -12,27 +12,16 @@ import { CreaeditaAvisoComponent } from '../creaedita-aviso/creaedita-aviso.comp
   styleUrls: ['./listar-aviso.component.css']
 })
 export class ListarAvisoComponent {
-  dataSource: MatTableDataSource<Aviso> = new MatTableDataSource();
-  displayedColumns: string[] = [
-    'codigo',
-    'titulo',
-    'descripcion',
-    'usuario',
-    'condominio',    
-    'accion01',
-    'accion02',
-  ];
+  avisos: Aviso[]=[];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(private aS: AvisoService,private matDialog:MatDialog) {}
   ngOnInit(): void {
     this.aS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.avisos=data;
     });
     this.aS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.avisos=data;
     });
   }
   eliminar(id: number) {

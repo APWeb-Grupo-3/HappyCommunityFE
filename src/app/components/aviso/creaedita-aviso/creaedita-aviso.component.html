@@ -41,6 +41,27 @@
         </mat-form-field>
         <br />
 
+        <mat-form-field appearance="fill" class="example-full-width">
+          <input
+            matInput
+            placeholder="Ingrese fecha de Publlicacón"
+            [matDatepicker]="pickerEmision"
+            formControlName="fechaPublicacion"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="pickerEmision"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #pickerEmision></mat-datepicker>
+          <mat-error
+            *ngIf="obtenerControlCampo('fechaPublicacion')?.errors?.['required']"
+          >
+            La fecha de emisión es obligatoria.
+          </mat-error>
+        </mat-form-field>
+        <br />
+
         <mat-form-field class="example-full-width">
           <mat-label>usuario</mat-label>
           <mat-select formControlName="usuario">
@@ -75,9 +96,10 @@
         <br />
 
         <button mat-raised-button color="primary">Aceptar</button>
-        <button mat-raised-button color="warn" routerLink="/aviso">
+        <br/>
+        <a mat-raised-text class="cancelarbtn" (click)="cancelar()">
           Cancelar
-        </button>
+        </a>
         <p>{{ mensaje }}</p>
       </form>
     </div>

@@ -53,18 +53,18 @@
 
           <mat-form-field class="example-full-width">
             <mat-label>Receptor</mat-label>
-            <input
-              matInput
-              placeholder="idReceptor"
-              formControlName="idReceptor"
-            />
+            <mat-select formControlName="receptor">
+              <mat-option *ngFor="let p of listarUsuarios" [value]="p.nombreUsuario">
+                {{p.nombreUsuario}}
+              </mat-option>
+            </mat-select>
             <mat-error
-              *ngIf="obtenerControlCampo('idReceptor')?.errors?.['required']"
+              *ngIf="obtenerControlCampo('receptor')?.errors?.['required']"
             >
-              Las calorías son  obligatorias.
+              El nombre es obligatorio.
             </mat-error>
           </mat-form-field>
-          <br />
+          <br />       
 
 
 
