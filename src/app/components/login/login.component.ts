@@ -14,8 +14,7 @@ export class LoginComponent {
   username: string = ""
   password: string = ""
   mensaje: string = ""
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   login() {
     let request = new JwtRequest();
     request.username = this.username;
@@ -29,7 +28,6 @@ export class LoginComponent {
     });
   }
   dirigir() {
-
       this.router.navigate(['components/Detalle']);
   }
 }
