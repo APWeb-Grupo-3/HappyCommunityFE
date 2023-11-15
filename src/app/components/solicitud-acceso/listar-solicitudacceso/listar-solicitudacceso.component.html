@@ -6,13 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    
+
     <div class="container">
         <br />
       <h2 style="text-align: center">Lista de Solicitudes de Acceso</h2>
       <div style="text-align: right">
         <button   *ngIf="vecino()" mat-raised-button class="nuevobtn" (click)="openDialog()">Nuevo
-        </button>         
+        </button>
       </div>
 
       <table  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -42,7 +42,7 @@ The actual rendered columns are set as a property on the row definition" --
           </ng-container>
 
         <!-- Weight Column -->
-    
+
         <ng-container matColumnDef="accion01" >
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
@@ -59,7 +59,7 @@ The actual rendered columns are set as a property on the row definition" --
         <ng-container matColumnDef="accion02" >
           <th mat-header-cell *matHeaderCellDef></th>
           <td mat-cell *matCellDef="let element">
-            <button 
+            <button
             *ngIf="vecino()"
               mat-raised-button
               class="accion02btn"
@@ -79,7 +79,7 @@ The actual rendered columns are set as a property on the row definition" --
     ></mat-paginator>
 
     </div>
-    
+
 
 
 </body>

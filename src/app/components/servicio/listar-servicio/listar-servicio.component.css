@@ -1,44 +1,46 @@
 
+.container {
 
-.container{
-    align-items: center;
-    border-radius: 5%;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    width: 80%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.button-container {
+  text-align: right;
+  margin-bottom: 15px;
+}
+.card-container {
+  display: flex;
+  gap: 15px; /* Agregar espacio entre las tarjetas */
 
 }
 
-.mat-elevation-z8 {
-    width: 100%;
-    border-radius: 5%;
+.example-card {
+  width: 15%;
+  height: auto;
+  margin-bottom: 10px;
+}
+.mat-card-actions{
+padding-left: 15px;
+}
 
-  }
+.btneditar{
+  text-align: center;
+  border-radius: 5px;
+  padding-inline: 20% ;
+  border: none;
+  background: rgb(175, 217, 227);
+  color: #0C262C;
 
-  .nuevobtn{
-    text-align: center;
-    border-radius: 15px;
-    border: none;
-    background: rgb(45, 45, 56);
-    color: #ffffff;
-  }
-  .accion01btn
-  {
-    text-align: center;
-    border-radius: 15px;
-    border: none;
-    background: rgb(7, 100, 77);
-    color: #ffffff;
-  }
-  .accion02btn
-  {
-    text-align: center;
-    border-radius: 15px;
-    border: none;
-    background: rgb(184, 2, 2);
-    color: #ffffff;
-  }
+}
+.btneliminar{
+  text-align: center;
+  border-radius: 5px;
+  padding-inline: 8% ;
+  border: none;
+  background: #0C262C;
+  color: #ffffff;
+}
+
+.separator {
+  margin-left: 15%;
+}

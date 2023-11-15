@@ -5,6 +5,7 @@ import { Servicio } from 'src/app/models/servicio';
 import { TipoServicio } from 'src/app/models/tiposervicio';
 import { ServicioService } from 'src/app/services/servicio.service';
 import { TiposervicioService } from 'src/app/services/tiposervicio.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-creaedita-servicio',
@@ -25,7 +26,8 @@ export class CreaeditaServicioComponent implements OnInit {
     private sS: ServicioService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private matDialog: MatDialog
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -75,7 +77,7 @@ export class CreaeditaServicioComponent implements OnInit {
     }
     return control;
   }
-  
+
   init() {
     if (this.edicion) {
       this.sS.listId(this.id).subscribe((data) => {
@@ -87,4 +89,22 @@ export class CreaeditaServicioComponent implements OnInit {
       });
     }
   }
+
+
+  cancelar() {
+
+
+    // Verifica si estás en la página principal o en la ruta de edición
+    if (this.router.url === '/components/Servicio/nuevo' || this.router.url.startsWith('/components/Servicio/edicion/')) {
+      // Redirige a la página de edición
+    this.router.navigate(['/components/Servicio']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
+  } else {
+
+   this.matDialog.closeAll(); // Cierra el diálogo
+  }
+  }
+
+
+
+
 }
