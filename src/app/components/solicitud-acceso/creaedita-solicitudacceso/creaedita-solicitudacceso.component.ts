@@ -6,6 +6,7 @@ import { Condominio } from 'src/app/models/condominio';
 import { SolicitudAcceso } from 'src/app/models/solicitudacceso';
 import { Usuario } from 'src/app/models/usuario';
 import { CondominioService } from 'src/app/services/condominio.service';
+import { LoginService } from 'src/app/services/login.service';
 import { SolicitudaccesoService } from 'src/app/services/solicitudacceso.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -30,6 +31,7 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
   ];
 
   constructor(
+    private loginService: LoginService,
     private cS: CondominioService,
     private uS: UsuarioService,
     private router: Router,
@@ -47,7 +49,7 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
     });
     this.form = this.formBuilder.group({
       idSolicitudAcceso: [''],
-      estado: ['', Validators.required],
+      estado: [''],
       usuario: ['', Validators.required],
       condominio: ['', Validators.required],
     });
@@ -57,6 +59,8 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
     this.uS.list().subscribe((data) => {
       this.listausuario = data;
     });
+
+    
   }
 
   aceptar(): void {
@@ -80,7 +84,7 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
         });
       }
       //this.dialogRef.close(); 
-      this.router.navigate(['solicitudacceso']);
+      this.router.navigate(['components/solicitudacceso']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
@@ -112,13 +116,26 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
     
 
     // Verifica si estás en la página principal o en la ruta de edición
-    if (this.router.url === '/solicitudacceso/nuevo' || this.router.url.startsWith('/planconvivencia/edicion/')) {
+    if (this.router.url === '/components/solicitudacceso/nuevo' || this.router.url.startsWith('/components/solicitudacceso/edicion/')) {
       // Redirige a la página de edición
-    this.router.navigate(['/solicitudacceso']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
+    this.router.navigate(['/components/solicitudacceso']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
   } else {
 
    this.matDialog.closeAll(); // Cierra el diálogo
   }
+  }
+
+  role: string = '';
+
+  
+
+  vecino() {
+    this.role = this.loginService.showRole();
+    if (this.role === 'VECINO') {
+      return true;
+    } else {
+      return false;
+    }
   }
   
 }

@@ -10,13 +10,13 @@
 }
 .card-container {
   display: flex;
-  flex-wrap: wrap;
   gap: 15px; /* Agregar espacio entre las tarjetas */
 
 }
 
 .example-card {
   width: 15%; 
+  height: auto;
   margin-bottom: 10px;
 }
 .mat-card-actions{

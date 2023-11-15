@@ -11,11 +11,11 @@
             <div style="text-align: center">
               <h2>Registro de Solicitudes de Acceso</h2>
 
-              <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+              <form  [formGroup]="form" (submit)="aceptar()" class="example-form" >
                 
-                <mat-form-field class="example-full-width" *ngIf="edicion">
-                  <mat-label>idSolicitudAcceso</mat-label>
-                  <input matInput placeholder="Id" formControlName="idSolicitudAcceso" />
+                <mat-form-field  class="example-full-width" *ngIf="edicion">
+                  <mat-label  >idSolicitudAcceso</mat-label>
+                  <input  matInput placeholder="Id" formControlName="idSolicitudAcceso" />
                 </mat-form-field>
                
         
@@ -24,7 +24,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>estado</mat-label>
                     <mat-select formControlName="estado">
-                      <mat-option *ngFor="let p of estados" [value]="p.value">
+                      <mat-option [disabled]="vecino()" *ngFor="let p of estados" [value]="p.value">
                         {{p.viewValue}}
                       </mat-option>
                     </mat-select>
@@ -37,7 +37,7 @@
                   <mat-form-field class="example-full-width">
                       <mat-label>Usuario</mat-label>
                       <mat-select formControlName="usuario">
-                        <mat-option *ngFor="let p of listausuario" [value]="p.idUsuario">
+                        <mat-option  [disabled]="!vecino()" *ngFor="let p of listausuario" [value]="p.idUsuario" >
                           {{p.nombreUsuario}}
                         </mat-option>
                       </mat-select>
@@ -47,10 +47,10 @@
                     </mat-form-field>
         
                     <br />
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field  class="example-full-width">
                         <mat-label>condominio</mat-label>
-                        <mat-select formControlName="condominio">
-                          <mat-option *ngFor="let p of listarcondominios" [value]="p.idCondominio">
+                        <mat-select  formControlName="condominio" >
+                          <mat-option [disabled]="!vecino()" *ngFor="let p of listarcondominios" [value]="p.idCondominio">
                             {{p.nombre}}
                           </mat-option>
                         </mat-select>

@@ -27,27 +27,28 @@
             Plan de Convivencia
           </button>
         </div>
-
+        <router-outlet></router-outlet>
+        
         <div class="contenido">
           <div
             [hidden]="selectedContent !== 'planconvivencia'"
             id="planconvivencia"
           >
-            <router-outlet></router-outlet>
+            
             <div [hidden]="route.children.length !== 0">
               <app-listar-planconvivencia></app-listar-planconvivencia>
             </div>
           </div>
 
           <div [hidden]="selectedContent !== 'aviso'" id="aviso">
-            <router-outlet></router-outlet>
+           
             <div [hidden]="route.children.length !== 0">
               <app-listar-aviso></app-listar-aviso>
             </div>
           </div>
 
           <div [hidden]="selectedContent !== 'usuario'" id="usuario">
-            <router-outlet></router-outlet>
+           
             <div [hidden]="route.children.length !== 0">
               <app-listar-usuario></app-listar-usuario>
             </div>
