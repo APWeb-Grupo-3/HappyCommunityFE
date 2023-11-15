@@ -12,34 +12,34 @@ import { CreaeditaServicioComponent } from '../creaedita-servicio/creaedita-serv
   styleUrls: ['./listar-servicio.component.css']
 })
 export class ListarServicioComponent  implements OnInit{
-  dataSource: MatTableDataSource<Servicio> = new MatTableDataSource();
-  displayedColumns: string[] = [
-    'codigo',
-    'descripcion',
-    'tipo',
-    'accion01',
-    'accion02',
-  ];
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private seS: ServicioService, private matDialog:MatDialog) {}
+  servcicios: Servicio[] = [];
+
+  constructor(private S: ServicioService, private matDialog: MatDialog) {}
+
   ngOnInit(): void {
-    this.seS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+    this.S.list().subscribe((data) => {
+      this.servcicios = data;
     });
-    this.seS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+    this.S.getList().subscribe((data) => {
+      this.servcicios = data;
     });
+
   }
+
   eliminar(id: number) {
-    this.seS.delete(id).subscribe((data) => {
-      this.seS.list().subscribe((data) => {
-        this.seS.setList(data);
+    this.S.delete(id).subscribe((data) => {
+      this.S.list().subscribe((data) => {
+        this.S.setList(data);
       });
     });
   }
-  openDialog(){
-    this.matDialog.open(CreaeditaServicioComponent)
+
+  openDialog() {
+    this.matDialog.open(CreaeditaServicioComponent);
   }
+
+
+
+
+
 }
