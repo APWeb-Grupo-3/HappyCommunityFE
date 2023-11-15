@@ -10,4 +10,5 @@ export class SolicitudAccesoComponent {
   constructor(public route: ActivatedRoute) {}
 
   ngOnInit(): void {}
+ 
 }
