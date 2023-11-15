@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   thirdFormGroup:FormGroup=new FormGroup({})
 
   tipos: { value: string; viewValue: string }[] = [
-    { value: 'Varon', viewValue: 'Varon' },
+    { value: 'Varon', viewValue: 'Varón' },
     { value: 'Mujer', viewValue: 'Mujer' },
   ];
   constructor(
@@ -38,19 +38,19 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.firstFormGroup = this.formBuilder.group({
       idUsuario: [''],
-      nombreUsuario: ['', Validators.required],
-      clave: ['', Validators.required],
+      nombreUsuario: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+      clave: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(200)]],
       rol: ['', Validators.required],
     });
     this.secondFormGroup = this.formBuilder.group({
-      nombres: ['', Validators.required],
-      apellidos: ['', Validators.required],
-      correo: ['', Validators.required],
+      nombres: ['', [Validators.required,Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(4),Validators.maxLength(100)]],
+      apellidos: ['', [Validators.required,Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(4),Validators.maxLength(100)]],
+      correo: ['', [Validators.required,Validators.minLength(4),Validators.maxLength(100)]],
     });
     this.thirdFormGroup = this.formBuilder.group({
-      edad: ['', Validators.required],
-      telefono: ['', Validators.required],
-      genero: ['', Validators.required],
+      edad: ['', [Validators.required,Validators.pattern(/^[0-9]+$/), Validators.min(18), Validators.max(100)]],
+      telefono: ['', [Validators.required, Validators.pattern(/^[0-9]+$/),Validators.minLength(9), Validators.maxLength(9)]],
+      genero: ['', [Validators.required]],
     });
 
     this.rS.list().subscribe((data)=>{
