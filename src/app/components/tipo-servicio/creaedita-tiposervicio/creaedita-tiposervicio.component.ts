@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TipoServicio } from 'src/app/models/tiposervicio';
 import { TiposervicioService } from 'src/app/services/tiposervicio.service';
@@ -9,6 +9,7 @@ import {
   FormBuilder,
   AbstractControl,
 } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-creaedita-tiposervicio',
   templateUrl: './creaedita-tiposervicio.component.html',
@@ -16,7 +17,7 @@ import {
 })
 export class CreaeditaTiposervicioComponent implements OnInit {
   form: FormGroup = new FormGroup({});
-  condominio: TipoServicio= new TipoServicio;
+  tiposervicio: TipoServicio= new TipoServicio;
   mensaje: string= '';
   id: number = 0;
   edicion: boolean = false;
@@ -25,14 +26,17 @@ export class CreaeditaTiposervicioComponent implements OnInit {
     private tsS: TiposervicioService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialogRef: MatDialogRef<CreaeditaTiposervicioComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
   ) {}
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.init();
-    });
+    if (this.data && this.data.id&&this.data.edicion) {
+      this.edicion=this.data.edicion
+      this.tsS.listId(this.data.id).subscribe((data) => {
+        this.form.patchValue(data);
+      });
+    }
     this.form = this.formBuilder.group({
       idTipoServicio: [''],
       nombreTipoServicio: ['', Validators.required],
@@ -41,27 +45,31 @@ export class CreaeditaTiposervicioComponent implements OnInit {
 
   aceptar(): void {
     if (this.form.valid) {
-      this.condominio.idTipoServicio = this.form.value.idTipoDocPago;
-      this.condominio.nombreTipoServicio = this.form.value.nombreTipoServicio;
-      if (this.edicion) {
-        this.tsS.update(this.condominio).subscribe(() => {
+      this.tiposervicio.idTipoServicio=this.form.value.idTipoServicio;
+      this.tiposervicio.nombreTipoServicio=this.form.value.nombreTipoServicio;
+
+      if (this.data && this.data.id&&this.data.edicion) {
+        this.tsS.update(this.tiposervicio).subscribe(() => {
           this.tsS.list().subscribe((data) => {
             this.tsS.setList(data);
+            this.dialogRef.close();
           });
         });
       } else {
-        this.tsS.insert(this.condominio).subscribe((data) => {
+        this.tsS.insert(this.tiposervicio).subscribe(() => {
           this.tsS.list().subscribe((data) => {
             this.tsS.setList(data);
+            this.dialogRef.close();
           });
         });
       }
-      this.router.navigate(['TipoServicio']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
   }
-
+  cancelar(): void {
+    this.dialogRef.close();
+  }
   obtenerControlCampo(nombreCampo: string): AbstractControl {
     const control = this.form.get(nombreCampo);
     if (!control) {
@@ -80,4 +88,5 @@ export class CreaeditaTiposervicioComponent implements OnInit {
       });
     }
   }
+  
 }

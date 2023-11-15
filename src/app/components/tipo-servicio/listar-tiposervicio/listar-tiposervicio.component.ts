@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { CreaeditaTiposervicioComponent } from '../creaedita-tiposervicio/creaedita-tiposervicio.component';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -41,5 +42,11 @@ export class ListarTiposervicioComponent implements OnInit{
   }
   openDialog(){
     this.matDialog.open(CreaeditaTiposervicioComponent)
+  }
+  editar(id: number,edicion:boolean){
+    const dialogRef = this.matDialog.open(CreaeditaTiposervicioComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
   }
 }

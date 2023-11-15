@@ -36,7 +36,7 @@ The actual rendered columns are set as a property on the row definition" --
             <button
               mat-raised-button
               class="accion01btn"
-              [routerLink]="['edicion', element.idTipoServicio]"
+              (click)="editar(element.idTipoServicio,true)"
             >
               Actualizar
             </button>
