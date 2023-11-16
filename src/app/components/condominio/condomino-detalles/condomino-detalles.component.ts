@@ -15,7 +15,6 @@ export class CondominoDetallesComponent implements  OnInit{
     private formBuilder: FormBuilder,
 
     ) {
- 
     
   }
 

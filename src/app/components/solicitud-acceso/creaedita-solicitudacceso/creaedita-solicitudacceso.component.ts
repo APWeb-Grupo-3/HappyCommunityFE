@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { tick } from '@angular/core/testing';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -54,7 +55,7 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       idSolicitudAcceso: [''],
-      estado: ['',Validators.required],
+      estado: ['',],
       usuario: ['', Validators.required],
       condominio: ['', Validators.required],
     });
@@ -122,8 +123,7 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
   
 
   role: string = '';
-
-  
+  cod: number =0;
 
   vecino() {
     this.role = this.loginService.showRole();
