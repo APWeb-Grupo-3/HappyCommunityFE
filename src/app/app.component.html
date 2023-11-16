@@ -63,6 +63,9 @@
         <a mat-list-item routerLink="components/tarjeta"
           ><i class="fa-solid fa-credit-card"></i> Tarjetas</a
         >
+        <a mat-list-item [matMenuTriggerFor]="menuReportes"
+          ><i class="fa-solid fa-chart-column"></i> Reportes</a
+        >
       </div>
       <mat-menu #menuCondomino="matMenu">
         <button mat-menu-item routerLink="components/solicitudacceso">
@@ -93,6 +96,24 @@
         </button>
         <button mat-menu-item routerLink="components/Servicio">
           Lista servicios
+        </button>
+        <!-- Agrega más elementos de menú si es necesario -->
+      </mat-menu>
+      <mat-menu #menuReportes="matMenu">
+        <button mat-menu-item routerLink="components/Reportes1">
+          Reporte 1
+        </button>
+        <button mat-menu-item routerLink="components/Reportes/reporte2">
+          Reporte 2
+        </button>
+        <button mat-menu-item routerLink="components/Reportes3">
+          Reporte 3
+        </button>
+        <button mat-menu-item routerLink="components/Reportes4">
+          Reporte 4
+        </button>
+        <button mat-menu-item routerLink="components/Reportes5">
+          Reporte 5
         </button>
         <!-- Agrega más elementos de menú si es necesario -->
       </mat-menu>
