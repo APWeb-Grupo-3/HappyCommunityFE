@@ -66,6 +66,7 @@ import { Reporte2Component } from './reportes/reporte2/reporte2.component';
 import { NgChartsModule } from 'ng2-charts';
 import { ReportemayorComponent } from './reportes/reportemayor/reportemayor.component';
 import { PerfilComponent } from './usuario/perfil/perfil.component';
+import { Reporte1Component } from './reportes/reporte1/reporte1.component';
 
 
 @NgModule({
@@ -115,7 +116,7 @@ import { PerfilComponent } from './usuario/perfil/perfil.component';
     Reporte2Component,
     ReportemayorComponent,
     PerfilComponent,
-    
+    Reporte1Component,
 
   ],
   imports: [

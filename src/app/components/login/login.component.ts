@@ -19,15 +19,15 @@ export class LoginComponent {
     let request = new JwtRequest();
     request.username = this.username;
     request.password = this.password;
+    
     this.loginService.login(request).subscribe((data: any) => {
       sessionStorage.setItem("token", data.jwttoken);
+
       this.router.navigate(['components/condominios']);
     }, error => {
       this.mensaje = "Credenciales incorrectas!!!"
       this.snackBar.open(this.mensaje, "Aviso",{duration:2000});
     });
   }
-  dirigir() {
-      this.router.navigate(['components/Detalle']);
-  }
+  
 }

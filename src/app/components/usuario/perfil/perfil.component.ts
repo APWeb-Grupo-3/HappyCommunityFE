@@ -6,6 +6,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { LoginService } from 'src/app/services/login.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { CreaeditaUsuarioComponent } from '../creaedita-usuario/creaedita-usuario.component';
+import * as XLSX from 'xlsx'
 
 @Component({
   selector: 'app-perfil',
@@ -44,5 +45,16 @@ export class PerfilComponent implements OnInit{
       data: { id: id, 
       edicion:edicion},
     });
+  }
+
+  fileName="ExcelSheet.xlsx";
+  exportarExcel(){
+    let data=document.getElementById("table-data");
+    const ws:XLSX.WorkSheet=XLSX.utils.table_to_sheet(data)
+
+    const wb:XLSX.WorkBook=XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb,ws,'Sheet1')
+
+    XLSX.writeFile(wb,this.fileName)
   }
 }

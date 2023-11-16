@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="text-align: center;">
         <div [formGroup]="fechaForm" class="container">
             <mat-form-field>
                 <input
@@ -15,7 +15,9 @@
                 formControlName="anio"
               />
             </mat-form-field>
-            <button (click)="buscar()" mat-raised-button color="primary">Buscar</button>
+            <button (click)="buscar()" mat-raised-button>Buscar</button>
+            <button mat-raised-button (click)="exportToExcel()"><i class="fa-solid fa-file-csv"></i> Exportar</button>
+
           </div>
 
         <div>
