@@ -1,12 +1,14 @@
 import { TipodocpagoService } from './../../../services/tipodocpago.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DocumentoPago } from 'src/app/models/documentopago';
 import { TipoDocPago } from 'src/app/models/tipodocpago';
 import { Usuario } from 'src/app/models/usuario';
 import { DocumentopagoService } from 'src/app/services/documentopago.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { CreaeditaUsuarioComponent } from '../../usuario/creaedita-usuario/creaedita-usuario.component';
 
 @Component({
   selector: 'app-creaedita-documentopago',
@@ -40,14 +42,22 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private dS:DocumentopagoService
+    private dS:DocumentopagoService,
+
+
+    private dialogRef: MatDialogRef<CreaeditaUsuarioComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
+
+
   ) {}
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.init();
-    });
+    if(this.data&&this.data.id&&this.data.edicion){
+      this.edicion=this.data.edicion
+      this.id=this.data.id
+      this.init()
+    }
+
+
     this.form = this.formBuilder.group({
       idDocumentoPago: [''],
       idReceptor: ['', Validators.required],
@@ -83,21 +93,26 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
         this.dS.update(this.documentopago).subscribe(() => {
           this.dS.list().subscribe((data) => {
             this.dS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       } else {
         this.dS.insert(this.documentopago).subscribe((data) => {
           this.dS.list().subscribe((data) => {
             this.dS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       }
-      this.router.navigate(['DocumentoPago']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
   }
-
+  cancelar(): void {
+    this.dialogRef.close();
+  }
   obtenerControlCampo(nombreCampo: string): AbstractControl {
     const control = this.form.get(nombreCampo);
     if (!control) {
@@ -111,7 +126,7 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
       this.dS.listId(this.id).subscribe((data) => {
         this.form = new FormGroup({
           idDocumentoPago: new FormControl(data.idDocumentoPago),
-          idReceptor: new FormControl(data.idReceptor),
+          idReceptor: new FormControl(data.idReceptor.idUsuario),
           fechaEmision: new FormControl(data.fechaEmision),
           fechaVencimiento: new FormControl(data.fechaVencimiento),
           moneda: new FormControl(data.moneda),

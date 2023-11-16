@@ -48,4 +48,10 @@ export class ListarDocumentopagoComponent implements OnInit{
   openDialog(){
     this.matDialog.open(CreaeditaDocumentopagoComponent)
   }
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaeditaDocumentopagoComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
+  }
 }
