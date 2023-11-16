@@ -35,4 +35,10 @@ export class ListarCondominioComponent implements OnInit {
   openDialog() {
     this.matDialog.open(CreaeditaComponent);
   }
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaeditaComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
+  }
 }

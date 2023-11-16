@@ -30,7 +30,7 @@
         </mat-card-content>
 
         <mat-card-actions >
-          <button class="btneditar" [routerLink]="['edicion', condominio.idCondominio]" >Editar</button>
+          <button class="btneditar" (click)="editar(condominio.idCondominio,true)"><i class="fa-solid fa-pen-to-square"></i></button>
           <span class="separator"></span>
           <button class="btneliminar" (click)="eliminar(condominio.idCondominio)"><i class="fa-solid fa-trash"></i></button>
         </mat-card-actions>
