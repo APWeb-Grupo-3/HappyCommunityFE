@@ -1,8 +1,9 @@
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Aviso } from '../models/aviso';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Reporte2DTO } from '../models/Reporte2DTO';
 
 const base_url= environment.base;
 
@@ -71,4 +72,15 @@ export class AvisoService {
         .set('Content-Type', 'application/json'),
     });
   }
+
+  getReport2(anio:number):Observable<Reporte2DTO[]>{
+    let token = sessionStorage.getItem('token');
+    return this.http.get<Reporte2DTO[]>(`${this.url}/reporte2/${anio}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+
+
 }

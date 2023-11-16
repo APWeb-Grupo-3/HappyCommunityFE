@@ -61,6 +61,9 @@ import {MatCardModule} from '@angular/material/card';
 import { CondominoDetallesComponent } from './condominio/condomino-detalles/condomino-detalles.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
+import { ReportesComponent } from './reportes/reportes.component';
+import { Reporte2Component } from './reportes/reporte2/reporte2.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -106,6 +109,8 @@ import { MatDividerModule } from '@angular/material/divider';
     ListarServicioComponent,
     RegisterComponent,
     CondominoDetallesComponent,
+    ReportesComponent,
+    Reporte2Component,
     
 
   ],
@@ -132,6 +137,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatCardModule,
     MatDividerModule,
     MatProgressBarModule,
+    NgChartsModule,
   ]
 })
 export class ComponentsModule { }

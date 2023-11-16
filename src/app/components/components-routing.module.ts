@@ -30,6 +30,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
 import { CondominoDetallesComponent } from './condominio/condomino-detalles/condomino-detalles.component';
+import { ReportesComponent } from './reportes/reportes.component';
+import { Reporte2Component } from './reportes/reporte2/reporte2.component';
 
 const routes: Routes = [
   {    
@@ -186,6 +188,13 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'Reportes',
+    component: ReportesComponent,
+    children: [
+      { path: 'reporte2', component: Reporte2Component },
+    ],
   },
 ];
 
