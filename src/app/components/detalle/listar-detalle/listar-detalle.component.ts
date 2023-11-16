@@ -43,4 +43,10 @@ export class ListarDetalleComponent implements OnInit{
   openDialog(){
     this.matDialog.open(CreaeditaDetalleComponent)
   }
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaeditaDetalleComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
+  }
 }
