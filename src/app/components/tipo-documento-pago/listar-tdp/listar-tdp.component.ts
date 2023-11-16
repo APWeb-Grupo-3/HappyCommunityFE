@@ -41,5 +41,10 @@ export class ListarTDPComponent implements OnInit{
   openDialog(){
     this.matDialog.open(CreaditaTDPComponent)
   }
-
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaditaTDPComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
+  }
 }
