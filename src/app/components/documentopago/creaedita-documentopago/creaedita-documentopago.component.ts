@@ -32,7 +32,7 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
   ];
   tipos1: { value: string; viewValue: string }[] = [
     { value: 'Pagado', viewValue: 'Pagado' },
-    { value: 'Deuda', viewValue: 'Deuda' },
+    { value: 'Vencido', viewValue: 'Vencido' },
   ];
 
   constructor(
