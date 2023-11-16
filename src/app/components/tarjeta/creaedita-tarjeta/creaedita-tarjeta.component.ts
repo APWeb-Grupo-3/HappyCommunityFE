@@ -1,5 +1,5 @@
 import { Tarjeta } from './../../../models/tarjeta';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -7,7 +7,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { TarjetaService } from 'src/app/services/tarjeta.service';
@@ -36,15 +36,19 @@ export class CreaeditaTarjetaComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private tS: TarjetaService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+
+    private dialogRef: MatDialogRef<CreaeditaTarjetaComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.init();
-    });
+    if(this.data&&this.data.id&&this.data.edicion){
+      this.edicion=this.data.edicion
+      this.id=this.data.id
+      this.init()
+    }
+
     this.form = this.formBuilder.group({
       idTarjeta: [''],
       tipoTarjeta: ['', Validators.required],
@@ -72,22 +76,26 @@ export class CreaeditaTarjetaComponent implements OnInit {
         this.tS.update(this.tarjeta).subscribe(() => {
           this.tS.list().subscribe((data) => {
             this.tS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       } else {
         this.tS.insert(this.tarjeta).subscribe((data) => {
           this.tS.list().subscribe((data) => {
             this.tS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       }
-      //this.dialogRef.close();
-      this.router.navigate(['tarjeta']);
     } else {
       this.mensaje = 'Por favor complete los campos obligatorios';
     }
   }
-
+  cancelar(): void {
+    this.dialogRef.close();
+  }
   obtenerControlCampo(nombreCampo: string): AbstractControl {
     const control = this.form.get(nombreCampo);
     if (!control) {
@@ -105,7 +113,7 @@ export class CreaeditaTarjetaComponent implements OnInit {
           numeroTarjeta: new FormControl(data.numeroTarjeta),
           fechaVencimiento: new FormControl(data.fechaVencimiento),
           codigoSeguridad: new FormControl(data.codigoSeguridad),
-          usuario: new FormControl(data.usuario),
+          usuario: new FormControl(data.usuario.idUsuario),
         });
       });
     }
