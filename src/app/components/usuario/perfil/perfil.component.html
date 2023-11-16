@@ -71,7 +71,6 @@ The actual rendered columns are set as a property on the row definition" --
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
-      <button mat-button (click)="exportarExcel()">Exportar</button>
 
       <mat-paginator
         [pageSizeOptions]="[5, 10, 25]"
