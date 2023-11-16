@@ -99,15 +99,16 @@ export class CreaeditaDetalleComponent implements OnInit {
   }
   
   init() {
-    if (this.edicion) {
-      this.dS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idDetalle: new FormControl(data.idDetalle),
-          subtotalDetalle: new FormControl(data.subtotalDetalle),
-          documentoPago: new FormControl(data.documentoPago.idDocumentoPago),
-          servicio: new FormControl(data.servicio.idServicio),
+    if (this.data.edicion) {
+      this.dS.listId(this.data.id).subscribe((data) => {
+        this.form.patchValue({
+          idDetalle: data.idDetalle,
+          subtotalDetalle: data.subtotalDetalle,
+          documentoPago: data.documentoPago.idDocumentoPago,
+          servicio: data.servicio.idServicio,
         });
       });
     }
   }
+  
 }

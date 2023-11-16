@@ -107,21 +107,22 @@ export class CreaeditaUsuarioComponent implements OnInit {
   }
   
   init() {
-    if (this.edicion) {
-      this.uS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idUsuario: new FormControl(data.idUsuario),
-          nombreUsuario: new FormControl(data.nombreUsuario),
-          clave: new FormControl(data.clave),
-          rol: new FormControl(data.rol.idRolUsuario),
-          nombres: new FormControl(data.nombres),
-          apellidos: new FormControl(data.apellidos),
-          correo: new FormControl(data.correo),
-          edad: new FormControl(data.edad),
-          telefono: new FormControl(data.telefono),
-          genero: new FormControl(data.genero),
+    if (this.data.edicion) {
+      this.uS.listId(this.data.id).subscribe((data) => {
+        this.form.patchValue({
+          idUsuario: data.idUsuario,
+          nombreUsuario: data.nombreUsuario,
+          clave: data.clave,
+          rol: data.rol.idRolUsuario,
+          nombres: data.nombres,
+          apellidos: data.apellidos,
+          correo: data.correo,
+          edad: data.edad,
+          telefono: data.telefono,
+          genero: data.genero,
         });
       });
     }
   }
+  
 }

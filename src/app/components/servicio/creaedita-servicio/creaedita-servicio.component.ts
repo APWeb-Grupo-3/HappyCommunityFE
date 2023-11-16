@@ -90,15 +90,16 @@ export class CreaeditaServicioComponent implements OnInit {
   }
 
   init() {
-    if (this.edicion) {
-      this.sS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idServicio: new FormControl(data.idServicio),
-          descripcionServicio: new FormControl(data.descripcionServicio),
-          tipoServicio: new FormControl(data.tipoServicio.idTipoServicio),
+    if (this.data.edicion) {
+      this.sS.listId(this.data.id).subscribe((data) => {
+        this.form.patchValue({
+          idServicio: data.idServicio,
+          descripcionServicio: data.descripcionServicio,
+          tipoServicio: data.tipoServicio.idTipoServicio,
         });
       });
     }
   }
+  
 
 }

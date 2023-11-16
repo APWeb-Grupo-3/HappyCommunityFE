@@ -2,12 +2,12 @@
   <div style="text-align: center">
     <h2>Registro de Usuarios</h2>
     <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-      <mat-form-field class="example-full-width" *ngIf="edicion">
+      <mat-form-field class="example-full-width" *ngIf="edicion" style="margin-right: 20px;">
         <mat-label>idUsuario</mat-label>
         <input matInput placeholder="Id" formControlName="idUsuario" readonly/>
       </mat-form-field>
-      <br />
-      <mat-form-field class="example-full-width">
+      
+      <mat-form-field class="example-full-width" style="margin-right: 20px;">
         <mat-label>nombreUsuario</mat-label>
         <input matInput placeholder="nombreUsuario" formControlName="nombreUsuario" />
         <mat-error
@@ -16,7 +16,7 @@
           El username es obligatorio.
         </mat-error>
       </mat-form-field>
-      <br />
+      
       <mat-form-field class="example-full-width">
         <mat-label>Clave</mat-label>
         <input matInput placeholder="clave" formControlName="clave" />
@@ -27,7 +27,7 @@
         </mat-error>
       </mat-form-field>
       <br />
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width" style="margin-right: 20px;">
         <mat-label>Rol</mat-label>
         <mat-select formControlName="rol">
           <mat-option *ngFor="let p of listaRolUsuarios" [value]="p.idRolUsuario">
@@ -41,8 +41,8 @@
         </mat-error>
 
       </mat-form-field>
-      <br />
-      <mat-form-field class="example-full-width">
+      
+      <mat-form-field class="example-full-width" style="margin-right: 20px;">
         <mat-label>Nombres</mat-label>
         <input matInput placeholder="nombres" formControlName="nombres" />
         <mat-error
@@ -51,7 +51,7 @@
           El nombre es obligatorio.
         </mat-error>
       </mat-form-field>
-      <br />
+      
       <mat-form-field class="example-full-width">
         <mat-label>Apellidos</mat-label>
         <input matInput placeholder="apellidos" formControlName="apellidos" />
@@ -62,7 +62,7 @@
         </mat-error>
       </mat-form-field>
       <br />
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width" style="margin-right: 20px;">
         <mat-label>Correo</mat-label>
         <input matInput placeholder="correo" formControlName="correo" />
         <mat-error
@@ -72,8 +72,8 @@
         </mat-error>
       </mat-form-field>
       
-      <br />
-      <mat-form-field class="example-full-width">
+
+      <mat-form-field class="example-full-width" style="margin-right: 20px;">
         <mat-label>Edad</mat-label>
         <input matInput placeholder="edad" formControlName="edad" />
         <mat-error
@@ -82,7 +82,7 @@
           La edad es obligatoria.
         </mat-error>
       </mat-form-field>
-      <br />
+      
       <mat-form-field class="example-full-width">
         <mat-label>Teléfono</mat-label>
         <input matInput placeholder="telefono" formControlName="telefono" />

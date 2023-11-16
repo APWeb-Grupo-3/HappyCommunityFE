@@ -62,4 +62,13 @@ export class UsuarioService {
       .set('Content-Type', 'application/json'),
     });
   }
+  listUser(user:string){
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Usuario[]>(`${this.url}/listar/${user}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    })
+  }
 }

@@ -54,7 +54,7 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       idSolicitudAcceso: [''],
-      estado: [''],
+      estado: ['',Validators.required],
       usuario: ['', Validators.required],
       condominio: ['', Validators.required],
     });
@@ -110,16 +110,16 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.sS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idSolicitudAcceso: new FormControl(data.idSolicitudAcceso),
-          estado: new FormControl(data.estado),
-          usuario: new FormControl(data.usuario.idUsuario),
-          condominio: new FormControl(data.condominio.idCondominio),
-
+        this.form.patchValue({
+          idSolicitudAcceso: data.idSolicitudAcceso,
+          estado: data.estado,
+          usuario: data.usuario.idUsuario,
+          condominio: data.condominio.idCondominio,
         });
       });
     }
   }
+  
 
   role: string = '';
 
