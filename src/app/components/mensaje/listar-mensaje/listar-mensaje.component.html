@@ -25,10 +25,10 @@
             <mat-card-content>
               <p>Descripción: {{ element.descripcion }}</p>
               <p>Usuario: {{ element.usuario.nombreUsuario }}</p>
-              <p>Receptor: {{ element.receptor }}</p>
+              <p>Receptor: {{ element.receptor.nombreUsuario }}</p>
             </mat-card-content>
             <mat-card-actions>
-              <button class="accion01btn" [routerLink]="['edicion', element.idMensaje]">
+              <button class="accion01btn" (click)="editar(element.idMensaje,true)">
                 Actualizar
               </button>
               <span class="separator"></span>

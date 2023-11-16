@@ -34,5 +34,10 @@ export class ListarMensajeComponent {
   openDialog(){
     this.matDialog.open(CreaeditaMensajeComponent)
   }
-
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaeditaMensajeComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
+  }
 }

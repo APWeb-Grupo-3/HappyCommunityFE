@@ -1,7 +1,7 @@
 import { MensajeService } from './../../../services/mensaje.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Mensaje } from 'src/app/models/mensaje';
 import { Usuario } from 'src/app/models/usuario';
@@ -26,15 +26,21 @@ export class CreaeditaMensajeComponent  implements OnInit{
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private mS: MensajeService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+
+
+    private dialogRef: MatDialogRef<CreaeditaMensajeComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.init();
-    });
+    if(this.data&&this.data.id&&this.data.edicion){
+      this.edicion=this.data.edicion
+      this.id=this.data.id
+      this.init()
+    }
+
+
     this.form = this.formBuilder.group({
       idMensaje: [''],
       titulo: ['', Validators.required],
@@ -55,29 +61,34 @@ export class CreaeditaMensajeComponent  implements OnInit{
       this.mensajes.titulo = this.form.value.titulo;
       this.mensajes.descripcion = this.form.value.descripcion;
       this.mensajes.usuario.idUsuario = this.form.value.usuario;
-      this.mensajes.receptor = this.form.value.receptor;
+      this.mensajes.receptor.idUsuario = this.form.value.receptor;
 
 
       if (this.edicion) {
         this.mS.update(this.mensajes).subscribe(() => {
           this.mS.list().subscribe((data) => {
             this.mS.setList(data);
+            this.dialogRef.close();
+
           });
         });        
       } else {
         this.mS.insert(this.mensajes).subscribe((data) => {
           this.mS.list().subscribe((data) => {
             this.mS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       }
-      //this.dialogRef.close();
       this.router.navigate(['mensajes']);
     } else {
       this.mensaje = 'Por favor complete los campos obligatorios';
     }
   }
-
+  cancelar(): void {
+    this.dialogRef.close();
+  }
   obtenerControlCampo(nombreCampo: string): AbstractControl {
     const control = this.form.get(nombreCampo);
     if (!control) {
@@ -93,8 +104,8 @@ export class CreaeditaMensajeComponent  implements OnInit{
           idMensaje: new FormControl(data.idMensaje),
           titulo: new FormControl(data.titulo),
           descripcion: new FormControl(data.descripcion),
-          usuario: new FormControl(data.usuario),
-          receptor: new FormControl(data.receptor),          
+          usuario: new FormControl(data.usuario.idUsuario),
+          receptor: new FormControl(data.receptor.idUsuario),          
         });
       });
     }
