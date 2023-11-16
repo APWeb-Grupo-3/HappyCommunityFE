@@ -1,0 +1,10 @@
+.title {
+  display: grid;
+  place-items: center;
+  font-style: oblique;
+}
+.grafico{
+
+width: 40%;
+padding-left: 30%;
+}

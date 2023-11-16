@@ -35,9 +35,10 @@ import { Reporte2Component } from './reportes/reporte2/reporte2.component';
 import { ReportemayorComponent } from './reportes/reportemayor/reportemayor.component';
 import { PerfilComponent } from './usuario/perfil/perfil.component';
 import { Reporte1Component } from './reportes/reporte1/reporte1.component';
+import { ReportemesdeudaComponent } from './reportes/reportemesdeuda/reportemesdeuda.component';
 
 const routes: Routes = [
-  {    
+  {
     path: 'condominios',
     component: CondominioComponent,
     children: [
@@ -45,7 +46,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaComponent },
       {path: 'detalles/:id', component: CondominoDetallesComponent}
     ],
-    
+
   },
   {
     path: 'TipoDocPago',
@@ -55,9 +56,9 @@ const routes: Routes = [
       { path: 'nuevo', component: CreaditaTDPComponent },
       { path: 'edicion/:id', component: CreaditaTDPComponent },
     ],
-    
+
   },
-  
+
   {
     path: 'TipoServicio',
     canActivate: [GuardService],
@@ -68,7 +69,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaTiposervicioComponent },
 
     ],
-    
+
   },
   {
     path: 'RolUsuario',
@@ -80,7 +81,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaRolusuarioComponent },
 
     ],
-    
+
   },
   {
     path: 'Usuario',
@@ -91,7 +92,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaUsuarioComponent},
       { path: 'perfil', component: PerfilComponent},
     ],
-    
+
   },
   {
     path: 'DocumentoPago',
@@ -103,7 +104,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaDocumentopagoComponent },
 
     ],
-    
+
   },
   {
     path: 'planconvivencia',
@@ -115,7 +116,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaPlanconvivenciaComponent },
 
     ],
-    
+
   },
   {
     path: 'solicitudacceso',
@@ -127,7 +128,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaSolicitudaccesoComponent },
 
     ],
-    
+
   },
   {
     path: 'tarjeta',
@@ -139,7 +140,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaTarjetaComponent },
 
     ],
-    
+
   },
   {
     path: 'mensajes',
@@ -151,7 +152,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaMensajeComponent },
 
     ],
-    
+
   },
   {
     path: 'aviso',
@@ -163,7 +164,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaAvisoComponent },
 
     ],
-    
+
   },
   {
     path: 'Servicio',
@@ -175,7 +176,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaServicioComponent },
 
     ],
-    
+
   },
   {
     path: 'Detalle',
@@ -186,7 +187,7 @@ const routes: Routes = [
       { path: 'edicion/:id', component: CreaeditaDetalleComponent },
 
     ],
-    
+
   },
   {
     path: 'register',
@@ -199,6 +200,7 @@ const routes: Routes = [
       { path: 'reporte1', component: Reporte1Component },
       { path: 'reporte2', component: Reporte2Component },
       { path: 'mayordeudames', component: ReportemayorComponent },
+      { path: 'deudames', component: ReportemesdeudaComponent },
     ],
   },
 ];
