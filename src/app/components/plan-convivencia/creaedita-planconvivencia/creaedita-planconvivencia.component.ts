@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Condominio } from 'src/app/models/condominio';
 import { PlanConvivencia } from 'src/app/models/planconvivencia';
@@ -31,13 +31,20 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
     private pS: PlanconvivenciaService,
     private matDialog: MatDialog,
 
+
+    private dialogRef: MatDialogRef<CreaeditaPlanconvivenciaComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
+
+
   ) {}
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.init();
-    });
+    if(this.data&&this.data.id&&this.data.edicion){
+      this.edicion=this.data.edicion
+      this.id=this.data.id
+      this.init()
+    }
+
+
     this.form = this.formBuilder.group({
       idPlanConvivencia: [''],
       condominio: ['', Validators.required],
@@ -60,22 +67,26 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
         this.pS.update(this.planconvivencia).subscribe(() => {
           this.pS.list().subscribe((data) => {
             this.pS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       } else {
         this.pS.insert(this.planconvivencia).subscribe((data) => {
           this.pS.list().subscribe((data) => {
             this.pS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       }
-      //this.dialogRef.close(); 
-      this.router.navigate(['planconvivencia']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
   }
-
+  cancelar(): void {
+    this.dialogRef.close();
+  }
   obtenerControlCampo(nombreCampo: string): AbstractControl {
     const control = this.form.get(nombreCampo);
     if (!control) {
@@ -97,17 +108,6 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
       });
     }
   }
-  cancelar() {
-    
 
-    // Verifica si estás en la página principal o en la ruta de edición
-    if (this.router.url === '/components/planconvivencia/nuevo' || this.router.url.startsWith('/components/planconvivencia/edicion/')) {
-      // Redirige a la página de edición
-    this.router.navigate(['/components/planconvivencia']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
-  } else {
-
-   this.matDialog.closeAll(); // Cierra el diálogo
-  }
-  }
   
 }

@@ -1,3 +1,22 @@
-mat-form-field {
-    width: 70%;
+  .registro-container button {
+    margin: 5%;
+    text-align: center;
+  }
+  
+  .cancelarbtn {
+    cursor: pointer;
+      text-align: center;
+      color: rgb(255, 3, 3);
+      text-decoration: none; 
+  }
+  
+  .aceptarbtn {
+    text-align: center;
+    border-radius: 25px;
+    border: none;
+    background: rgb(45, 45, 56);
+    -webkit-text-fill-color: #ffffff;
+  }
+  .example-full-width{
+    border-radius: 15px;
   }
