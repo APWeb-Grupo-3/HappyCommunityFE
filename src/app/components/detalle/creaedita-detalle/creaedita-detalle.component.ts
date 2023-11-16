@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Detalle } from 'src/app/models/detalle';
 import { DocumentoPago } from 'src/app/models/documentopago';
@@ -29,14 +30,21 @@ export class CreaeditaDetalleComponent implements OnInit {
     private dpS:DocumentopagoService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+
+
+    private dialogRef: MatDialogRef<CreaeditaDetalleComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
+
   ) {}
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.init();
-    });
+    if(this.data&&this.data.id&&this.data.edicion){
+      this.edicion=this.data.edicion
+      this.id=this.data.id
+      this.init()
+    }
+
+
     this.form = this.formBuilder.group({
       idDetalle: [''],
       subtotalDetalle: ['', Validators.required],
@@ -62,21 +70,26 @@ export class CreaeditaDetalleComponent implements OnInit {
         this.dS.update(this.detalle).subscribe(() => {
           this.dS.list().subscribe((data) => {
             this.dS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       } else {
         this.dS.insert(this.detalle).subscribe((data) => {
           this.dS.list().subscribe((data) => {
             this.dS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       }
-      this.router.navigate(['Detalle']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
   }
-
+  cancelar(): void {
+    this.dialogRef.close();
+  }
   obtenerControlCampo(nombreCampo: string): AbstractControl {
     const control = this.form.get(nombreCampo);
     if (!control) {
