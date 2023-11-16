@@ -44,7 +44,7 @@ export class ListarTiposervicioComponent implements OnInit{
     this.matDialog.open(CreaeditaTiposervicioComponent)
   }
   editar(id: number,edicion:boolean){
-    const dialogRef = this.matDialog.open(CreaeditaTiposervicioComponent, {
+    this.matDialog.open(CreaeditaTiposervicioComponent, {
       data: { id: id, 
       edicion:edicion},
     });

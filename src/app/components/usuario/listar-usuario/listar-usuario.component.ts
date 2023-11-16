@@ -41,5 +41,10 @@ export class ListarUsuarioComponent implements OnInit{
       });
     });
   }
-  
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaeditaUsuarioComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
+  }
 }

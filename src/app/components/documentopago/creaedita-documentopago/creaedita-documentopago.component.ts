@@ -70,7 +70,7 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
   aceptar(): void {
     if (this.form.valid) {
       this.documentopago.idDocumentoPago = this.form.value.idDocumentoPago;
-      this.documentopago.idReceptor = this.form.value.idReceptor;
+      this.documentopago.idReceptor.idUsuario = this.form.value.idReceptor;
       this.documentopago.fechaEmision = this.form.value.fechaEmision;
       this.documentopago.fechaVencimiento = this.form.value.fechaVencimiento;
       this.documentopago.moneda = this.form.value.moneda;

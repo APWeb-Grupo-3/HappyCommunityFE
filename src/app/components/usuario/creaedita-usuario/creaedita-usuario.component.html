@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+<mat-dialog-content>
   <div style="text-align: center">
     <h2>Registro de Usuarios</h2>
     <form [formGroup]="form" (submit)="aceptar()" class="example-form">
       <mat-form-field class="example-full-width" *ngIf="edicion">
         <mat-label>idUsuario</mat-label>
-        <input matInput placeholder="Id" formControlName="idUsuario" />
+        <input matInput placeholder="Id" formControlName="idUsuario" readonly/>
       </mat-form-field>
       <br />
       <mat-form-field class="example-full-width">
@@ -121,11 +114,10 @@
       <button mat-raised-button class="aceptarbtn" >Aceptar</button>
       <br>
       
-      <a mat-raised-text class="cancelarbtn" routerLink="/Usuario">
+      <a mat-raised-text class="cancelarbtn" (click)="cancelar()">
         Cancelar
       </a>
       <p>{{ mensaje }}</p>
     </form>
   </div>
-</body>
-</html>
+  <mat-dialog-content>

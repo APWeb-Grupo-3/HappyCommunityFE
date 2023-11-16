@@ -26,8 +26,8 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
   listarcondominios: Condominio[] = [];
   listausuario: Usuario[] =[];
   estados: { value: string; viewValue: string }[] = [
-    { value: 'Aprovado', viewValue: 'Aprovado' },
-    { value: 'Rechasado', viewValue: 'Rechasado' },
+    { value: 'Aprobado', viewValue: 'Aprobado' },
+    { value: 'Rechazado', viewValue: 'Rechazado' },
   ];
 
   constructor(

@@ -3,7 +3,7 @@ import { Usuario } from "./usuario"
 
 export class DocumentoPago{
     idDocumentoPago:number=0
-    idReceptor:number=0
+    idReceptor:Usuario=new Usuario()
     fechaEmision:Date=new Date(Date.now())
     fechaVencimiento:Date=new Date(Date.now())
     moneda: string=""

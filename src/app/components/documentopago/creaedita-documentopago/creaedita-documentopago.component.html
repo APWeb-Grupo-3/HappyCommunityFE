@@ -8,8 +8,12 @@
         </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
-          <mat-label>idReceptor</mat-label>
-          <input matInput placeholder="idReceptor" formControlName="idReceptor" />
+          <mat-label>Receptor</mat-label>
+          <mat-select formControlName="idReceptor">
+            <mat-option *ngFor="let p of listaUsuarios" [value]="p.idUsuario">
+              {{p.nombres}}
+            </mat-option>
+          </mat-select>
           <mat-error
             *ngIf="obtenerControlCampo('idReceptor')?.errors?.['required']"
           >

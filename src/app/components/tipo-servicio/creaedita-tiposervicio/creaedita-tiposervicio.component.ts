@@ -17,7 +17,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class CreaeditaTiposervicioComponent implements OnInit {
   form: FormGroup = new FormGroup({});
-  tiposervicio: TipoServicio= new TipoServicio;
+  tipoServicio: TipoServicio= new TipoServicio;
   mensaje: string= '';
   id: number = 0;
   edicion: boolean = false;
@@ -27,15 +27,17 @@ export class CreaeditaTiposervicioComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+
+
     private dialogRef: MatDialogRef<CreaeditaTiposervicioComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
+
   ) {}
   ngOnInit(): void {
     if (this.data && this.data.id&&this.data.edicion) {
       this.edicion=this.data.edicion
-      this.tsS.listId(this.data.id).subscribe((data) => {
-        this.form.patchValue(data);
-      });
+      this.id=this.data.id
+      this.init()
     }
     this.form = this.formBuilder.group({
       idTipoServicio: [''],
@@ -45,18 +47,18 @@ export class CreaeditaTiposervicioComponent implements OnInit {
 
   aceptar(): void {
     if (this.form.valid) {
-      this.tiposervicio.idTipoServicio=this.form.value.idTipoServicio;
-      this.tiposervicio.nombreTipoServicio=this.form.value.nombreTipoServicio;
+      this.tipoServicio.idTipoServicio=this.form.value.idTipoServicio;
+      this.tipoServicio.nombreTipoServicio=this.form.value.nombreTipoServicio;
 
-      if (this.data && this.data.id&&this.data.edicion) {
-        this.tsS.update(this.tiposervicio).subscribe(() => {
+      if (this.edicion) {
+        this.tsS.update(this.tipoServicio).subscribe(() => {
           this.tsS.list().subscribe((data) => {
             this.tsS.setList(data);
             this.dialogRef.close();
           });
         });
       } else {
-        this.tsS.insert(this.tiposervicio).subscribe(() => {
+        this.tsS.insert(this.tipoServicio).subscribe(() => {
           this.tsS.list().subscribe((data) => {
             this.tsS.setList(data);
             this.dialogRef.close();

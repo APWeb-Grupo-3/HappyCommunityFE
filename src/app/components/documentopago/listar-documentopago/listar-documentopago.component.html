@@ -26,7 +26,7 @@ The actual rendered columns are set as a property on the row definition" --
         <!-- Name Column -->
         <ng-container matColumnDef="receptor">
           <th mat-header-cell *matHeaderCellDef>Receptor</th>
-          <td mat-cell *matCellDef="let element">{{ element.idReceptor }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.idReceptor.nombres }}</td>
         </ng-container>
         <!-- Name Column -->
         <ng-container matColumnDef="emision">
