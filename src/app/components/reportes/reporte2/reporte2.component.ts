@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ChartType, ChartDataset } from 'chart.js';
 import { ChartOptions } from 'chart.js';
 import { AvisoService } from 'src/app/services/aviso.service';
+import { ExportService } from 'src/app/services/export.service';
+import * as XLSX from 'xlsx';
+
 
 @Component({
   selector: 'app-reporte2',
@@ -22,7 +25,9 @@ export class Reporte2Component implements OnInit {
   barChartLegend = true;
   barChartData: ChartDataset[] = [];
 
-  constructor(private aS: AvisoService, private formBuilder: FormBuilder) {}
+
+  constructor(private aS: AvisoService, private formBuilder: FormBuilder,private exportService: ExportService,
+    ) {}
 
   ngOnInit(): void {
     this.fechaForm = this.formBuilder.group({
@@ -45,4 +50,26 @@ export class Reporte2Component implements OnInit {
       });
     }
   }
+  fileName="ExcelSheet.xlsx";
+  exportarExcel(){
+    let data=document.getElementById("table-data");
+    const ws:XLSX.WorkSheet=XLSX.utils.table_to_sheet(data)
+
+    const wb:XLSX.WorkBook=XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb,ws,'Sheet1')
+
+    XLSX.writeFile(wb,this.fileName)
+  }
+  
+  exportToExcel(): void {
+    if (this.barChartLabels.length > 0 && this.barChartData.length > 0) {
+      const excelData = this.barChartLabels.map((label, index) => ({
+        Mes: label,
+        'Cantidad de avisos': this.barChartData[0].data[index],
+      }));
+  
+      this.exportService.exportToExcel(excelData, 'reporte2');
+    }
+  }
+  
 }

@@ -1,8 +1,9 @@
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../models/usuario';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Reporte1DTO } from '../models/Reporte1DTO';
 
 const base_url = environment.base;
 
@@ -66,6 +67,14 @@ export class UsuarioService {
     let token = sessionStorage.getItem('token');
 
     return this.http.get<Usuario[]>(`${this.url}/listar/${user}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    })
+  }
+  getReport1():Observable<Reporte1DTO[]>{
+    let token = sessionStorage.getItem('token');
+    return this.http.get<Reporte1DTO[]>(`${this.url}/reporte1`,{
       headers: new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json'),

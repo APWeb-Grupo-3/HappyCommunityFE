@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from './services/login.service';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { Usuario } from './models/usuario';
+import { UsuarioService } from './services/usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -12,12 +14,11 @@ export class AppComponent{
   role:string="";
   isSubMenuOpen: boolean = false;
   username:string="";
-  
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService,private uS:UsuarioService) {
 
   }
-  
+
   cerrar() {
     sessionStorage.clear();
   }

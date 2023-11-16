@@ -34,6 +34,7 @@ import { ReportesComponent } from './reportes/reportes.component';
 import { Reporte2Component } from './reportes/reporte2/reporte2.component';
 import { ReportemayorComponent } from './reportes/reportemayor/reportemayor.component';
 import { PerfilComponent } from './usuario/perfil/perfil.component';
+import { Reporte1Component } from './reportes/reporte1/reporte1.component';
 
 const routes: Routes = [
   {    
@@ -195,6 +196,7 @@ const routes: Routes = [
     path: 'Reportes',
     component: ReportesComponent,
     children: [
+      { path: 'reporte1', component: Reporte1Component },
       { path: 'reporte2', component: Reporte2Component },
       { path: 'mayordeudames', component: ReportemayorComponent },
     ],

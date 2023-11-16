@@ -43,5 +43,4 @@ export class LoginService {
     
     return decodedToken?.sub;
   }
-  
 }
