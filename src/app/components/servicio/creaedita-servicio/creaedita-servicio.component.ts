@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Servicio } from 'src/app/models/servicio';
 import { TipoServicio } from 'src/app/models/tiposervicio';
 import { ServicioService } from 'src/app/services/servicio.service';
 import { TiposervicioService } from 'src/app/services/tiposervicio.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-creaedita-servicio',
@@ -27,14 +27,19 @@ export class CreaeditaServicioComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
+
+    private dialogRef: MatDialogRef<CreaeditaServicioComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
+
   ) {}
   ngOnInit(): void {
-    this.route.params.subscribe((data: Params) => {
-      this.id = data['id'];
-      this.edicion = data['id'] != null;
-      this.init();
-    });
+    if(this.data&&this.data.id&&this.data.edicion){
+      this.edicion=this.data.edicion
+      this.id=this.data.id
+      this.init()
+    }
+
     this.form = this.formBuilder.group({
       idServicio: [''],
       descripcionServicio: ['', Validators.required],
@@ -55,12 +60,16 @@ export class CreaeditaServicioComponent implements OnInit {
         this.sS.update(this.servicio).subscribe(() => {
           this.sS.list().subscribe((data) => {
             this.sS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       } else {
         this.sS.insert(this.servicio).subscribe((data) => {
           this.sS.list().subscribe((data) => {
             this.sS.setList(data);
+            this.dialogRef.close();
+
           });
         });
       }
@@ -69,7 +78,9 @@ export class CreaeditaServicioComponent implements OnInit {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
   }
-
+  cancelar(): void {
+    this.dialogRef.close();
+  }
   obtenerControlCampo(nombreCampo: string): AbstractControl {
     const control = this.form.get(nombreCampo);
     if (!control) {
@@ -89,22 +100,5 @@ export class CreaeditaServicioComponent implements OnInit {
       });
     }
   }
-
-
-  cancelar() {
-
-
-    // Verifica si estás en la página principal o en la ruta de edición
-    if (this.router.url === '/components/Servicio/nuevo' || this.router.url.startsWith('/components/Servicio/edicion/')) {
-      // Redirige a la página de edición
-    this.router.navigate(['/components/Servicio']); // Reemplaza 'ruta_de_edicion' con la ruta correcta
-  } else {
-
-   this.matDialog.closeAll(); // Cierra el diálogo
-  }
-  }
-
-
-
 
 }

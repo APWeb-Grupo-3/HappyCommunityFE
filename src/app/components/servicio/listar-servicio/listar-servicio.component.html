@@ -35,7 +35,7 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button class="btneditar" [routerLink]="['edicion', servcicios.idServicio]" >Editar</button>
+          <button mat-button class="btneditar" (click)="editar(servcicios.idServicio,true)" ><i class="fa-solid fa-pen-to-square"></i></button>
           <span class="separator"></span>
           <button mat-button class="btneliminar" (click)="eliminar(servcicios.idServicio)"><i class="fa-solid fa-trash"></i></button>
         </mat-card-actions>

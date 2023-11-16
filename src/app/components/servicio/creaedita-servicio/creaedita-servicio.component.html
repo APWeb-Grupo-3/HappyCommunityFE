@@ -4,7 +4,7 @@
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>idServicio</mat-label>
-          <input matInput placeholder="Id" formControlName="idServicio" />
+          <input matInput placeholder="Id" formControlName="idServicio" readonly/>
         </mat-form-field>
         <br />
         <mat-form-field class="example-full-width">
