@@ -1,25 +1,3 @@
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(100deg, #bbb6b6, #ffffff);
-  }
-  
-  .registro-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-    
-     transform: translate(-50%, -40%);
-      width: 500px;
-      background: white;
-      border-radius: 20px;
-      padding-bottom: 5%;
-      padding-top: 2%;
-      padding-block-end: 2%;
-  }
-  
-  
-  
   .registro-container button {
     margin: 5%;
     text-align: center;
@@ -42,3 +20,10 @@ body {
   .example-full-width{
     border-radius: 15px;
   }
+  .hola {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
