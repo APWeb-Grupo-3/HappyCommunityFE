@@ -9,7 +9,7 @@
       
       <mat-form-field class="example-full-width" style="margin-right: 20px;">
         <mat-label>nombreUsuario</mat-label>
-        <input matInput placeholder="nombreUsuario" formControlName="nombreUsuario" />
+        <input  matInput placeholder="nombreUsuario" formControlName="nombreUsuario" />
         <mat-error
           *ngIf="obtenerControlCampo('nombreUsuario')?.errors?.['required']"
         >
@@ -43,7 +43,7 @@
       <mat-form-field class="example-full-width" style="margin-right: 20px;">
         <mat-label>Rol</mat-label>
         <mat-select formControlName="rol">
-          <mat-option *ngFor="let p of listaRolUsuarios" [value]="p.idRolUsuario">
+          <mat-option [disabled]="true" *ngFor="let p of listaRolUsuarios" [value]="p.idRolUsuario">
             {{ p.rol }}
           </mat-option>
         </mat-select>

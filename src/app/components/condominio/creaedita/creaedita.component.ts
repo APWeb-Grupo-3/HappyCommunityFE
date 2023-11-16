@@ -91,7 +91,6 @@ export class CreaeditaComponent implements OnInit{
     this.form = this.formBuilder.group({
       idCondominio: [''],
       nombre: ['', [Validators.required, Validators.maxLength(20)]],
-      departamento: ['',  [Validators.required, Validators.maxLength(20)]],
       distrito: ['',  [Validators.required, Validators.maxLength(20)]],
       direccion: ['',  [Validators.required, Validators.maxLength(100)]],
     });
@@ -101,7 +100,6 @@ export class CreaeditaComponent implements OnInit{
     if (this.form.valid) {
       this.condominio.idCondominio = this.form.value.idCondominio;
       this.condominio.nombre = this.form.value.nombre;
-      this.condominio.departamento = this.form.value.departamento;
       this.condominio.distrito = this.form.value.distrito;
       this.condominio.direccion = this.form.value.direccion;
       if (this.edicion) {
@@ -141,7 +139,6 @@ export class CreaeditaComponent implements OnInit{
         this.form.patchValue({
           idCondominio: data.idCondominio,
           nombre: data.nombre,
-          departamento: data.departamento,
           distrito: data.distrito,
           direccion: data.direccion,
         });

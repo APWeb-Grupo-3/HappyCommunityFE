@@ -142,5 +142,10 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
       });
     }
   }
+
+  obtenertotal(){
+
+    
+  }
   
 }
