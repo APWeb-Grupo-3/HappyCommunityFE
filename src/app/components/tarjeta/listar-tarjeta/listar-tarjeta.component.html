@@ -30,12 +30,12 @@
               <p>Usuario: {{ element.usuario.nombreUsuario }}</p>
             </mat-card-content>
             <mat-card-actions>
-              <button class="accion01btn" [routerLink]="['edicion', element.idTarjeta]">
-                Actualizar
+              <button class="accion01btn" (click)="editar(element.idTarjeta,true)">
+                <i class="fa-solid fa-pen-to-square"></i>
               </button>
               <span class="separator"></span>
               <button class="accion02btn" (click)="eliminar(element.idTarjeta)">
-                Eliminar
+                <i class="fa-solid fa-trash"></i>
               </button>
             </mat-card-actions>
           </mat-card>

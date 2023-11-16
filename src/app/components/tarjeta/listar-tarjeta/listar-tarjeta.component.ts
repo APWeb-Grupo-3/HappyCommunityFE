@@ -35,7 +35,12 @@ export class ListarTarjetaComponent {
     this.matDialog.open(CreaeditaTarjetaComponent)
   }
 
-
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaeditaTarjetaComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
+  }
 
 
 
