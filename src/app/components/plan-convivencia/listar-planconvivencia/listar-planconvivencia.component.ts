@@ -36,5 +36,10 @@ export class ListarPlanconvivenciaComponent  implements OnInit{
   openDialog() {
     this.matDialog.open(CreaeditaPlanconvivenciaComponent);
   }
-  
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaeditaPlanconvivenciaComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
+  }
 }

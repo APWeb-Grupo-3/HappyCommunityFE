@@ -45,7 +45,7 @@
               <mat-divider></mat-divider>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button class="btneditar" [routerLink]="['edicion', planconvivencia.idPlanConvivencia]" >Editar</button>
+              <button mat-button class="btneditar" (click)="editar(planconvivencia.idPlanConvivencia,true)" >Editar</button>
               <span class="separator"></span>
               <button mat-button class="btneliminar" (click)="eliminar(planconvivencia.idPlanConvivencia)"><i class="fa-solid fa-trash"></i></button>
             </mat-card-actions>
