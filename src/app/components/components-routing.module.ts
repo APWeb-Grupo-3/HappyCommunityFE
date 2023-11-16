@@ -33,6 +33,7 @@ import { CondominoDetallesComponent } from './condominio/condomino-detalles/cond
 import { ReportesComponent } from './reportes/reportes.component';
 import { Reporte2Component } from './reportes/reporte2/reporte2.component';
 import { ReportemayorComponent } from './reportes/reportemayor/reportemayor.component';
+import { PerfilComponent } from './usuario/perfil/perfil.component';
 
 const routes: Routes = [
   {    
@@ -87,7 +88,7 @@ const routes: Routes = [
     children: [
       { path: 'nuevo', component: CreaeditaUsuarioComponent },
       { path: 'edicion/:id', component: CreaeditaUsuarioComponent},
-
+      { path: 'perfil', component: PerfilComponent},
     ],
     
   },

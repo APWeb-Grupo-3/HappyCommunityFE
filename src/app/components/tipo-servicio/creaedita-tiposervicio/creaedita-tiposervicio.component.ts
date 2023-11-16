@@ -83,12 +83,13 @@ export class CreaeditaTiposervicioComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.tsS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idTipoServicio: new FormControl(data.idTipoServicio),
-          nombreTipoServicio: new FormControl(data.nombreTipoServicio),
+        this.form.patchValue({
+          idTipoServicio: data.idTipoServicio,
+          nombreTipoServicio: data.nombreTipoServicio,
         });
       });
     }
   }
+  
   
 }

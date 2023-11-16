@@ -11,7 +11,7 @@
           <mat-label>Receptor</mat-label>
           <mat-select formControlName="idReceptor">
             <mat-option *ngFor="let p of listaUsuarios" [value]="p.idUsuario">
-              {{p.nombres}}
+              {{p.nombreUsuario}}
             </mat-option>
           </mat-select>
           <mat-error
@@ -105,7 +105,7 @@
               <mat-label>Emisor</mat-label>
               <mat-select formControlName="usuario">
                 <mat-option *ngFor="let p of listaUsuarios" [value]="p.idUsuario">
-                  {{p.nombres}}
+                  {{p.nombreUsuario}}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="obtenerControlCampo('usuario')?.errors?.['required']">

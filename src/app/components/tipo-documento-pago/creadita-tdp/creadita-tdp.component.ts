@@ -93,11 +93,12 @@ export class CreaditaTDPComponent implements OnInit{
   init() {
     if (this.edicion) {
       this.tdpS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idTipoDocPago: new FormControl(data.idTipoDocPago),
-          nombre: new FormControl(data.nombre),
+        this.form.patchValue({
+          idTipoDocPago: data.idTipoDocPago,
+          nombre: data.nombre,
         });
       });
     }
   }
+  
 }

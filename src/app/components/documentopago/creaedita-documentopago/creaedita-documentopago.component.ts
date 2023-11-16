@@ -122,20 +122,21 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
   }
   
   init() {
-    if (this.edicion) {
-      this.dS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idDocumentoPago: new FormControl(data.idDocumentoPago),
-          idReceptor: new FormControl(data.idReceptor.idUsuario),
-          fechaEmision: new FormControl(data.fechaEmision),
-          fechaVencimiento: new FormControl(data.fechaVencimiento),
-          moneda: new FormControl(data.moneda),
-          total: new FormControl(data.total),
-          estado: new FormControl(data.estado),
-          usuario: new FormControl(data.usuario.idUsuario),
-          tipoDocPago: new FormControl(data.tipoDocPago.idTipoDocPago),
+    if (this.data.edicion) {
+      this.dS.listId(this.data.id).subscribe((data) => {
+        this.form.patchValue({
+          idDocumentoPago: data.idDocumentoPago,
+          idReceptor: data.idReceptor.idUsuario,
+          fechaEmision: data.fechaEmision,
+          fechaVencimiento: data.fechaVencimiento,
+          moneda: data.moneda,
+          total: data.total,
+          estado: data.estado,
+          usuario: data.usuario.idUsuario,
+          tipoDocPago: data.tipoDocPago.idTipoDocPago,
         });
       });
     }
   }
+  
 }

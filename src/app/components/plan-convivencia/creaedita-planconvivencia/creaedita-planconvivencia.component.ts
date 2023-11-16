@@ -48,8 +48,8 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
     this.form = this.formBuilder.group({
       idPlanConvivencia: [''],
       condominio: ['', Validators.required],
-      titulo: ['', (Validators.required, Validators.maxLength(50))],
-      descripcion: ['', (Validators.required, Validators.maxLength(200))],
+      titulo: ['', [Validators.required, Validators.maxLength(50)]],
+      descripcion: ['', [Validators.required, Validators.maxLength(200)]],
     });
     this.cS.list().subscribe((data) => {
       this.listarcondominios = data;
@@ -96,18 +96,18 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
   }
 
   init() {
-    if (this.edicion) {
-      this.pS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idPlanConvivencia: new FormControl(data.idPlanConvivencia),
-          titulo: new FormControl(data.titulo),
-          descripcion: new FormControl(data.descripcion),
-          condominio: new FormControl(data.condominio.idCondominio),
-
+    if (this.data.edicion) {
+      this.pS.listId(this.data.id).subscribe((data) => {
+        this.form.patchValue({
+          idPlanConvivencia: data.idPlanConvivencia,
+          titulo: data.titulo,
+          descripcion: data.descripcion,
+          condominio: data.condominio.idCondominio,
         });
       });
     }
   }
+  
 
   
 }

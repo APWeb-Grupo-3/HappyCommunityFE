@@ -103,19 +103,20 @@ export class CreaeditaAvisoComponent implements OnInit{
   }
 
   init() {
-    if (this.edicion) {
-      this.aS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idAviso: new FormControl(data.idAviso),
-          titulo: new FormControl(data.titulo),
-          descripcion: new FormControl(data.descripcion),
-          fechaPublicacion: new FormControl(data.fechaPublicacion),
-          usuario: new FormControl(data.usuario.idUsuario),
-          condominio: new FormControl(data.condominio.idCondominio),
+    if (this.data.edicion) {
+      this.aS.listId(this.data.id).subscribe((data) => {
+        this.form.patchValue({
+          idAviso: data.idAviso,
+          titulo: data.titulo,
+          descripcion: data.descripcion,
+          fechaPublicacion: data.fechaPublicacion,
+          usuario: data.usuario.idUsuario,
+          condominio: data.condominio.idCondominio,
         });
       });
     }
   }
+  
 
 
 }

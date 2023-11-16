@@ -98,18 +98,19 @@ export class CreaeditaMensajeComponent  implements OnInit{
   }
 
   init() {
-    if (this.edicion) {
-      this.mS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idMensaje: new FormControl(data.idMensaje),
-          titulo: new FormControl(data.titulo),
-          descripcion: new FormControl(data.descripcion),
-          usuario: new FormControl(data.usuario.idUsuario),
-          receptor: new FormControl(data.receptor.idUsuario),          
+    if (this.data.edicion) {
+      this.mS.listId(this.data.id).subscribe((data) => {
+        this.form.patchValue({
+          idMensaje: data.idMensaje,
+          titulo: data.titulo,
+          descripcion: data.descripcion,
+          usuario: data.usuario.idUsuario,
+          receptor: data.receptor.idUsuario,
         });
       });
     }
   }
+  
 
 
 

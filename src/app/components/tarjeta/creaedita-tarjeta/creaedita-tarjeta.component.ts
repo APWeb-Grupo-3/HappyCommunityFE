@@ -107,17 +107,18 @@ export class CreaeditaTarjetaComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.tS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idTarjeta: new FormControl(data.idTarjeta),
-          tipoTarjeta: new FormControl(data.tipoTarjeta),
-          numeroTarjeta: new FormControl(data.numeroTarjeta),
-          fechaVencimiento: new FormControl(data.fechaVencimiento),
-          codigoSeguridad: new FormControl(data.codigoSeguridad),
-          usuario: new FormControl(data.usuario.idUsuario),
+        this.form.patchValue({
+          idTarjeta: data.idTarjeta,
+          tipoTarjeta: data.tipoTarjeta,
+          numeroTarjeta: data.numeroTarjeta,
+          fechaVencimiento: data.fechaVencimiento,
+          codigoSeguridad: data.codigoSeguridad,
+          usuario: data.usuario.idUsuario,
         });
       });
     }
   }
+  
 
 
 }

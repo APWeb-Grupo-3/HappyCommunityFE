@@ -88,14 +88,12 @@ export class CreaeditaComponent implements OnInit{
       this.init()
     }
 
-
-
     this.form = this.formBuilder.group({
       idCondominio: [''],
-      nombre: ['', (Validators.required, Validators.maxLength(20))],
-      departamento: ['',  (Validators.required, Validators.maxLength(20))],
-      distrito: ['',  (Validators.required, Validators.maxLength(20))],
-      direccion: ['',  (Validators.required, Validators.maxLength(100))],
+      nombre: ['', [Validators.required, Validators.maxLength(20)]],
+      departamento: ['',  [Validators.required, Validators.maxLength(20)]],
+      distrito: ['',  [Validators.required, Validators.maxLength(20)]],
+      direccion: ['',  [Validators.required, Validators.maxLength(100)]],
     });
   }
 
@@ -138,18 +136,19 @@ export class CreaeditaComponent implements OnInit{
   }
   
   init() {
-    if (this.edicion) {
-      this.cS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idCondominio: new FormControl(data.idCondominio),
-          nombre: new FormControl(data.nombre),
-          departamento: new FormControl(data.departamento),
-          distrito: new FormControl(data.distrito),
-          direccion: new FormControl(data.direccion),
+    if (this.data.edicion) {
+      this.cS.listId(this.data.id).subscribe((data) => {
+        this.form.patchValue({
+          idCondominio: data.idCondominio,
+          nombre: data.nombre,
+          departamento: data.departamento,
+          distrito: data.distrito,
+          direccion: data.direccion,
         });
       });
     }
   }
+  
   cancelar(): void {
     this.dialogRef.close();
   }
