@@ -9,6 +9,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { DocumentopagoService } from 'src/app/services/documentopago.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { CreaeditaUsuarioComponent } from '../../usuario/creaedita-usuario/creaedita-usuario.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-creaedita-documentopago',
@@ -23,6 +24,9 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
   edicion: boolean = false;
   listaTipoDocumentoPagos:TipoDocPago[]=[]
   listaUsuarios:Usuario[]=[]
+
+  minFecha: Date = moment().add('days').toDate();
+
   fechaEmision=new FormControl(new Date());
   fechaVencimiento=new FormControl(new Date());
 
@@ -60,14 +64,14 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       idDocumentoPago: [''],
-      idReceptor: ['', Validators.required],
-      fechaEmision: ['', Validators.required],
-      fechaVencimiento: ['', Validators.required],
-      moneda: ['', Validators.required],
-      total: ['', Validators.required],
-      estado: ['', Validators.required],
-      usuario: ['', Validators.required],
-      tipoDocPago: ['', Validators.required],
+      idReceptor: ['', [Validators.required]],
+      fechaEmision: ['', [Validators.required]],
+      fechaVencimiento: ['', [Validators.required]],
+      moneda: ['', [Validators.required]],
+      total: ['', [Validators.required]],
+      estado: ['', [Validators.required]],
+      usuario: ['', [Validators.required]],
+      tipoDocPago: ['', [Validators.required]],
     });
     this.uS.list().subscribe((data)=>{
       this.listaUsuarios=data;

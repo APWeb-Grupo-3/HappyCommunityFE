@@ -90,6 +90,4 @@ export class CreaeditaTiposervicioComponent implements OnInit {
       });
     }
   }
-  
-  
 }
