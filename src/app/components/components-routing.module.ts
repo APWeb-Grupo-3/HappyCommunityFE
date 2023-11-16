@@ -32,6 +32,7 @@ import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.
 import { CondominoDetallesComponent } from './condominio/condomino-detalles/condomino-detalles.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { Reporte2Component } from './reportes/reporte2/reporte2.component';
+import { ReportemayorComponent } from './reportes/reportemayor/reportemayor.component';
 
 const routes: Routes = [
   {    
@@ -194,6 +195,7 @@ const routes: Routes = [
     component: ReportesComponent,
     children: [
       { path: 'reporte2', component: Reporte2Component },
+      { path: 'mayordeudames', component: ReportemayorComponent },
     ],
   },
 ];

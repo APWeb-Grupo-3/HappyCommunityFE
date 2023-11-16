@@ -1,0 +1,5 @@
+.title {
+    display: grid;
+    place-items: center;
+    font-style: oblique;
+  }

@@ -64,6 +64,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ReportesComponent } from './reportes/reportes.component';
 import { Reporte2Component } from './reportes/reporte2/reporte2.component';
 import { NgChartsModule } from 'ng2-charts';
+import { ReportemayorComponent } from './reportes/reportemayor/reportemayor.component';
 
 
 @NgModule({
@@ -111,6 +112,7 @@ import { NgChartsModule } from 'ng2-charts';
     CondominoDetallesComponent,
     ReportesComponent,
     Reporte2Component,
+    ReportemayorComponent,
     
 
   ],
