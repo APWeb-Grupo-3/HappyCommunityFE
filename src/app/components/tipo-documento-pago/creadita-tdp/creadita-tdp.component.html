@@ -15,8 +15,18 @@
           >
             El nombre es obligatorio.
           </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('nombre')?.hasError('minlength')">
+            El nombre debe tener al menos 5 caracteres.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('nombre')?.hasError('maxlength')">
+            El nombre no debe tener más 100 caracteres.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('nombre')?.hasError('pattern')">
+            Solo se permiten letras.
+          </mat-error>
         </mat-form-field>
         
+        <br />
         <br />
         <button mat-raised-button class="aceptarbtn" >Aceptar</button>
         <br>

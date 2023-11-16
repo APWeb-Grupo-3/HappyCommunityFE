@@ -13,7 +13,13 @@
         <mat-error
           *ngIf="obtenerControlCampo('nombreUsuario')?.errors?.['required']"
         >
-          El username es obligatorio.
+          El nombre de usuario es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('nombreUsuario')?.hasError('minlength')">
+          El nombre de usuario debe tener al menos 5 caracteres.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('nombreUsuario')?.hasError('maxlength')">
+          El nombre de usuario no puede tener más de 30 caracteres.
         </mat-error>
       </mat-form-field>
       
@@ -25,7 +31,14 @@
         >
           La clave es obligatoria.
         </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('clave')?.hasError('minlength')">
+          La clave debe tener al menos 5 caracteres.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('clave')?.hasError('maxlength')">
+          La clave no puede tener más de 200 caracteres.
+        </mat-error>
       </mat-form-field>
+      <br />
       <br />
       <mat-form-field class="example-full-width" style="margin-right: 20px;">
         <mat-label>Rol</mat-label>
@@ -50,6 +63,15 @@
         >
           El nombre es obligatorio.
         </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('nombres')?.hasError('minlength')">
+          El nombre debe tener al menos 4 caracteres.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('nombres')?.hasError('maxlength')">
+          El nombre no puede tener más de 100 caracteres.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('nombres')?.hasError('pattern')">
+          Solo se permiten letras en los nombres.
+        </mat-error>
       </mat-form-field>
       
       <mat-form-field class="example-full-width">
@@ -60,7 +82,17 @@
         >
           El apellido es obligatorio.
         </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('apellidos')?.hasError('minlength')">
+          Los apellidos debe tener al menos 4 caracteres.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('apellidos')?.hasError('maxlength')">
+          Los apellidos no puede tener más de 100 caracteres.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('apellidos')?.hasError('pattern')">
+          Solo se permiten letras en los apellidos.
+        </mat-error>
       </mat-form-field>
+      <br />
       <br />
       <mat-form-field class="example-full-width" style="margin-right: 20px;">
         <mat-label>Correo</mat-label>
@@ -69,6 +101,12 @@
           *ngIf="obtenerControlCampo('correo')?.errors?.['required']"
         >
           El correo es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('correo')?.hasError('minlength')">
+          El correo debe tener al menos 4 caracteres.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('correo')?.hasError('maxlength')">
+          El correo no puede tener más de 100 caracteres.
         </mat-error>
       </mat-form-field>
       
@@ -81,6 +119,15 @@
         >
           La edad es obligatoria.
         </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('edad')?.hasError('pattern')">
+          Solo se permiten números enteros.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('edad')?.hasError('min')">
+          La edad mínima es de 18 años.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('edad')?.hasError('max')">
+          La edad máxima es de 100 años.
+        </mat-error>
       </mat-form-field>
       
       <mat-form-field class="example-full-width">
@@ -91,8 +138,18 @@
         >
           El telefono es obligatorio.
         </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('telefono')?.hasError('pattern')">
+          Solo se permiten números.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('telefono')?.hasError('minlength')">
+          El número debe tener 9 dígitos
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('telefono')?.hasError('maxlength')">
+          El número debe tener 9 dígitos
+        </mat-error>
       </mat-form-field>
 
+      <br />
       <br />
       <mat-form-field class="example-full-width">
         <mat-label>Género</mat-label>
@@ -104,7 +161,7 @@
         <mat-error
           *ngIf="obtenerControlCampo('genero')?.errors?.['required']"
         >
-          El genero es obligatorio.
+          El género es obligatorio.
         </mat-error>
       </mat-form-field>
 

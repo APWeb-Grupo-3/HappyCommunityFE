@@ -39,6 +39,7 @@ body {
     background: rgb(45, 45, 56);
     -webkit-text-fill-color: #ffffff;
   }
-  .example-full-width{
+  .example-full-width1{
+    width: 41%;
     border-radius: 15px;
   }
