@@ -49,9 +49,9 @@ The actual rendered columns are set as a property on the row definition" --
             <button
               mat-raised-button
               class="accion01btn"
-              [routerLink]="['edicion', element.idSolicitudAcceso]"
+              (click)="editar(element.idSolicitudAcceso,true)"
             >
-              Actualizar
+            <i class="fa-solid fa-pen-to-square"></i>
             </button>
           </td></ng-container
         >
@@ -65,7 +65,7 @@ The actual rendered columns are set as a property on the row definition" --
               class="accion02btn"
               (click)="eliminar(element.idSolicitudAcceso)"
             >
-              Eliminar
+            <i class="fa-solid fa-trash"></i>
             </button>
           </td></ng-container
         >

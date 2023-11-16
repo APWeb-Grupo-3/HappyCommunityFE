@@ -47,11 +47,12 @@ export class ListarSolicitudaccesoComponent {
     });
   }
   openDialog() {
-    const dialogRef = this.matDialog.open(CreaeditaSolicitudaccesoComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      // Lógica a realizar después de cerrar el diálogo
-      console.log('Dialog result:', result);
+    this.matDialog.open(CreaeditaSolicitudaccesoComponent);
+  }
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaeditaSolicitudaccesoComponent, {
+      data: { id: id, 
+      edicion:edicion},
     });
   }
   role: string = '';

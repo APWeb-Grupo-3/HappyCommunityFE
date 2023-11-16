@@ -38,7 +38,12 @@ export class ListarServicioComponent  implements OnInit{
     this.matDialog.open(CreaeditaServicioComponent);
   }
 
-
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaeditaServicioComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
+  }
 
 
 

@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <mat-dialog-content>
     <div class="container">
-        <mat-dialog-content>
+        
             <div style="text-align: center">
               <h2>Registro de Solicitudes de Acceso</h2>
 
@@ -15,7 +8,7 @@
                 
                 <mat-form-field  class="example-full-width" *ngIf="edicion">
                   <mat-label  >idSolicitudAcceso</mat-label>
-                  <input  matInput placeholder="Id" formControlName="idSolicitudAcceso" />
+                  <input  matInput placeholder="Id" formControlName="idSolicitudAcceso" readonly/>
                 </mat-form-field>
                
         
@@ -68,10 +61,7 @@
                 </a>
                 <p>{{ mensaje }}</p>
               </form>
-            </div>
-          </mat-dialog-content>
-        
+            </div>        
 
     </div>
-</body>
-</html>
+  </mat-dialog-content>
