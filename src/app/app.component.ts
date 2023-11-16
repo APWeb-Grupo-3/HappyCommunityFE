@@ -7,7 +7,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'HappyCommunity';
   role:string="";
   isSubMenuOpen: boolean = false;
@@ -24,6 +24,7 @@ export class AppComponent implements OnInit{
 
   verificar() {
     this.role=this.loginService.showRole();
+    this.username=this.loginService.showUsername();
     return this.loginService.verificar();
   }
   validarRol(){
@@ -35,16 +36,6 @@ export class AppComponent implements OnInit{
   }
   toggleSubMenu() {
     this.isSubMenuOpen = !this.isSubMenuOpen;
-  }
-  ngOnInit() {
-    this.obtenerUsername();
-    
-  }
-
-  obtenerUsername() {
-    this.username = this.loginService.showUsername();
-console.log('Nombre de usuario obtenido:', this.username);
-
   }
 
 }

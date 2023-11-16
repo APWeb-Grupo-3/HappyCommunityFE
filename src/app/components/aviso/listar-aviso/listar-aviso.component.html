@@ -29,7 +29,7 @@
               <p>Condominio: {{ element.condominio.nombre }}</p>
             </mat-card-content>
             <mat-card-actions>
-              <button class="accion01btn" [routerLink]="['edicion', element.idAviso]">
+              <button class="accion01btn" (click)="editar(element.idAviso,true)">
                 Actualizar
               </button>
               <span class="separator"></span>

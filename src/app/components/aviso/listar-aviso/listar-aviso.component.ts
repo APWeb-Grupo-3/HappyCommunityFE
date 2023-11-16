@@ -34,4 +34,10 @@ export class ListarAvisoComponent {
   openDialog(){
     this.matDialog.open(CreaeditaAvisoComponent)
   }
+  editar(id: number,edicion:boolean){
+    this.matDialog.open(CreaeditaAvisoComponent, {
+      data: { id: id, 
+      edicion:edicion},
+    });
+  }
 }
