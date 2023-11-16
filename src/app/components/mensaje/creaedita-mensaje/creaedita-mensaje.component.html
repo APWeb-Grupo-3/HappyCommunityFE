@@ -12,7 +12,7 @@
 
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>idMensaje</mat-label>
-          <input matInput placeholder="Id" formControlName="idMensaje" />
+          <input matInput placeholder="Id" formControlName="idMensaje" readonly/>
         </mat-form-field>
         <br />
         
@@ -54,7 +54,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Receptor</mat-label>
             <mat-select formControlName="receptor">
-              <mat-option *ngFor="let p of listarUsuarios" [value]="p.nombreUsuario">
+              <mat-option *ngFor="let p of listarUsuarios" [value]="p.idUsuario">
                 {{p.nombreUsuario}}
               </mat-option>
             </mat-select>
@@ -65,7 +65,6 @@
             </mat-error>
           </mat-form-field>
           <br />       
-
 
 
         <button mat-raised-button color="primary">Aceptar</button>
