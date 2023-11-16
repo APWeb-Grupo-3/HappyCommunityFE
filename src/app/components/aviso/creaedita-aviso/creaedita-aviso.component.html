@@ -11,7 +11,7 @@
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
         <mat-form-field class="example-full-width" *ngIf="edicion">
           <mat-label>idAviso</mat-label>
-          <input matInput placeholder="Id" formControlName="idAviso" />
+          <input matInput placeholder="Id" formControlName="idAviso" readonly/>
         </mat-form-field>
         <br />
 
@@ -95,7 +95,7 @@
         </mat-form-field>
         <br />
 
-        <button mat-raised-button color="primary">Aceptar</button>
+        <button mat-raised-button class="aceptarbtn">Aceptar</button>
         <br/>
         <a mat-raised-text class="cancelarbtn" (click)="cancelar()">
           Cancelar
