@@ -77,4 +77,19 @@ export class DocumentopagoService {
         .set('Content-Type', 'application/json'),
     });
   }
+
+
+  Deudames(): Observable<MesDeudaReDTO[]> {
+    let token = sessionStorage.getItem('token');
+    return this.http.get<MesDeudaReDTO[]>(`${this.url}/MesDeuda`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+
+
+
+
+
 }
