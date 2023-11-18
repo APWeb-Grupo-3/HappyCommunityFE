@@ -12,6 +12,9 @@ import {
 import { TipodocpagoService } from 'src/app/services/tipodocpago.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CreaeditaUsuarioComponent } from '../../usuario/creaedita-usuario/creaedita-usuario.component';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-creadita-tdp',
@@ -26,12 +29,15 @@ export class CreaditaTDPComponent implements OnInit{
   mensaje: string= '';
   id: number = 0;
   edicion: boolean = false;
+  listaUsuario:Usuario[]=[]
 
   constructor(
     private tdpS: TipodocpagoService,
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private uS:UsuarioService,
+    private lS:LoginService,
 
 
     private dialogRef: MatDialogRef<CreaeditaUsuarioComponent>,
@@ -45,10 +51,15 @@ export class CreaditaTDPComponent implements OnInit{
       this.init()
     }
 
+    this.uS.listUser(this.lS.showUsername()).subscribe((data)=>{
+      this.listaUsuario=data;
+    })
+
 
     this.form = this.formBuilder.group({
       idTipoDocPago: [''],
       nombre: ['', [Validators.required,Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(5),Validators.maxLength(100)]],
+      administrador:['',[Validators.required]]
     });
   }
 
@@ -56,6 +67,7 @@ export class CreaditaTDPComponent implements OnInit{
     if (this.form.valid) {
       this.condominio.idTipoDocPago = this.form.value.idTipoDocPago;
       this.condominio.nombre = this.form.value.nombre;
+      this.condominio.administrador=this.form.value.administrador;
       if (this.edicion) {
         this.tdpS.update(this.condominio).subscribe(() => {
           this.tdpS.list().subscribe((data) => {
@@ -73,7 +85,6 @@ export class CreaditaTDPComponent implements OnInit{
           });
         });
       }
-      this.router.navigate(['TipoDocPago']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
@@ -96,6 +107,7 @@ export class CreaditaTDPComponent implements OnInit{
         this.form.patchValue({
           idTipoDocPago: data.idTipoDocPago,
           nombre: data.nombre,
+          administrador:data.administrador
         });
       });
     }

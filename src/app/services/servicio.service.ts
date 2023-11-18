@@ -68,4 +68,13 @@ export class ServicioService {
       .set('Content-Type', 'application/json'),
     });
   }
+  listSA(administrador:string) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Servicio[]>(`${this.url}/listarsa/${administrador}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
+  }
 }

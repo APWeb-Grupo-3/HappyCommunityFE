@@ -10,6 +10,9 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { LoginService } from 'src/app/services/login.service';
+import { Usuario } from 'src/app/models/usuario';
 @Component({
   selector: 'app-creaedita-tiposervicio',
   templateUrl: './creaedita-tiposervicio.component.html',
@@ -21,13 +24,15 @@ export class CreaeditaTiposervicioComponent implements OnInit {
   mensaje: string= '';
   id: number = 0;
   edicion: boolean = false;
+  listaUsuario:Usuario[]=[]
 
   constructor(
     private tsS: TiposervicioService,
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-
+    private uS:UsuarioService,
+    private lS:LoginService,
 
     private dialogRef: MatDialogRef<CreaeditaTiposervicioComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
@@ -42,19 +47,28 @@ export class CreaeditaTiposervicioComponent implements OnInit {
     this.form = this.formBuilder.group({
       idTipoServicio: [''],
       nombreTipoServicio: ['', Validators.required],
+      administrador:['',Validators.required]
     });
+    this.uS.listUser(this.lS.showUsername()).subscribe((data)=>{
+      this.listaUsuario=data;
+    })
   }
-
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   aceptar(): void {
     if (this.form.valid) {
       this.tipoServicio.idTipoServicio=this.form.value.idTipoServicio;
       this.tipoServicio.nombreTipoServicio=this.form.value.nombreTipoServicio;
+      this.tipoServicio.administrador=this.form.value.administrador;
 
       if (this.edicion) {
         this.tsS.update(this.tipoServicio).subscribe(() => {
           this.tsS.list().subscribe((data) => {
             this.tsS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
           });
         });
       } else {
@@ -62,6 +76,8 @@ export class CreaeditaTiposervicioComponent implements OnInit {
           this.tsS.list().subscribe((data) => {
             this.tsS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
+
           });
         });
       }
@@ -86,6 +102,7 @@ export class CreaeditaTiposervicioComponent implements OnInit {
         this.form.patchValue({
           idTipoServicio: data.idTipoServicio,
           nombreTipoServicio: data.nombreTipoServicio,
+          administrador:data.administrador
         });
       });
     }

@@ -10,6 +10,7 @@ import { DocumentopagoService } from 'src/app/services/documentopago.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { CreaeditaUsuarioComponent } from '../../usuario/creaedita-usuario/creaedita-usuario.component';
 import * as moment from 'moment';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-creaedita-documentopago',
@@ -23,7 +24,8 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
   id: number = 0;
   edicion: boolean = false;
   listaTipoDocumentoPagos:TipoDocPago[]=[]
-  listaUsuarios:Usuario[]=[]
+  listaUsuarios1:Usuario[]=[]
+  listaUsuarios2:Usuario[]=[]
 
   minFecha: Date = moment().add('days').toDate();
 
@@ -47,6 +49,7 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private dS:DocumentopagoService,
+    private lS:LoginService,
 
 
     private dialogRef: MatDialogRef<CreaeditaUsuarioComponent>,
@@ -73,8 +76,8 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
       usuario: ['', [Validators.required]],
       tipoDocPago: ['', [Validators.required]],
     });
-    this.uS.list().subscribe((data)=>{
-      this.listaUsuarios=data;
+    this.uS.listUser(this.lS.showUsername()).subscribe((data)=>{
+      this.listaUsuarios1=data;
     })
     this.tS.list().subscribe((data)=>{
       this.listaTipoDocumentoPagos=data;
