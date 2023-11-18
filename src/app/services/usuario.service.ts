@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Usuario } from '../models/usuario';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Reporte1DTO } from '../models/Reporte1DTO';
+import { map } from 'rxjs/operators';
 
 const base_url = environment.base;
 
@@ -66,12 +67,13 @@ export class UsuarioService {
   listUser(user:string){
     let token = sessionStorage.getItem('token');
 
-    return this.http.get<Usuario[]>(`${this.url}/listar/${user}`,{
+    return this.http.get<Usuario[]>(`${this.url}/listaru/${user}`,{
       headers: new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json'),
     })
   }
+  
   getReport1():Observable<Reporte1DTO[]>{
     let token = sessionStorage.getItem('token');
     return this.http.get<Reporte1DTO[]>(`${this.url}/reporte1`,{
@@ -79,5 +81,22 @@ export class UsuarioService {
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json'),
     })
+  }
+  getId(username:string){
+    let token = sessionStorage.getItem('token');
+    return this.http.get(`${this.url}/listar/${username}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    })
+  }
+  listUserC(id_condominio:number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Usuario[]>(`${this.url}/listaruc/${id_condominio}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
   }
 }

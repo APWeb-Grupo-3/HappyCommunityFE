@@ -33,11 +33,11 @@
                 <br>
                 <mat-form-field class="example-full-width">
                     <mat-label>descripcion</mat-label>
-                    <input matInput placeholder="descripcion" formControlName="descripcion" />
+                    <textarea matInput placeholder="descripcion" formControlName="descripcion"></textarea>
                     <mat-error
                       *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"
                     >
-                      El titulo es obligatorio.
+                      La descripción es obligatoria.
                     </mat-error>
                   </mat-form-field>
         

@@ -9,7 +9,10 @@ import {
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Condominio } from 'src/app/models/condominio';
+import { Usuario } from 'src/app/models/usuario';
 import { CondominioService } from 'src/app/services/condominio.service';
+import { LoginService } from 'src/app/services/login.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-creaedita',
@@ -22,6 +25,7 @@ export class CreaeditaComponent implements OnInit{
   mensaje: string= '';
   id: number = 0;
   edicion: boolean = false;
+  listaUsuarios:Usuario[]=[]
 
   distritos: { value: string; viewValue: string }[] = [
     { value: 'Ancón', viewValue: 'Ancón' },
@@ -74,7 +78,8 @@ export class CreaeditaComponent implements OnInit{
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private matDialog: MatDialog,
-
+    private uS:UsuarioService,
+    private lS:LoginService,
 
     private dialogRef: MatDialogRef<CreaeditaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
@@ -93,21 +98,31 @@ export class CreaeditaComponent implements OnInit{
       nombre: ['', [Validators.required, Validators.maxLength(20)]],
       distrito: ['',  [Validators.required, Validators.maxLength(20)]],
       direccion: ['',  [Validators.required, Validators.maxLength(100)]],
+      administrador:['',Validators.required]
     });
-  }
 
+    this.uS.listUser(this.lS.showUsername()).subscribe((data)=>{
+      this.listaUsuarios=data
+    })
+  }
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   aceptar(): void {
     if (this.form.valid) {
       this.condominio.idCondominio = this.form.value.idCondominio;
       this.condominio.nombre = this.form.value.nombre;
       this.condominio.distrito = this.form.value.distrito;
       this.condominio.direccion = this.form.value.direccion;
+      this.condominio.administrador=this.form.value.administrador;
+
       if (this.edicion) {
         this.cS.update(this.condominio).subscribe(() => {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
             this.dialogRef.close();
-
+            this.nuevobtn();
           });
         });
       } else {
@@ -115,11 +130,10 @@ export class CreaeditaComponent implements OnInit{
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
             this.dialogRef.close();
-
+            this.nuevobtn();
           });
         });
       }
-      this.router.navigate(['components/condominios']);
     } else {
       this.mensaje = 'Por favor complete todos los campos obligatorios.';
     }
@@ -141,6 +155,7 @@ export class CreaeditaComponent implements OnInit{
           nombre: data.nombre,
           distrito: data.distrito,
           direccion: data.direccion,
+          administrador:data.administrador
         });
       });
     }

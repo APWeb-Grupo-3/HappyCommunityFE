@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      type="text/css"    />
+  </head>
+  <body>
+    <div class="container">
+      <h2 style="text-align: center">Planes de Convivencia</h2>
+      <br />
+
+      <div class="card-container">
+        <ng-container *ngFor="let planconvivencia of planconvivencia">
+
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-subtitle>{{
+                planconvivencia.idPlanConvivencia
+                
+              }}
+              <p>{{ planconvivencia.condominio.nombre }}</p>
+            </mat-card-subtitle>
+              <mat-card-title>{{
+                planconvivencia.titulo
+              }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ planconvivencia.descripcion }}</p>
+             
+              <mat-divider></mat-divider>
+            </mat-card-content>
+
+            <mat-card-footer>
+              <mat-progress-bar  mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+  </body>
+</html>

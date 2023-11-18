@@ -10,6 +10,7 @@ import {
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
+import { LoginService } from 'src/app/services/login.service';
 import { TarjetaService } from 'src/app/services/tarjeta.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -25,6 +26,7 @@ export class CreaeditaTarjetaComponent implements OnInit {
   id: number = 0;
   edicion: boolean = false;
   listarUsuarios: Usuario[]=[];
+
   tipos: { value: string; viewValue: string }[] = [
     { value: 'Debito', viewValue: 'Debito' },
     { value: 'Credito', viewValue: 'Credito' },
@@ -37,6 +39,7 @@ export class CreaeditaTarjetaComponent implements OnInit {
     private route: ActivatedRoute,
     private tS: TarjetaService,
     private matDialog: MatDialog,
+    private lS:LoginService,
 
     private dialogRef: MatDialogRef<CreaeditaTarjetaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
@@ -57,10 +60,10 @@ export class CreaeditaTarjetaComponent implements OnInit {
       codigoSeguridad: ['', [Validators.required, Validators.pattern('^[0-9]{1,3}$')]],
       usuario: ['', Validators.required],
     });
-    this.uS.list().subscribe((data)=>{
+    
+    this.uS.listUser(this.lS.showUsername()).subscribe((data)=>{
       this.listarUsuarios=data;
     })
-    
   }
 
   aceptar(): void {
@@ -71,7 +74,7 @@ export class CreaeditaTarjetaComponent implements OnInit {
       this.tarjeta.fechaVencimiento = this.form.value.fechaVencimiento;
       this.tarjeta.codigoSeguridad = this.form.value.codigoSeguridad;
       this.tarjeta.usuario.idUsuario = this.form.value.usuario;
-
+  
       if (this.edicion) {
         this.tS.update(this.tarjeta).subscribe(() => {
           this.tS.list().subscribe((data) => {

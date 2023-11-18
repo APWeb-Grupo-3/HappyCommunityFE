@@ -68,6 +68,9 @@ import { ReportemayorComponent } from './reportes/reportemayor/reportemayor.comp
 import { PerfilComponent } from './usuario/perfil/perfil.component';
 import { Reporte1Component } from './reportes/reporte1/reporte1.component';
 import { ReportemesdeudaComponent } from './reportes/reportemesdeuda/reportemesdeuda.component';
+import { AvisosCondominioComponent } from './condominio/condomino-detalles/avisos-condominio/avisos-condominio.component';
+import { UsuariosCondominioComponent } from './condominio/condomino-detalles/usuarios-condominio/usuarios-condominio.component';
+import { PlanCondominioComponent } from './condominio/condomino-detalles/plan-condominio/plan-condominio.component';
 
 
 @NgModule({
@@ -119,6 +122,9 @@ import { ReportemesdeudaComponent } from './reportes/reportemesdeuda/reportemesd
     PerfilComponent,
     Reporte1Component,
     ReportemesdeudaComponent,
+    AvisosCondominioComponent,
+    UsuariosCondominioComponent,
+    PlanCondominioComponent,
 
   ],
   imports: [

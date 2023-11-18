@@ -49,6 +49,18 @@
         </mat-error>
       </mat-form-field>
       <br />
+      <mat-form-field class="example-full-width">
+        <mat-label>administrador</mat-label>
+        <mat-select formControlName="administrador">
+          <mat-option *ngFor="let p of listaUsuarios" [value]="p.nombreUsuario">
+            {{p.nombreUsuario}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="obtenerControlCampo('administrador')?.errors?.['required']">
+          El administrador es obligatorio.
+        </mat-error>
+      </mat-form-field>
+      <br />
       <br />
 
       <br />

@@ -1,0 +1,47 @@
+
+.container {
+  
+    margin: 0 auto; 
+    padding: 0 15px; 
+  }
+  .button-container {
+    text-align: right;
+    margin-bottom: 15px; 
+  }
+  .card-container {
+    display: flex;
+    gap: 15px; /* Agregar espacio entre las tarjetas */
+  
+  }
+  
+  .example-card {
+    width: 15%; 
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .mat-card-actions{
+  padding-left: 15px;
+  }
+  
+  .btneditar{
+    text-align: center;
+    border-radius: 5px;
+    padding-inline: 20% ;
+    border: none;
+    background: rgb(175, 217, 227);
+    color: #0C262C;
+  
+  }
+  .btneliminar{
+    text-align: center;
+    border-radius: 5px;
+    padding-inline: 8% ;
+    border: none;
+    background: #0C262C;
+    color: #ffffff;
+  }
+  
+  .separator {
+    margin-left: 15%; 
+  }
+  

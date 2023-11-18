@@ -45,6 +45,7 @@ ngOnInit(): void {
     departamento: [''],
     distrito: [''],
     direccion: [''],
+    administrador:['']
   });
 }
 
@@ -57,6 +58,7 @@ init() {
         departamento: data.departamento,
         distrito: data.distrito,
         direccion: data.direccion,
+        administrador:data.administrador
       });
     });
   }

@@ -69,4 +69,13 @@ export class PlanconvivenciaService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listPC(id_condominio:number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<PlanConvivencia[]>(`${this.url}/listarpc/${id_condominio}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }
