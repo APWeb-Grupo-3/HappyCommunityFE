@@ -71,4 +71,14 @@ export class TiposervicioService {
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json'),
     });
-  }}
+  }
+  listTSA(administrador:string) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<TipoServicio[]>(`${this.url}/listartsa/${administrador}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
+  }
+}

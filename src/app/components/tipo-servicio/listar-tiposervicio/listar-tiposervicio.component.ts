@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { CreaeditaTiposervicioComponent } from '../creaedita-tiposervicio/creaedita-tiposervicio.component';
 import { RouterLink } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -22,21 +23,24 @@ export class ListarTiposervicioComponent implements OnInit{
     'accion02',
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private cS: TiposervicioService,private matDialog:MatDialog) {}
+  constructor(private cS: TiposervicioService,private matDialog:MatDialog,
+    private lS:LoginService) {}
   ngOnInit(): void {
-    this.cS.list().subscribe((data) => {
+    this.cS.listTSA(this.lS.showUsername()).subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
-    this.cS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    });
+  }
+  nuevobtn() {
+    //refresca la página
+    location.reload();
   }
   eliminar(id: number) {
     this.cS.delete(id).subscribe((data) => {
       this.cS.list().subscribe((data) => {
         this.cS.setList(data);
+        this.nuevobtn();
+
       });
     });
   }

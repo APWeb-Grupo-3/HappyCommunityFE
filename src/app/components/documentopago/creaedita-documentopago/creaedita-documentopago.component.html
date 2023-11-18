@@ -10,7 +10,7 @@
         <mat-form-field class="example-full-width" style="margin-right: 20px;">
           <mat-label>Emisor</mat-label>
           <mat-select formControlName="usuario">
-            <mat-option *ngFor="let p of listaUsuarios" [value]="p.idUsuario">
+            <mat-option *ngFor="let p of listaUsuarios1" [value]="p.idUsuario">
               {{p.nombreUsuario}}
             </mat-option>
           </mat-select>
@@ -23,7 +23,7 @@
         <mat-form-field class="example-full-width">
           <mat-label>Receptor</mat-label>
           <mat-select formControlName="idReceptor">
-            <mat-option *ngFor="let p of listaUsuarios" [value]="p.idUsuario">
+            <mat-option *ngFor="let p of listaUsuarios2" [value]="p.idUsuario">
               {{p.nombreUsuario}}
             </mat-option>
           </mat-select>
@@ -96,7 +96,7 @@
           
           <mat-form-field class="example-full-width">
             <mat-label>Total</mat-label>
-            <input matInput placeholder="total" formControlName="total" />
+            <input matInput placeholder="0.00" formControlName="total" readonly/>
             <mat-error
               *ngIf="obtenerControlCampo('total')?.errors?.['required']"
             >

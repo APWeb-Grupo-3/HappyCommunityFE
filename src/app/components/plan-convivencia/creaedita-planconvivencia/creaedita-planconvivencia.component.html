@@ -33,7 +33,7 @@
                 <br>
                 <mat-form-field class="example-full-width">
                     <mat-label>descripcion</mat-label>
-                    <textarea matInput placeholder="descripcion" formControlName="descripcion"></textarea>
+                    <textarea class="txt" matInput placeholder="descripcion" formControlName="descripcion"></textarea>
                     <mat-error
                       *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"
                     >
