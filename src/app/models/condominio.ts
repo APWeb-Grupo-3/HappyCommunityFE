@@ -4,5 +4,6 @@ export class Condominio{
     departamento:string="Lima"
     distrito:string=""
     direccion:string=""
+    administrador:string=""
   }
   

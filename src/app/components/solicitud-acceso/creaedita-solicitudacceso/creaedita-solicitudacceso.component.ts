@@ -59,16 +59,22 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
       usuario: ['', Validators.required],
       condominio: ['', Validators.required],
     });
+    
     this.cS.list().subscribe((data) => {
       this.listarcondominios = data;
     });
-    this.uS.list().subscribe((data) => {
+
+    
+    this.uS.listUser(this.loginService.showUsername()).subscribe((data) => {
       this.listausuario = data;
     });
 
     
   }
-
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   aceptar(): void {
     if (this.form.valid) {
       this.solicitudacceso.idSolicitudAcceso = this.form.value.idSolicitudAcceso;
@@ -81,6 +87,7 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
           this.sS.list().subscribe((data) => {
             this.sS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn()
 
           });
         });
@@ -89,6 +96,7 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
           this.sS.list().subscribe((data) => {
             this.sS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn()
 
           });
         });

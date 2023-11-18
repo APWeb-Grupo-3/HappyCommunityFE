@@ -30,34 +30,41 @@ export class ListarSolicitudaccesoComponent {
     private matDialog: MatDialog
   ) {}
   ngOnInit(): void {
-    this.sS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    });
-    this.sS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    });
+    if (this.loginService.showRole() == 'VECINO') {
+      this.sS.listByUser(this.loginService.showUsername()).subscribe((data) => {
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+      });
+    }
+    else if(this.loginService.showRole()=='ADMINISTRADOR'){
+      this.sS.listSAR(this.loginService.showUsername()).subscribe((data)=>{
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+      })
+    }
+
+  }
+  nuevobtn() {
+    //refresca la página
+    location.reload();
   }
   eliminar(id: number) {
     this.sS.delete(id).subscribe((data) => {
       this.sS.list().subscribe((data) => {
         this.sS.setList(data);
+        this.nuevobtn();
       });
     });
   }
   openDialog() {
     this.matDialog.open(CreaeditaSolicitudaccesoComponent);
   }
-  editar(id: number,edicion:boolean){
+  editar(id: number, edicion: boolean) {
     this.matDialog.open(CreaeditaSolicitudaccesoComponent, {
-      data: { id: id, 
-      edicion:edicion},
+      data: { id: id, edicion: edicion },
     });
   }
   role: string = '';
-
-  
 
   vecino() {
     this.role = this.loginService.showRole();
@@ -67,5 +74,4 @@ export class ListarSolicitudaccesoComponent {
       return false;
     }
   }
-  
 }

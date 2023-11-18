@@ -1,26 +1,37 @@
 import { CondominioService } from './../../../services/condominio.service';
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Aviso } from 'src/app/models/aviso';
 import { Condominio } from 'src/app/models/condominio';
 import { Usuario } from 'src/app/models/usuario';
 import { AvisoService } from 'src/app/services/aviso.service';
+import { LoginService } from 'src/app/services/login.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-creaedita-aviso',
   templateUrl: './creaedita-aviso.component.html',
-  styleUrls: ['./creaedita-aviso.component.css']
+  styleUrls: ['./creaedita-aviso.component.css'],
 })
-export class CreaeditaAvisoComponent implements OnInit{
+export class CreaeditaAvisoComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   aviso: Aviso = new Aviso();
   mensaje: string = '';
   id: number = 0;
   edicion: boolean = false;
-  listarUsuarios: Usuario[]=[]; 
+  listarUsuarios: Usuario[] = [];
   listarcondominios: Condominio[] = [];
 
   constructor(
@@ -31,17 +42,17 @@ export class CreaeditaAvisoComponent implements OnInit{
     private route: ActivatedRoute,
     private aS: AvisoService,
     private matDialog: MatDialog,
+    private lS: LoginService,
 
     private dialogRef: MatDialogRef<CreaeditaAvisoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
-
+    @Inject(MAT_DIALOG_DATA) public data: { id: number; edicion: boolean }
   ) {}
 
   ngOnInit(): void {
-    if(this.data&&this.data.id&&this.data.edicion){
-      this.edicion=this.data.edicion
-      this.id=this.data.id
-      this.init()
+    if (this.data && this.data.id && this.data.edicion) {
+      this.edicion = this.data.edicion;
+      this.id = this.data.id;
+      this.init();
     }
     this.form = this.formBuilder.group({
       idAviso: [''],
@@ -51,13 +62,19 @@ export class CreaeditaAvisoComponent implements OnInit{
       usuario: ['', Validators.required],
       condominio: ['', Validators.required],
     });
-    this.uS.list().subscribe((data) => {
+    this.uS.listUser(this.lS.showUsername()).subscribe((data) => {
       this.listarUsuarios = data;
     });
-    this.cS.list().subscribe((data) => {
-      this.listarcondominios = data;
-    });
-    
+    if (this.lS.showRole() == 'VECINO') {
+      this.cS.listCVA(this.lS.showUsername()).subscribe((data) => {
+        this.listarcondominios = data;
+      });
+    }
+    else if(this.lS.showRole()=='ADMINISTRADOR'){
+      this.cS.listCAR(this.lS.showUsername()).subscribe((data)=>{
+        this.listarcondominios=data;
+      })
+    }
   }
 
   aceptar(): void {
@@ -67,15 +84,13 @@ export class CreaeditaAvisoComponent implements OnInit{
       this.aviso.descripcion = this.form.value.descripcion;
       this.aviso.fechaPublicacion = this.form.value.fechaPublicacion;
       this.aviso.usuario.idUsuario = this.form.value.usuario;
-      this.aviso.condominio.idCondominio = this.form.value.condominio; 
-
+      this.aviso.condominio.idCondominio = this.form.value.condominio;
 
       if (this.edicion) {
         this.aS.update(this.aviso).subscribe(() => {
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
             this.dialogRef.close();
-
           });
         });
       } else {
@@ -83,7 +98,6 @@ export class CreaeditaAvisoComponent implements OnInit{
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
             this.dialogRef.close();
-
           });
         });
       }
@@ -116,7 +130,4 @@ export class CreaeditaAvisoComponent implements OnInit{
       });
     }
   }
-  
-
-
 }

@@ -69,6 +69,22 @@ export class CondominioService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listCAR(administrador:string) {
+    let token = sessionStorage.getItem('token');
 
-    
+    return this.http.get<Condominio[]>(`${this.url}/listarcar/${administrador}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+  listCVA(nombre_usuario:string) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Condominio[]>(`${this.url}/listarcva/${nombre_usuario}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }

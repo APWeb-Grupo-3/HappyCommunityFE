@@ -82,5 +82,13 @@ export class AvisoService {
     });
   }
 
+  listAvisosByCondominio(id: number) {
+    let token = sessionStorage.getItem('token');
 
+    return this.http.get<Aviso[]>(`${this.url}/listar/${id}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }

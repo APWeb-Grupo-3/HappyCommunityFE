@@ -1,5 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Condominio } from 'src/app/models/condominio';
@@ -7,13 +13,14 @@ import { PlanConvivencia } from 'src/app/models/planconvivencia';
 import { CondominioService } from 'src/app/services/condominio.service';
 import { PlanconvivenciaService } from 'src/app/services/planconvivencia.service';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-creaedita-planconvivencia',
   templateUrl: './creaedita-planconvivencia.component.html',
   styleUrls: ['./creaedita-planconvivencia.component.css'],
 })
-export class CreaeditaPlanconvivenciaComponent implements OnInit  {
+export class CreaeditaPlanconvivenciaComponent implements OnInit {
   form: FormGroup = new FormGroup({});
 
   planconvivencia: PlanConvivencia = new PlanConvivencia();
@@ -22,7 +29,6 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
   edicion: boolean = false;
   listarcondominios: Condominio[] = [];
 
-
   constructor(
     private cS: CondominioService,
     private router: Router,
@@ -30,20 +36,17 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
     private route: ActivatedRoute,
     private pS: PlanconvivenciaService,
     private matDialog: MatDialog,
-
+    private lS: LoginService,
 
     private dialogRef: MatDialogRef<CreaeditaPlanconvivenciaComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
-
-
+    @Inject(MAT_DIALOG_DATA) public data: { id: number; edicion: boolean }
   ) {}
   ngOnInit(): void {
-    if(this.data&&this.data.id&&this.data.edicion){
-      this.edicion=this.data.edicion
-      this.id=this.data.id
-      this.init()
+    if (this.data && this.data.id && this.data.edicion) {
+      this.edicion = this.data.edicion;
+      this.id = this.data.id;
+      this.init();
     }
-
 
     this.form = this.formBuilder.group({
       idPlanConvivencia: [''],
@@ -51,14 +54,21 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
       titulo: ['', [Validators.required, Validators.maxLength(50)]],
       descripcion: ['', [Validators.required, Validators.maxLength(200)]],
     });
-    this.cS.list().subscribe((data) => {
-      this.listarcondominios = data;
-    });
+    if (this.lS.showRole() == 'ADMINISTRADOR') {
+      this.cS.listCAR(this.lS.showUsername()).subscribe((data) => {
+        this.listarcondominios = data;
+      });
+    } else if (this.lS.showRole() == 'VECINO') {
+      this.cS.listCVA(this.lS.showUsername()).subscribe((data) => {
+        this.listarcondominios = data;
+      });
+    }
   }
 
   aceptar(): void {
     if (this.form.valid) {
-      this.planconvivencia.idPlanConvivencia = this.form.value.idPlanConvivencia;
+      this.planconvivencia.idPlanConvivencia =
+        this.form.value.idPlanConvivencia;
       this.planconvivencia.titulo = this.form.value.titulo;
       this.planconvivencia.descripcion = this.form.value.descripcion;
       this.planconvivencia.condominio.idCondominio = this.form.value.condominio;
@@ -68,7 +78,6 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
           this.pS.list().subscribe((data) => {
             this.pS.setList(data);
             this.dialogRef.close();
-
           });
         });
       } else {
@@ -76,7 +85,6 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
           this.pS.list().subscribe((data) => {
             this.pS.setList(data);
             this.dialogRef.close();
-
           });
         });
       }
@@ -107,7 +115,4 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit  {
       });
     }
   }
-  
-
-  
 }

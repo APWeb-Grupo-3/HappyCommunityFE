@@ -69,4 +69,25 @@ export class SolicitudaccesoService {
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json'),
     });
-  }}
+  }
+  listByUser(username: string) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<SolicitudAcceso[]>(`${this.url}/listarsve/${username}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
+  }
+  listSAR(administrador: string) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<SolicitudAcceso[]>(`${this.url}/listarsar/${administrador}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
+  }
+  
+}
+

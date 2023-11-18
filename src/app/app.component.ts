@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LoginService } from './services/login.service';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -14,7 +15,8 @@ export class AppComponent{
   role:string="";
   isSubMenuOpen: boolean = false;
   username:string="";
-
+  id:Observable<number>=new Observable()
+  
   constructor(private loginService: LoginService,private uS:UsuarioService) {
 
   }
@@ -26,6 +28,7 @@ export class AppComponent{
   verificar() {
     this.role=this.loginService.showRole();
     this.username=this.loginService.showUsername();
+
     return this.loginService.verificar();
   }
   validarRol(){
@@ -38,5 +41,5 @@ export class AppComponent{
   toggleSubMenu() {
     this.isSubMenuOpen = !this.isSubMenuOpen;
   }
-
+  
 }

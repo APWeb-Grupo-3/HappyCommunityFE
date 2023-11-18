@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Detalle } from 'src/app/models/detalle';
 import { DetalleService } from 'src/app/services/detalle.service';
 import { CreaeditaDetalleComponent } from '../creaedita-detalle/creaedita-detalle.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-listar-detalle',
@@ -22,8 +23,9 @@ export class ListarDetalleComponent implements OnInit{
     'accion02',
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private dS: DetalleService, private matDialog:MatDialog) {}
+  constructor(private dS: DetalleService, private matDialog:MatDialog,private route:ActivatedRoute) {}
   ngOnInit(): void {
+
     this.dS.list().subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;

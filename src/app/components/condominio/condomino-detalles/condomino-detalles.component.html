@@ -35,21 +35,21 @@
             id="planconvivencia"
           >
             <div [hidden]="route.children.length !== 0">
-              <app-listar-planconvivencia></app-listar-planconvivencia>
+              <app-plan-condominio></app-plan-condominio>
             </div>
           </div>
 
           <div [hidden]="selectedContent !== 'aviso'" id="aviso">
            
             <div [hidden]="route.children.length !== 0">
-              <app-listar-aviso></app-listar-aviso>
+              <app-avisos-condominio></app-avisos-condominio>
             </div>
           </div>
 
           <div [hidden]="selectedContent !== 'usuario'" id="usuario">
            
             <div [hidden]="route.children.length !== 0">
-              <app-listar-usuario></app-listar-usuario>
+              <app-usuarios-condominio></app-usuarios-condominio>
             </div>
           </div>
         </div>

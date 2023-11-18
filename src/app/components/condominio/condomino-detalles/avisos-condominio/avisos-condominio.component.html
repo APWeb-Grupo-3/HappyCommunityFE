@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aviso</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2 style="text-align: center">Lista de Avisos por condominio</h2>
+      <div style="text-align: right">
+      </div>
+      <br />
+
+      <div class="card-container">
+        <ng-container *ngFor="let element of avisos">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>{{ element.titulo }}</mat-card-title>
+              <mat-card-subtitle>Código: {{ element.idAviso }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>Descripción: {{ element.descripcion }}</p>
+              <p>Fecha de Publicación: {{ element.fechaPublicacion }}</p>
+              <p>Usuario: {{ element.usuario.nombreUsuario }}</p>
+              <p>Condominio: {{ element.condominio.nombre }}</p>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+      </div>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </body>
+</html>
