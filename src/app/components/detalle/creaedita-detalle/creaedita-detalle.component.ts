@@ -56,11 +56,14 @@ export class CreaeditaDetalleComponent implements OnInit {
     this.seS.listSA(this.lS.showUsername()).subscribe((data)=>{
       this.listaServicios=data;
     })
-    this.dpS.listDAR(this.lS.showUsername()).subscribe((data)=>{
+    this.dpS.listDARD(this.lS.showUsername()).subscribe((data)=>{
       this.listaDocumentoPagos=data;
     })
   }
-
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   aceptar(): void {
     if (this.form.valid) {
       this.detalle.idDetalle = this.form.value.idDetalle;
@@ -73,6 +76,7 @@ export class CreaeditaDetalleComponent implements OnInit {
           this.dS.list().subscribe((data) => {
             this.dS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
 
           });
         });
@@ -81,6 +85,7 @@ export class CreaeditaDetalleComponent implements OnInit {
           this.dS.list().subscribe((data) => {
             this.dS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
 
           });
         });
