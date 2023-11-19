@@ -69,4 +69,13 @@ export class TipodocpagoService {
       .set('Content-Type', 'application/json'),
     });
   }
+  listTDR(administrador:String) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<TipoDocPago[]>(`${this.url}/listartdr/${administrador}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
+  }
 }
