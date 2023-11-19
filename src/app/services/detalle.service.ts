@@ -68,4 +68,13 @@ export class DetalleService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listDDoc(id_documento_pago:number) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Detalle[]>(`${this.url}/listarddoc/${id_documento_pago}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }

@@ -91,6 +91,18 @@ The actual rendered columns are set as a property on the row definition" --
             </button>
           </td></ng-container
         >
+        <ng-container matColumnDef="accion03">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element">
+            <button 
+              mat-raised-button
+              class="accion03btn"
+              (click)="openDialogDetalle(element.idDocumentoPago)"
+            >
+            <i class="fa-solid fa-eye"></i>
+            </button>
+          </td></ng-container
+        >
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>

@@ -72,6 +72,7 @@ import { AvisosCondominioComponent } from './condominio/condomino-detalles/aviso
 import { UsuariosCondominioComponent } from './condominio/condomino-detalles/usuarios-condominio/usuarios-condominio.component';
 import { PlanCondominioComponent } from './condominio/condomino-detalles/plan-condominio/plan-condominio.component';
 import { MensajeRecibidoComponent } from './mensaje/mensaje-recibido/mensaje-recibido.component';
+import { DetalleDialogComponent } from './documentopago/detalle-dialog/detalle-dialog.component';
 
 
 @NgModule({
@@ -127,6 +128,7 @@ import { MensajeRecibidoComponent } from './mensaje/mensaje-recibido/mensaje-rec
     UsuariosCondominioComponent,
     PlanCondominioComponent,
     MensajeRecibidoComponent,
+    DetalleDialogComponent,
 
   ],
   imports: [
