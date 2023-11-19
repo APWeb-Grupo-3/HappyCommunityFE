@@ -73,6 +73,7 @@ import { PlanCondominioComponent } from './condominio/condomino-detalles/plan-co
 import { MensajeRecibidoComponent } from './mensaje/mensaje-recibido/mensaje-recibido.component';
 import { DetalleDialogComponent } from './documentopago/detalle-dialog/detalle-dialog.component';
 import { Reporte2bComponent } from './reportes/reporte2b/reporte2b.component';
+import { Reporte5Component } from './reportes/reporte5/reporte5.component';
 
 
 @NgModule({
@@ -129,6 +130,7 @@ import { Reporte2bComponent } from './reportes/reporte2b/reporte2b.component';
     MensajeRecibidoComponent,
     DetalleDialogComponent,
     Reporte2bComponent,
+    Reporte5Component,
 
   ],
   imports: [
