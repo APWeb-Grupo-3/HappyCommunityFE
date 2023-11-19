@@ -64,7 +64,10 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit {
       });
     }
   }
-
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   aceptar(): void {
     if (this.form.valid) {
       this.planconvivencia.idPlanConvivencia =
@@ -78,6 +81,7 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit {
           this.pS.list().subscribe((data) => {
             this.pS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
           });
         });
       } else {
@@ -85,6 +89,8 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit {
           this.pS.list().subscribe((data) => {
             this.pS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
+
           });
         });
       }

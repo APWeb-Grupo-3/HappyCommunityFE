@@ -78,4 +78,13 @@ export class PlanconvivenciaService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listPCR(administrador:string) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<PlanConvivencia[]>(`${this.url}/listarpcr/${administrador}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }
