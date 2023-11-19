@@ -5,6 +5,7 @@ import { Usuario } from '../models/usuario';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Reporte1DTO } from '../models/Reporte1DTO';
 import { map } from 'rxjs/operators';
+import { Reporte3DTO } from '../models/Reporte3DTO';
 
 const base_url = environment.base;
 
@@ -99,4 +100,14 @@ export class UsuarioService {
       .set('Content-Type', 'application/json'),
     });
   }
+
+  getReport3(administrador:string):Observable<Reporte3DTO[]>{
+    let token = sessionStorage.getItem('token');
+    return this.http.get<Reporte3DTO[]>(`${this.url}/reporte3/${administrador}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    })
+  }
+
 }

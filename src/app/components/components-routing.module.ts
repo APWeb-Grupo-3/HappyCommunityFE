@@ -37,6 +37,7 @@ import { Reporte1Component } from './reportes/reporte1/reporte1.component';
 import { ReportemesdeudaComponent } from './reportes/reportemesdeuda/reportemesdeuda.component';
 import { MensajeRecibidoComponent } from './mensaje/mensaje-recibido/mensaje-recibido.component';
 import { Reporte2bComponent } from './reportes/reporte2b/reporte2b.component';
+import { Reporte5Component } from './reportes/reporte5/reporte5.component';
 
 const routes: Routes = [
   {
@@ -202,6 +203,7 @@ const routes: Routes = [
       { path: 'reporte2', component: Reporte2bComponent },
       { path: 'mayordeudames', component: ReportemayorComponent },
       { path: 'deudames', component: ReportemesdeudaComponent },
+      { path: 'reporte5', component: Reporte5Component },
     ],
   },
 ];
