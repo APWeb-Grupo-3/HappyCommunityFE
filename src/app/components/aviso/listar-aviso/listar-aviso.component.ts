@@ -20,9 +20,7 @@ export class ListarAvisoComponent {
     this.aS.list().subscribe((data) => {
       this.avisos=data;
     });
-    this.aS.getList().subscribe((data) => {
-      this.avisos=data;
-    });
+    
   }
   eliminar(id: number) {
     this.aS.delete(id).subscribe((data) => {
