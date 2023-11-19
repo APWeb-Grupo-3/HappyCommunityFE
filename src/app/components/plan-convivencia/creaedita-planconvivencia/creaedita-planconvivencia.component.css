@@ -18,7 +18,10 @@
     background: rgb(45, 45, 56);
     -webkit-text-fill-color: #ffffff;
   }
+
+  
   .example-full-width{
+    width: 100%;
     border-radius: 15px;
   }
-  
+ 

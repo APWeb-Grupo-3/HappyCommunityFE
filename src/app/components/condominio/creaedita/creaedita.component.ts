@@ -95,9 +95,9 @@ export class CreaeditaComponent implements OnInit{
 
     this.form = this.formBuilder.group({
       idCondominio: [''],
-      nombre: ['', [Validators.required, Validators.maxLength(20)]],
-      distrito: ['',  [Validators.required, Validators.maxLength(20)]],
-      direccion: ['',  [Validators.required, Validators.maxLength(100)]],
+      nombre: ['', [Validators.required, Validators.maxLength(20), Validators.minLength(4)]],
+      distrito: ['',  [Validators.required,]],
+      direccion: ['',  [Validators.required, Validators.maxLength(100),, Validators.minLength(4)]],
       administrador:['',Validators.required]
     });
 

@@ -1,72 +1,45 @@
 
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
-import { Condominio } from 'src/app/models/condominio';
-import { CondominioService } from 'src/app/services/condominio.service';
 import { DocumentopagoService } from 'src/app/services/documentopago.service';
 import { LoginService } from 'src/app/services/login.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-reportemayor',
   templateUrl: './reportemayor.component.html',
   styleUrls: ['./reportemayor.component.css']
 })
-export class ReportemayorComponent implements OnInit {
-  listacondominios: Condominio[] = [];
-  formm: FormGroup = new FormGroup({});
+export class ReportemayorComponent  { barChartOptions: ChartOptions = {
+  responsive: true,
+  indexAxis: 'y',
+  maintainAspectRatio: false,
+  aspectRatio: 4,
 
-  condomino: number = 0;
+};
+barChartLabels: string[] = [];
+barChartType: ChartType = 'bar';
+barChartLegend = true;
+barChartData: ChartDataset[] = [];
 
-  barChartOptions: ChartOptions = {
-    responsive: true,
-    indexAxis: 'y',
-    maintainAspectRatio: false,
-    aspectRatio: 4,
-  };
-  barChartLabels: string[] = [];
-  barChartType: ChartType = 'bar';
-  barChartLegend = true;
-  barChartData: ChartDataset[] = [];
-  
-;
-
-  constructor(
-    private dS: DocumentopagoService,
-    private cS: CondominioService,
-    private lS: LoginService,
-    private formBuilder: FormBuilder,
-
+constructor(private dS: DocumentopagoService,
+  private lS: LoginService,
   ) {}
-
-  ngOnInit(): void {
-    this.formm = this.formBuilder.group({
-      condominio: [''],
-    });
-
-    this.cS.listCAR(this.lS.showUsername()).subscribe((data) => {
-      this.listacondominios = data;
-    });
-    console.log('lista de condominios', this.listacondominios);
-    
-  }
-
-  mostrar() {
-    if(this.formm.valid){
-      this.condomino=this.formm.value.condominio;
-      console.log('lista de condominiossdfsfsdfsdfsdfsdfs', this.condomino);
-      this.dS.MayorDeudaMes(this.condomino).subscribe((data) => {
-        this.barChartLabels = data.map((item) => item.mes);
-        this.barChartData = [
-          {
-            data: data.map((item) => item.total),
-            label: 'Cantidad de total de deuda en soles',
-          }
-        ];
-      });
-
-    }
-  }
+ngOnInit(): void {
+  this.dS.MayorDeudaMes(this.lS.showUsername()).subscribe((data) => {
+    this.barChartLabels = data.map((item) => item.mes);
+    this.barChartData=[
+      {
+        data:data.map(item=>item.total),
+        label:'Cantidad de total de deuda en soles',
+        backgroundColor: [
+          'rgba(140, 174, 182)',
+          'rgba(20, 62, 75)',
+          'rgba(10, 70, 56)',
+        ]
+      }
+    ]
+  });
+}
+anioActual: number = new Date().getFullYear();
 
 }

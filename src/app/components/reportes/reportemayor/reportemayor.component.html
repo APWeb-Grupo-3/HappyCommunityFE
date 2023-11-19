@@ -8,24 +8,8 @@
   </head>
   <body>
     <div class="container">
-      <div class="title"><h1>Mes con mayor deuda del año actual</h1></div>
-      <div style="padding-left: 5%;"> <h2>Seleccione el Condominio:</h2>
-        <div >
-        <mat-form-field  [formGroup]="formm"   class="example-full-width">
-      
-          <mat-label>condominio</mat-label>
-          <mat-select formControlName="condominio" (selectionChange)="mostrar()">
-            <mat-option  *ngFor="let p of listacondominios" [value]="p.idCondominio">
-              {{p.nombre}} 
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      
-      </div>
-    
-
-      <div class="grafico">
+      <div class="title"><h1>La mes con mayor deuda del año {{anioActual}}</h1></div>
+      <div class="grafico" style="display: center;">
         <canvas
         baseChart
         [datasets]="barChartData"

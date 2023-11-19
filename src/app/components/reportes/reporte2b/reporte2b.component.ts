@@ -30,7 +30,7 @@ export class Reporte2bComponent {
   barChartData: ChartDataset[] = [];
   
 ;
-
+anioActual: number = new Date().getFullYear();
 
 constructor(
   private aS: AvisoService,
