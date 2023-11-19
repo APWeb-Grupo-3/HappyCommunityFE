@@ -69,9 +69,9 @@ export class DocumentopagoService {
     });
   }
 
-  MayorDeudaMes(): Observable<MesDeudaReDTO[]> {
+  MayorDeudaMes(idc:number): Observable<MesDeudaReDTO[]> {
     let token = sessionStorage.getItem('token');
-    return this.http.get<MesDeudaReDTO[]>(`${this.url}/MesMayorDeuda`, {
+    return this.http.get<MesDeudaReDTO[]>(`${this.url}/MesMayorDeuda/${idc}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
@@ -79,9 +79,9 @@ export class DocumentopagoService {
   }
 
 
-  Deudames(): Observable<MesDeudaReDTO[]> {
+  Deudames(nombre_usuario:string): Observable<MesDeudaReDTO[]> {
     let token = sessionStorage.getItem('token');
-    return this.http.get<MesDeudaReDTO[]>(`${this.url}/MesDeuda`, {
+    return this.http.get<MesDeudaReDTO[]>(`${this.url}/MesDeuda/${nombre_usuario}`, {
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),
