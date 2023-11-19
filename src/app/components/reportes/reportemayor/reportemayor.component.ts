@@ -29,11 +29,8 @@ export class ReportemayorComponent implements OnInit {
   barChartType: ChartType = 'bar';
   barChartLegend = true;
   barChartData: ChartDataset[] = [];
-  barChartColors: any[] = [
-    { backgroundColor: 'rgba(255, 0, 0, 0.3)' },
-    { backgroundColor: 'rgba(0, 255, 0, 0.3)' },
-    { backgroundColor: 'rgba(0, 0, 255, 0.3)' },
-  ];
+  
+;
 
   constructor(
     private dS: DocumentopagoService,

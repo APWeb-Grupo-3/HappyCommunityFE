@@ -31,12 +31,12 @@ import { RegisterComponent } from './register/register.component';
 import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
 import { CondominoDetallesComponent } from './condominio/condomino-detalles/condomino-detalles.component';
 import { ReportesComponent } from './reportes/reportes.component';
-import { Reporte2Component } from './reportes/reporte2/reporte2.component';
 import { ReportemayorComponent } from './reportes/reportemayor/reportemayor.component';
 import { PerfilComponent } from './usuario/perfil/perfil.component';
 import { Reporte1Component } from './reportes/reporte1/reporte1.component';
 import { ReportemesdeudaComponent } from './reportes/reportemesdeuda/reportemesdeuda.component';
 import { MensajeRecibidoComponent } from './mensaje/mensaje-recibido/mensaje-recibido.component';
+import { Reporte2bComponent } from './reportes/reporte2b/reporte2b.component';
 
 const routes: Routes = [
   {
@@ -199,7 +199,7 @@ const routes: Routes = [
     component: ReportesComponent,
     children: [
       { path: 'reporte1', component: Reporte1Component },
-      { path: 'reporte2', component: Reporte2Component },
+      { path: 'reporte2', component: Reporte2bComponent },
       { path: 'mayordeudames', component: ReportemayorComponent },
       { path: 'deudames', component: ReportemesdeudaComponent },
     ],
