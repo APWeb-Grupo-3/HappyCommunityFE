@@ -74,9 +74,9 @@ export class UsuarioService {
     })
   }
   
-  getReport1():Observable<Reporte1DTO[]>{
+  getReport1(administrador:string):Observable<Reporte1DTO[]>{
     let token = sessionStorage.getItem('token');
-    return this.http.get<Reporte1DTO[]>(`${this.url}/reporte1`,{
+    return this.http.get<Reporte1DTO[]>(`${this.url}/reporte1/${administrador}`,{
       headers: new HttpHeaders()
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json'),

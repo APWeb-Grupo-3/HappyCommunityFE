@@ -1,5 +1,6 @@
 export class Reporte1DTO{
+    idUsuario:number=0
     apellidos:string=""
     nombres:string=""
-    estado:string=""
+    nombreUsuario:string=""
 }

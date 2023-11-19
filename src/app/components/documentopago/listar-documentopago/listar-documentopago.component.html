@@ -10,7 +10,7 @@
       <br />
       <h2 style="text-align: center">Lista de documentos de pago</h2>
       <div style="text-align: right">
-        <button mat-raised-button class="nuevobtn" (click)="openDialog()">Nuevo
+        <button mat-raised-button *ngIf="admin()" class="nuevobtn" (click)="openDialog()">Nuevo
         </button>         
       </div>
      
@@ -69,7 +69,7 @@ The actual rendered columns are set as a property on the row definition" --
         <ng-container matColumnDef="accion01">
           <th mat-header-cell *matHeaderCellDef>Acciones</th>
           <td mat-cell *matCellDef="let element">
-            <button
+            <button *ngIf="admin()"
               mat-raised-button
               class="accion01btn"
               (click)="editar(element.idDocumentoPago,true)"
@@ -82,7 +82,7 @@ The actual rendered columns are set as a property on the row definition" --
         <ng-container matColumnDef="accion02">
           <th mat-header-cell *matHeaderCellDef>Acciones</th>
           <td mat-cell *matCellDef="let element">
-            <button
+            <button *ngIf="admin()"
               mat-raised-button
               class="accion02btn"
               (click)="eliminar(element.idDocumentoPago)"

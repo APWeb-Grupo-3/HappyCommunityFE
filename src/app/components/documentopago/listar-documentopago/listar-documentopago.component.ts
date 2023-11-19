@@ -18,6 +18,8 @@ import { ListarDetalleComponent } from '../../detalle/listar-detalle/listar-deta
 })
 export class ListarDocumentopagoComponent implements OnInit {
   dataSource: MatTableDataSource<DocumentoPago> = new MatTableDataSource();
+  role:string=""
+
   displayedColumns: string[] = [
     'codigo',
     'receptor',
@@ -75,5 +77,13 @@ export class ListarDocumentopagoComponent implements OnInit {
     this.matDialog.open(DetalleDialogComponent, {
       data: { id: id },
     });
+  }
+  admin() {
+    this.role = this.lS.showRole();
+    if (this.role === 'ADMINISTRADOR') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
