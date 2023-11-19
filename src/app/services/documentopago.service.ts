@@ -88,8 +88,24 @@ export class DocumentopagoService {
     });
   }
 
+  listDAR(nombre_usuario:string) {
+    let token = sessionStorage.getItem('token');
 
+    return this.http.get<DocumentoPago[]>(`${this.url}/listardar/${nombre_usuario}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+  listDRE(nombre_usuario:string) {
+    let token = sessionStorage.getItem('token');
 
+    return this.http.get<DocumentoPago[]>(`${this.url}/listardre/${nombre_usuario}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 
 
 }

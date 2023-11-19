@@ -9,7 +9,7 @@
         <br />
         <mat-form-field class="example-full-width">
           <mat-label>subtotalDetalle</mat-label>
-          <input matInput placeholder="subtotalDetalle" formControlName="subtotalDetalle" />
+          <input matInput placeholder="0.00" formControlName="subtotalDetalle" />
           <mat-error
             *ngIf="obtenerControlCampo('subtotalDetalle')?.errors?.['required']"
           >

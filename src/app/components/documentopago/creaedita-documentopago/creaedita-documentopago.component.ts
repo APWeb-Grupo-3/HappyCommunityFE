@@ -34,9 +34,10 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
 
   tipos: { value: string; viewValue: string }[] = [
     { value: 'Soles', viewValue: 'Soles' },
-    { value: 'Dolares', viewValue: 'Dolares' },
+    { value: 'Dolares', viewValue: 'Dólares' },
   ];
   tipos1: { value: string; viewValue: string }[] = [
+    { value: 'Pendiente', viewValue: 'Pendiente' },
     { value: 'Pagado', viewValue: 'Pagado' },
     { value: 'Vencido', viewValue: 'Vencido' },
   ];
@@ -71,7 +72,7 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
       fechaEmision: ['', [Validators.required]],
       fechaVencimiento: ['', [Validators.required]],
       moneda: ['', [Validators.required]],
-      total: ['', [Validators.required]],
+      total: ['', ],
       estado: ['', [Validators.required]],
       usuario: ['', [Validators.required]],
       tipoDocPago: ['', [Validators.required]],
@@ -79,11 +80,17 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
     this.uS.listUser(this.lS.showUsername()).subscribe((data)=>{
       this.listaUsuarios1=data;
     })
-    this.tS.list().subscribe((data)=>{
+    this.uS.list().subscribe((data)=>{
+      this.listaUsuarios2=data;
+    })
+    this.tS.listTDR(this.lS.showUsername()).subscribe((data)=>{
       this.listaTipoDocumentoPagos=data;
     })
   }
-
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   aceptar(): void {
     if (this.form.valid) {
       this.documentopago.idDocumentoPago = this.form.value.idDocumentoPago;
@@ -101,6 +108,7 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
           this.dS.list().subscribe((data) => {
             this.dS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
 
           });
         });
@@ -109,6 +117,7 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
           this.dS.list().subscribe((data) => {
             this.dS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
 
           });
         });
@@ -144,11 +153,6 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
         });
       });
     }
-  }
-
-  obtenertotal(){
-
-    
   }
   
 }

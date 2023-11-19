@@ -42,3 +42,10 @@
     background: rgb(184, 2, 2);
     color: #ffffff;
   }
+  .accion03btn{
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    background: rgb(45, 45, 56);
+    color: #ffffff;
+  }

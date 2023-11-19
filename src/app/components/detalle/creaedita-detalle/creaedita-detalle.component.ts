@@ -7,6 +7,7 @@ import { DocumentoPago } from 'src/app/models/documentopago';
 import { Servicio } from 'src/app/models/servicio';
 import { DetalleService } from 'src/app/services/detalle.service';
 import { DocumentopagoService } from 'src/app/services/documentopago.service';
+import { LoginService } from 'src/app/services/login.service';
 import { ServicioService } from 'src/app/services/servicio.service';
 
 @Component({
@@ -31,6 +32,7 @@ export class CreaeditaDetalleComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private lS:LoginService,
 
 
     private dialogRef: MatDialogRef<CreaeditaDetalleComponent>,
@@ -51,10 +53,10 @@ export class CreaeditaDetalleComponent implements OnInit {
       documentoPago: ['', Validators.required],
       servicio: ['', Validators.required],
     });
-    this.seS.list().subscribe((data)=>{
+    this.seS.listSA(this.lS.showUsername()).subscribe((data)=>{
       this.listaServicios=data;
     })
-    this.dpS.list().subscribe((data)=>{
+    this.dpS.listDAR(this.lS.showUsername()).subscribe((data)=>{
       this.listaDocumentoPagos=data;
     })
   }

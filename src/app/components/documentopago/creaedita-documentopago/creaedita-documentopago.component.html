@@ -97,11 +97,6 @@
           <mat-form-field class="example-full-width">
             <mat-label>Total</mat-label>
             <input matInput placeholder="0.00" formControlName="total" readonly/>
-            <mat-error
-              *ngIf="obtenerControlCampo('total')?.errors?.['required']"
-            >
-              El total es obligatorio.
-            </mat-error>
             
           </mat-form-field>
           <br />
@@ -131,6 +126,7 @@
                 </mat-error>
               </mat-form-field>
 
+        <br />
         <br />
         <button mat-raised-button class="aceptarbtn" >Aceptar</button>
         <br>
