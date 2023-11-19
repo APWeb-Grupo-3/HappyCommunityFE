@@ -65,7 +65,10 @@ export class CreaeditaTarjetaComponent implements OnInit {
       this.listarUsuarios=data;
     })
   }
-
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   aceptar(): void {
     if (this.form.valid) {
       this.tarjeta.idTarjeta = this.form.value.idTarjeta;
@@ -80,7 +83,7 @@ export class CreaeditaTarjetaComponent implements OnInit {
           this.tS.list().subscribe((data) => {
             this.tS.setList(data);
             this.dialogRef.close();
-
+            this.nuevobtn();
           });
         });
       } else {
@@ -88,6 +91,7 @@ export class CreaeditaTarjetaComponent implements OnInit {
           this.tS.list().subscribe((data) => {
             this.tS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
 
           });
         });
