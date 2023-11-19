@@ -55,4 +55,5 @@ export class ListarDetalleComponent implements OnInit{
       edicion:edicion},
     });
   }
+  
 }
