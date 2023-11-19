@@ -47,7 +47,10 @@ export class CreaeditaAvisoComponent implements OnInit {
     private dialogRef: MatDialogRef<CreaeditaAvisoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { id: number; edicion: boolean }
   ) {}
-
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   ngOnInit(): void {
     if (this.data && this.data.id && this.data.edicion) {
       this.edicion = this.data.edicion;
@@ -91,6 +94,7 @@ export class CreaeditaAvisoComponent implements OnInit {
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
           });
         });
       } else {
@@ -98,6 +102,8 @@ export class CreaeditaAvisoComponent implements OnInit {
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
             this.dialogRef.close();
+            this.nuevobtn();
+
           });
         });
       }
