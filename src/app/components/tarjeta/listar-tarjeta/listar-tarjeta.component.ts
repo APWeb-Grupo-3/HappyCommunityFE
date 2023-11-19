@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tarjeta } from 'src/app/models/tarjeta';
+import { LoginService } from 'src/app/services/login.service';
 import { TarjetaService } from 'src/app/services/tarjeta.service';
 
 @Component({
@@ -15,12 +16,10 @@ export class ListarTarjetaComponent {
   tarjeta: Tarjeta[]=[];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private tS: TarjetaService,private matDialog:MatDialog) {}
+  constructor(private tS: TarjetaService,private matDialog:MatDialog,
+    private lS:LoginService) {}
   ngOnInit(): void {
-    this.tS.list().subscribe((data) => {
-      this.tarjeta=data;
-    });
-    this.tS.getList().subscribe((data) => {
+    this.tS.listTR(this.lS.showUsername()).subscribe((data) => {
       this.tarjeta=data;
     });
   }

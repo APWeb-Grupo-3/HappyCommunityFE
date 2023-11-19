@@ -7,12 +7,7 @@
   </head>
   <body>
     <div class="container">
-      <h2 style="text-align: center">Mensajes enviados</h2>
-      <div style="text-align: right">
-        <button mat-raised-button class="nuevobtn" (click)="openDialog()">
-          Agregar Mensaje
-        </button>
-      </div>
+      <h2 style="text-align: center">Mensajes recibidos</h2>
       <br />
 
       <div class="card-container">
@@ -27,15 +22,7 @@
               <p>Usuario: {{ element.usuario.nombreUsuario }}</p>
               <p>Receptor: {{ element.receptor.nombreUsuario }}</p>
             </mat-card-content>
-            <mat-card-actions>
-              <button class="accion01btn" (click)="editar(element.idMensaje,true)">
-                Actualizar
-              </button>
-              <span class="separator"></span>
-              <button class="accion02btn" (click)="eliminar(element.idMensaje)">
-                Eliminar
-              </button>
-            </mat-card-actions>
+
           </mat-card>
         </ng-container>
       </div>

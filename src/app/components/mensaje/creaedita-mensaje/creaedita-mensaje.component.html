@@ -34,7 +34,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Usuario</mat-label>
             <mat-select formControlName="usuario">
-              <mat-option *ngFor="let p of listarUsuarios" [value]="p.idUsuario">
+              <mat-option *ngFor="let p of listarUsuarios1" [value]="p.idUsuario">
                 {{p.nombreUsuario}}
               </mat-option>
             </mat-select>
@@ -47,7 +47,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Receptor</mat-label>
             <mat-select formControlName="receptor">
-              <mat-option *ngFor="let p of listarUsuarios" [value]="p.idUsuario">
+              <mat-option *ngFor="let p of listarUsuarios2" [value]="p.idUsuario">
                 {{p.nombreUsuario}}
               </mat-option>
             </mat-select>
@@ -58,7 +58,6 @@
             </mat-error>
           </mat-form-field>
           <br />       
-
 
         <button mat-raised-button class="aceptarbtn">Aceptar</button>
         <br /> 

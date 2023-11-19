@@ -71,5 +71,15 @@ export class TarjetaService {
       .set('Content-Type', 'application/json'),
     });
   }
+
+  listTR(nombre_usuario:string) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Tarjeta[]>(`${this.url}/listartr/${nombre_usuario}`,{
+      headers: new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json'),
+    });
+  }
   
 }
