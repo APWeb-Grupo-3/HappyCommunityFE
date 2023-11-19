@@ -62,7 +62,10 @@ export class CreaditaTDPComponent implements OnInit{
       administrador:['',[Validators.required]]
     });
   }
-
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   aceptar(): void {
     if (this.form.valid) {
       this.condominio.idTipoDocPago = this.form.value.idTipoDocPago;
@@ -73,7 +76,7 @@ export class CreaditaTDPComponent implements OnInit{
           this.tdpS.list().subscribe((data) => {
             this.tdpS.setList(data);
             this.dialogRef.close();
-
+            this.nuevobtn();
           });
         });
       } else {
@@ -81,7 +84,7 @@ export class CreaditaTDPComponent implements OnInit{
           this.tdpS.list().subscribe((data) => {
             this.tdpS.setList(data);
             this.dialogRef.close();
-
+            this.nuevobtn();
           });
         });
       }
