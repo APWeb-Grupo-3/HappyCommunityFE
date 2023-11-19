@@ -106,6 +106,14 @@ export class DocumentopagoService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listDARD(nombre_usuario:string) {
+    let token = sessionStorage.getItem('token');
 
+    return this.http.get<DocumentoPago[]>(`${this.url}/listardard/${nombre_usuario}`, {
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 
 }

@@ -77,4 +77,13 @@ export class DetalleService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listDAR(nombre_usuario:string) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Detalle[]>(`${this.url}/listardear/${nombre_usuario}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }

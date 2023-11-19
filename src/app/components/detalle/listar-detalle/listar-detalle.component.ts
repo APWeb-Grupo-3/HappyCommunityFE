@@ -6,6 +6,7 @@ import { Detalle } from 'src/app/models/detalle';
 import { DetalleService } from 'src/app/services/detalle.service';
 import { CreaeditaDetalleComponent } from '../creaedita-detalle/creaedita-detalle.component';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-listar-detalle',
@@ -23,22 +24,25 @@ export class ListarDetalleComponent implements OnInit{
     'accion02',
   ];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private dS: DetalleService, private matDialog:MatDialog,private route:ActivatedRoute) {}
+  constructor(private dS: DetalleService, private matDialog:MatDialog,private route:ActivatedRoute,
+    private lS:LoginService) {}
   ngOnInit(): void {
 
-    this.dS.list().subscribe((data) => {
+    this.dS.listDAR(this.lS.showUsername()).subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
     });
-    this.dS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-    });
+    
+  }
+  nuevobtn() {
+    //refresca la página
+    location.reload();
   }
   eliminar(id: number) {
     this.dS.delete(id).subscribe((data) => {
       this.dS.list().subscribe((data) => {
         this.dS.setList(data);
+        this.nuevobtn();
       });
     });
   }
