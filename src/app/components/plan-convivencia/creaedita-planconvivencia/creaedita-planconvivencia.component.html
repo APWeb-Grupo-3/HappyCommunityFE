@@ -29,15 +29,28 @@
                   >
                     El titulo es obligatorio.
                   </mat-error>
+                  <mat-error *ngIf="obtenerControlCampo('titulo')?.hasError('maxlength')">
+                    El titulo debe tener como maximo 20 caracteres.
+                  </mat-error>
+                  <mat-error *ngIf="obtenerControlCampo('titulo')?.hasError('minlength')">
+                    El titulo debe tener como minimo 4 caracteres.
+                  </mat-error>
                 </mat-form-field>
+                <br>
                 <br>
                 <mat-form-field class="example-full-width">
                     <mat-label>descripcion</mat-label>
-                    <textarea class="txt" matInput placeholder="descripcion" formControlName="descripcion"></textarea>
+                    <textarea class="txt" matInput placeholder="descripcion" formControlName="descripcion" style="width: 300px;" rows="5"></textarea>
                     <mat-error
                       *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"
                     >
                       La descripción es obligatoria.
+                    </mat-error>
+                    <mat-error *ngIf="obtenerControlCampo('descripcion')?.hasError('maxlength')">
+                      El descripción debe tener como maximo 20 caracteres.
+                    </mat-error>
+                    <mat-error *ngIf="obtenerControlCampo('descripcion')?.hasError('minlength')">
+                      El descripción debe tener como minimo 10 caracteres.
                     </mat-error>
                   </mat-form-field>
         

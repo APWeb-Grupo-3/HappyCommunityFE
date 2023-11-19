@@ -73,9 +73,9 @@ export class AvisoService {
     });
   }
 
-  getReport2(anio:number):Observable<Reporte2DTO[]>{
+  getReport2(condomino:number):Observable<Reporte2DTO[]>{
     let token = sessionStorage.getItem('token');
-    return this.http.get<Reporte2DTO[]>(`${this.url}/reporte2/${anio}`,{
+    return this.http.get<Reporte2DTO[]>(`${this.url}/reporte2/${condomino}`,{
       headers: new HttpHeaders()
         .set('Authorization', `Bearer ${token}`)
         .set('Content-Type', 'application/json'),

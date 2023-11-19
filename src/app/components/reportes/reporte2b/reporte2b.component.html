@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title"><h1>Cantidad de avisos en año {{anioActual}}</h1></div>
+        
+      <div class="button">
+        <button mat-raised-button (click)="exportToExcel()"><i class="fa-solid fa-file-csv"></i> Exportar</button>
+    </div>
+      <div style="padding-left: 5%;"> <h2>Seleccione el Condominio:</h2>
+       
+        <div class="select">
+        <mat-form-field  [formGroup]="formm"   class="example-full-width">
+      
+          <mat-label>condominio</mat-label>
+          <mat-select formControlName="condominio" (selectionChange)="mostrar()">
+            <mat-option  *ngFor="let p of listacondominios" [value]="p.idCondominio">
+              {{p.nombre}} 
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
+      </div>
+    
+
+      <div class="grafico">
+        <canvas
+        baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [type]="barChartType"
+         >
+
+        </canvas>
+      </div>
+    </div>
+  </body>
+</html>

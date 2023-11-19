@@ -51,8 +51,8 @@ export class CreaeditaPlanconvivenciaComponent implements OnInit {
     this.form = this.formBuilder.group({
       idPlanConvivencia: [''],
       condominio: ['', Validators.required],
-      titulo: ['', [Validators.required, Validators.maxLength(50)]],
-      descripcion: ['', [Validators.required, Validators.maxLength(200)]],
+      titulo: ['', [Validators.required, Validators.maxLength(50), Validators.minLength(4)]],
+      descripcion: ['', [Validators.required, Validators.maxLength(200), Validators.minLength(10)]],
     });
     if (this.lS.showRole() == 'ADMINISTRADOR') {
       this.cS.listCAR(this.lS.showUsername()).subscribe((data) => {

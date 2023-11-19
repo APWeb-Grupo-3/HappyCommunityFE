@@ -1,0 +1,21 @@
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 2.5%;
+}
+.title{
+
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.grafico{
+    text-align: center;
+    max-width: 50%; /* Ajusta el tamaño máximo del contenedor del gráfico */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+.button{
+    text-align: right;
+    margin-right: 5%; }

@@ -11,8 +11,9 @@
           readonly
         />
       </mat-form-field>
+      <br />
 
-      <mat-form-field class="example-full-width" style="margin-left: 20px;">
+      <mat-form-field class="example-full-width" >
         <mat-label >nombre</mat-label>
         <input matInput placeholder="nombre" formControlName="nombre" />
         <mat-error *ngIf="obtenerControlCampo('nombre')?.errors?.['required']">
@@ -21,11 +22,12 @@
         <mat-error *ngIf="obtenerControlCampo('nombre')?.hasError('maxlength')">
           El nombre debe tener como maximo 20 caracteres.
         </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('nombre')?.hasError('minlength')">
+          El nombre debe tener como minimo 4 caracteres.
+        </mat-error>
       </mat-form-field>
 
-      <br />
-      <br />
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width" style="margin-left: 20px;">
         <mat-label>distrito</mat-label>
         <mat-select formControlName="distrito">
           <mat-option *ngFor="let p of distritos" [value]="p.value">
@@ -38,7 +40,7 @@
           El distrito es obligatorio.
         </mat-error>
       </mat-form-field>
-
+<br><br>
       <mat-form-field class="example-full-width" style="margin-left: 20px">
         <mat-label>direccion</mat-label>
         <input matInput placeholder="direccion" formControlName="direccion" />
@@ -47,9 +49,15 @@
         >
           La direccion es obligatorio.
         </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('direccion')?.hasError('minlength')">
+          La direccion debe tener como minimo 4 caracteres.
+        </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('direccion')?.hasError('maxlength')">
+          La direccion debe tener como minimo 100 caracteres.
+        </mat-error>
       </mat-form-field>
-      <br />
-      <mat-form-field class="example-full-width">
+
+      <mat-form-field class="example-full-width" style="margin-left: 20px">
         <mat-label>administrador</mat-label>
         <mat-select formControlName="administrador">
           <mat-option *ngFor="let p of listaUsuarios" [value]="p.nombreUsuario">

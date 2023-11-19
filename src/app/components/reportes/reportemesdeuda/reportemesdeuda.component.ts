@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { DocumentopagoService } from 'src/app/services/documentopago.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-reportemesdeuda',
@@ -17,19 +18,22 @@ export class ReportemesdeudaComponent {
   barChartType: ChartType = 'pie';
   barChartLegend = true;
   barChartData: ChartDataset[] = [];
-  barChartColors: any[] = [
-    { backgroundColor: 'rgba(255, 0, 0, 0.3)' }, // Rojo semi-transparente
-    { backgroundColor: 'rgba(0, 255, 0, 0.3)' }, // Verde semi-transparente
-    { backgroundColor: 'rgba(0, 0, 255, 0.3)' }, // Azul semi-transparente
-  ];
-  constructor(private dS: DocumentopagoService) {}
+
+  constructor(private dS: DocumentopagoService,
+    private lS: LoginService,
+    ) {}
   ngOnInit(): void {
-    this.dS.Deudames().subscribe((data) => {
+    this.dS.Deudames(this.lS.showUsername()).subscribe((data) => {
       this.barChartLabels = data.map((item) => item.mes);
       this.barChartData=[
         {
           data:data.map(item=>item.total),
           label:'Cantidad de total de deuda en soles',
+          backgroundColor: [
+            'rgba(140, 174, 182)',
+            'rgba(20, 62, 75)',
+            'rgba(10, 70, 56)',
+          ]
         }
       ]
     });

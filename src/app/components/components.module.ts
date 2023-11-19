@@ -62,7 +62,6 @@ import { CondominoDetallesComponent } from './condominio/condomino-detalles/cond
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { ReportesComponent } from './reportes/reportes.component';
-import { Reporte2Component } from './reportes/reporte2/reporte2.component';
 import { NgChartsModule } from 'ng2-charts';
 import { ReportemayorComponent } from './reportes/reportemayor/reportemayor.component';
 import { PerfilComponent } from './usuario/perfil/perfil.component';
@@ -73,6 +72,7 @@ import { UsuariosCondominioComponent } from './condominio/condomino-detalles/usu
 import { PlanCondominioComponent } from './condominio/condomino-detalles/plan-condominio/plan-condominio.component';
 import { MensajeRecibidoComponent } from './mensaje/mensaje-recibido/mensaje-recibido.component';
 import { DetalleDialogComponent } from './documentopago/detalle-dialog/detalle-dialog.component';
+import { Reporte2bComponent } from './reportes/reporte2b/reporte2b.component';
 
 
 @NgModule({
@@ -119,7 +119,6 @@ import { DetalleDialogComponent } from './documentopago/detalle-dialog/detalle-d
     RegisterComponent,
     CondominoDetallesComponent,
     ReportesComponent,
-    Reporte2Component,
     ReportemayorComponent,
     PerfilComponent,
     Reporte1Component,
@@ -129,6 +128,7 @@ import { DetalleDialogComponent } from './documentopago/detalle-dialog/detalle-d
     PlanCondominioComponent,
     MensajeRecibidoComponent,
     DetalleDialogComponent,
+    Reporte2bComponent,
 
   ],
   imports: [
