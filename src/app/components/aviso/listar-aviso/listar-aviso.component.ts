@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Aviso } from 'src/app/models/aviso';
 import { AvisoService } from 'src/app/services/aviso.service';
 import { CreaeditaAvisoComponent } from '../creaedita-aviso/creaedita-aviso.component';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-listar-aviso',
@@ -15,17 +16,24 @@ export class ListarAvisoComponent {
   avisos: Aviso[]=[];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  constructor(private aS: AvisoService,private matDialog:MatDialog) {}
+  constructor(private aS: AvisoService,private matDialog:MatDialog,
+    private lS:LoginService) {}
   ngOnInit(): void {
-    this.aS.list().subscribe((data) => {
+    this.aS.listAR(this.lS.showUsername()).subscribe((data) => {
       this.avisos=data;
     });
     
+  }
+  nuevobtn() {
+    //refresca la página
+    location.reload();
   }
   eliminar(id: number) {
     this.aS.delete(id).subscribe((data) => {
       this.aS.list().subscribe((data) => {
         this.aS.setList(data);
+        this.nuevobtn();
+
       });
     });
   }

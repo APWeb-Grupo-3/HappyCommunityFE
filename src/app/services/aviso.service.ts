@@ -91,4 +91,13 @@ export class AvisoService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listAR(nombre_usuario: string) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Aviso[]>(`${this.url}/listarar/${nombre_usuario}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }
