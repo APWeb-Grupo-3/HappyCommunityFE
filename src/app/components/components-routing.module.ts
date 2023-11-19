@@ -36,6 +36,7 @@ import { ReportemayorComponent } from './reportes/reportemayor/reportemayor.comp
 import { PerfilComponent } from './usuario/perfil/perfil.component';
 import { Reporte1Component } from './reportes/reporte1/reporte1.component';
 import { ReportemesdeudaComponent } from './reportes/reportemesdeuda/reportemesdeuda.component';
+import { MensajeRecibidoComponent } from './mensaje/mensaje-recibido/mensaje-recibido.component';
 
 const routes: Routes = [
   {
@@ -145,11 +146,11 @@ const routes: Routes = [
   {
     path: 'mensajes',
     canActivate: [GuardService],
-
     component: MensajeComponent,
     children: [
       { path: 'nuevo', component: CreaeditaMensajeComponent },
       { path: 'edicion/:id', component: CreaeditaMensajeComponent },
+      { path: 'recibidos', component: MensajeRecibidoComponent},
 
     ],
 

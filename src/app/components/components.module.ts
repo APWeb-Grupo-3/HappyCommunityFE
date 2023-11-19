@@ -71,6 +71,7 @@ import { ReportemesdeudaComponent } from './reportes/reportemesdeuda/reportemesd
 import { AvisosCondominioComponent } from './condominio/condomino-detalles/avisos-condominio/avisos-condominio.component';
 import { UsuariosCondominioComponent } from './condominio/condomino-detalles/usuarios-condominio/usuarios-condominio.component';
 import { PlanCondominioComponent } from './condominio/condomino-detalles/plan-condominio/plan-condominio.component';
+import { MensajeRecibidoComponent } from './mensaje/mensaje-recibido/mensaje-recibido.component';
 
 
 @NgModule({
@@ -125,6 +126,7 @@ import { PlanCondominioComponent } from './condominio/condomino-detalles/plan-co
     AvisosCondominioComponent,
     UsuariosCondominioComponent,
     PlanCondominioComponent,
+    MensajeRecibidoComponent,
 
   ],
   imports: [

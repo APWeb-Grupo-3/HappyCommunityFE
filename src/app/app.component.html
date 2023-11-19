@@ -54,16 +54,17 @@
         <a mat-list-item [matMenuTriggerFor]="menuPago"
           ><i class="fa-solid fa-piggy-bank"></i> Pagos</a
         >
-        <a mat-list-item [matMenuTriggerFor]="menuServicio"
+        <a mat-list-item [matMenuTriggerFor]="menuServicio" *ngIf="role == 'ADMINISTRADOR'"
           ><i class="fa-solid fa-clipboard"></i> Servicios</a
         >
-        <a mat-list-item routerLink="components/mensajes"
+        <a mat-list-item [matMenuTriggerFor]="menuMensajes"
+
           ><i class="fa-solid fa-comments"></i> Mensajes</a
         >
-        <a mat-list-item routerLink="components/tarjeta"
+        <a mat-list-item routerLink="components/tarjeta" *ngIf="role == 'VECINO'"
           ><i class="fa-solid fa-credit-card"></i> Tarjetas</a
         >
-        <a mat-list-item [matMenuTriggerFor]="menuReportes"
+        <a mat-list-item [matMenuTriggerFor]="menuReportes" *ngIf="role == 'ADMINISTRADOR'"
           ><i class="fa-solid fa-chart-column"></i> Reportes</a
         >
       </div>
@@ -74,20 +75,20 @@
         <button mat-menu-item routerLink="components/condominios">
           Lista de condominios
         </button>
-        <button mat-menu-item routerLink="components/planconvivencia">
+        <button mat-menu-item routerLink="components/planconvivencia" *ngIf="role == 'ADMINISTRADOR'">
           Plan de Convivencia
         </button>
         <button mat-menu-item routerLink="components/aviso">Aviso</button>
         <!-- Agrega más elementos de menú si es necesario -->
       </mat-menu>
       <mat-menu #menuPago="matMenu">
-        <button mat-menu-item routerLink="components/TipoDocPago" >
+        <button mat-menu-item routerLink="components/TipoDocPago" *ngIf="role == 'ADMINISTRADOR'">
           Tipo de Documento
         </button>
         <button mat-menu-item routerLink="components/DocumentoPago">
           Documento de Pago
         </button>
-        <button mat-menu-item routerLink="components/Detalle">Detalle</button>
+        <button mat-menu-item routerLink="components/Detalle" *ngIf="role == 'ADMINISTRADOR'">Detalle</button>
         <!-- Agrega más elementos de menú si es necesario -->
       </mat-menu>
       <mat-menu #menuServicio="matMenu">
@@ -96,6 +97,15 @@
         </button>
         <button mat-menu-item routerLink="components/Servicio">
           Lista servicios
+        </button>
+        <!-- Agrega más elementos de menú si es necesario -->
+      </mat-menu>
+      <mat-menu #menuMensajes="matMenu">
+        <button mat-menu-item routerLink="components/mensajes">
+          Mensajes enviados
+        </button>
+        <button mat-menu-item routerLink="components/mensajes/recibidos">
+          Mensajes recibidos
         </button>
         <!-- Agrega más elementos de menú si es necesario -->
       </mat-menu>

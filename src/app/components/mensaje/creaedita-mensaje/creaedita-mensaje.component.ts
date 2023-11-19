@@ -5,6 +5,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Mensaje } from 'src/app/models/mensaje';
 import { Usuario } from 'src/app/models/usuario';
+import { LoginService } from 'src/app/services/login.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class CreaeditaMensajeComponent  implements OnInit{
   mensaje: string = '';
   id: number = 0;
   edicion: boolean = false;
-  listarUsuarios: Usuario[]=[]; 
+  listarUsuarios1: Usuario[]=[]; 
+  listarUsuarios2: Usuario[]=[]; 
 
   constructor(
     private uS: UsuarioService,
@@ -27,6 +29,7 @@ export class CreaeditaMensajeComponent  implements OnInit{
     private route: ActivatedRoute,
     private mS: MensajeService,
     private matDialog: MatDialog,
+    private lS:LoginService,
 
 
     private dialogRef: MatDialogRef<CreaeditaMensajeComponent>,
@@ -49,12 +52,18 @@ export class CreaeditaMensajeComponent  implements OnInit{
       receptor: ['', Validators.required],
   
     });
+    this.uS.listUser(this.lS.showUsername()).subscribe((data)=>{
+      this.listarUsuarios1=data;
+    })
     this.uS.list().subscribe((data)=>{
-      this.listarUsuarios=data;
+      this.listarUsuarios2=data;
     })
     
   }
-
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   aceptar(): void {
     if (this.form.valid) {
       this.mensajes.idMensaje = this.form.value.idMensaje;
@@ -69,7 +78,7 @@ export class CreaeditaMensajeComponent  implements OnInit{
           this.mS.list().subscribe((data) => {
             this.mS.setList(data);
             this.dialogRef.close();
-
+            this.nuevobtn();
           });
         });        
       } else {
@@ -77,7 +86,7 @@ export class CreaeditaMensajeComponent  implements OnInit{
           this.mS.list().subscribe((data) => {
             this.mS.setList(data);
             this.dialogRef.close();
-
+            this.nuevobtn();
           });
         });
       }

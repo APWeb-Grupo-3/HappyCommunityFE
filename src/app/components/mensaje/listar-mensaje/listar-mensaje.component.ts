@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Mensaje } from 'src/app/models/mensaje';
 import { MensajeService } from 'src/app/services/mensaje.service';
 import { CreaeditaMensajeComponent } from '../creaedita-mensaje/creaedita-mensaje.component';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-listar-mensaje',
@@ -14,20 +15,24 @@ import { CreaeditaMensajeComponent } from '../creaedita-mensaje/creaedita-mensaj
 export class ListarMensajeComponent {
   mensajes: Mensaje[]=[];
 
-  constructor(private mS: MensajeService,private matDialog:MatDialog) {}
+  constructor(private mS: MensajeService,private matDialog:MatDialog,
+    private lS:LoginService) {}
 
   ngOnInit(): void {
-    this.mS.list().subscribe((data) => {      
+    this.mS.listME(this.lS.showUsername()).subscribe((data) => {      
       this.mensajes=data;
     });
-    this.mS.getList().subscribe((data) => {
-      this.mensajes=data;
-    });
+
+  }
+  nuevobtn() {
+    //refresca la página
+    location.reload();
   }
   eliminar(id: number) {
     this.mS.delete(id).subscribe((data) => {
       this.mS.list().subscribe((data) => {
         this.mS.setList(data);
+        this.nuevobtn();
       });
     });
   }
@@ -40,4 +45,5 @@ export class ListarMensajeComponent {
       edicion:edicion},
     });
   }
+  
 }

@@ -71,5 +71,22 @@ export class MensajeService {
         .set('Content-Type', 'application/json'),
     });
   }
+  listME(nombre_usuario:string) {
+    let token = sessionStorage.getItem('token');
 
+    return this.http.get<Mensaje[]>(`${this.url}/listarme/${nombre_usuario}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
+  listMR(nombre_usuario:string) {
+    let token = sessionStorage.getItem('token');
+
+    return this.http.get<Mensaje[]>(`${this.url}/listarmr/${nombre_usuario}`,{
+      headers: new HttpHeaders()
+        .set('Authorization', `Bearer ${token}`)
+        .set('Content-Type', 'application/json'),
+    });
+  }
 }
