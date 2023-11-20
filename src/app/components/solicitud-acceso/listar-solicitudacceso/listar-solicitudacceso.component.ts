@@ -74,4 +74,8 @@ export class ListarSolicitudaccesoComponent {
       return false;
     }
   }
+
+  obtenerEstado(estado: string): string {
+    return estado ? estado : 'Pendiente';
+  }
 }

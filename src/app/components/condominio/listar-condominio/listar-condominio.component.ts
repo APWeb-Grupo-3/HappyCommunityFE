@@ -51,4 +51,13 @@ export class ListarCondominioComponent implements OnInit {
       data: { id: id, edicion: edicion },
     });
   }
+  role:string='';
+  admin() {
+    this.role = this.lS.showRole();
+    if (this.role === 'ADMINISTRADOR') {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

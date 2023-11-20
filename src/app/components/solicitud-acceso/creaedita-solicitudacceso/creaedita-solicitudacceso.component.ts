@@ -121,7 +121,7 @@ export class CreaeditaSolicitudaccesoComponent implements OnInit {
       this.sS.listId(this.id).subscribe((data) => {
         this.form.patchValue({
           idSolicitudAcceso: data.idSolicitudAcceso,
-          estado: data.estado,
+          estado: "",
           usuario: data.usuario.idUsuario,
           condominio: data.condominio.idCondominio,
         });
