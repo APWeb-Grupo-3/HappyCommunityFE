@@ -29,14 +29,20 @@
             matInput
             placeholder="xxxx xxxx xxxx xxxx"
             formControlName="numeroTarjeta"
+            inputmode="numeric"
+            maxlength="16"
           />
           <mat-error
             *ngIf="obtenerControlCampo('numeroTarjeta')?.errors?.['required']"
           >
             El tipo es obligatorio.
           </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('numeroTarjeta')?.hasError('minlength')">
+            El nombre debe tener como minimo 16 caracteres y solo números.
+          </mat-error>
         </mat-form-field>
         <br />
+        <br /> 
 
         <mat-form-field appearance="fill" class="example-full-width">
             <input
@@ -58,6 +64,7 @@
             </mat-error>
           </mat-form-field>
           <br />
+          <br /> 
 
           <mat-form-field class="example-full-width">
             <mat-label>Código CVV</mat-label>
@@ -73,7 +80,11 @@
             >
               El tipo es obligatorio.
             </mat-error>
+            <mat-error *ngIf="obtenerControlCampo('codigoSeguridad')?.hasError('minlength')">
+              El nombre debe tener como minimo 3 caracteres y solo números.
+            </mat-error>
           </mat-form-field>
+          <br /> 
           <br /> 
 
           <mat-form-field class="example-full-width">

@@ -55,9 +55,9 @@ export class CreaeditaTarjetaComponent implements OnInit {
     this.form = this.formBuilder.group({
       idTarjeta: [''],
       tipoTarjeta: ['', Validators.required],
-      numeroTarjeta: ['', Validators.required],
+      numeroTarjeta: ['', [Validators.required, Validators.maxLength(16), Validators.minLength(16),Validators.pattern(/^[0-9]{16}$/)]],
       fechaVencimiento: ['', Validators.required],
-      codigoSeguridad: ['', [Validators.required, Validators.pattern('^[0-9]{1,3}$')]],
+      codigoSeguridad: ['', [Validators.required, Validators.pattern('^[0-9]{1,3}$'), Validators.minLength(3)]],
       usuario: ['', Validators.required],
     });
     

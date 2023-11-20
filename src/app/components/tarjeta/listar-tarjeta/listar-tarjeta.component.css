@@ -47,20 +47,22 @@ body {
     padding: 15px;
   }
   
-  .accion01btn,
-  .accion02btn {
-    background-color: #4285f4;
-    color: #fff;
-    padding: 8px 16px;
+  .btneditar{
+    text-align: center;
+    border-radius: 5px;
+    padding-inline: 15% ;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+    background: rgb(175, 217, 227);
+    color: #0C262C;
   
-  .accion01btn:hover,
-  .accion02btn:hover {
-    background-color: #2a4e99;
+  }
+  .btneliminar{
+    text-align: center;
+    border-radius: 5px;
+    padding-inline: 15% ;
+    border: none;
+    background: #0C262C;
+    color: #ffffff;
   }
   
   .separator {

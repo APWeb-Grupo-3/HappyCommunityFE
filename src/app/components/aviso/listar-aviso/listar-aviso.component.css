@@ -55,22 +55,22 @@ body {
     padding: 15px;
   }
   
-  /* Estilos para los botones de acciones */
-  .accion01btn,
-  .accion02btn {
-    background-color: #0C262C;
-    color: #fff;
-    padding: 8px 16px;
+  .btneditar{
+    text-align: center;
+    border-radius: 5px;
+    padding-inline: 15% ;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+    background: rgb(175, 217, 227);
+    color: #0C262C;
   
-  /* Estilos para los botones de acciones al pasar el ratón */
-  .accion01btn:hover,
-  .accion02btn:hover {
-    background-color: #0C262C;
+  }
+  .btneliminar{
+    text-align: center;
+    border-radius: 5px;
+    padding-inline: 15% ;
+    border: none;
+    background: #0C262C;
+    color: #ffffff;
   }
   
   /* Separador entre botones de acciones */
