@@ -14,10 +14,24 @@
         />
       </div>
 
-      <h1>{{ form.get("nombre")?.value }}</h1>
-      <p>{{ form.get("departamento")?.value }}</p>
-      <p>{{ form.get("distrito")?.value }}</p>
-      <p>{{ form.get("direccion")?.value }}</p>
+      <div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <h1>{{ form.get("nombre")?.value }}</h1>
+          <div style="text-align: right">
+            <button mat-raised-button class="btnsalir" routerLink="/components/condominios">salir</button>
+          </div>
+        </div>
+
+        <p>{{ form.get("departamento")?.value }}</p>
+        <p>{{ form.get("distrito")?.value }}</p>
+        <p>{{ form.get("direccion")?.value }}</p>
+      </div>
 
       <div class="pagina2">
         <div>
@@ -28,7 +42,7 @@
           </button>
         </div>
         <router-outlet></router-outlet>
-        
+
         <div class="contenido">
           <div
             [hidden]="selectedContent !== 'planconvivencia'"
@@ -40,14 +54,12 @@
           </div>
 
           <div [hidden]="selectedContent !== 'aviso'" id="aviso">
-           
             <div [hidden]="route.children.length !== 0">
               <app-avisos-condominio></app-avisos-condominio>
             </div>
           </div>
 
           <div [hidden]="selectedContent !== 'usuario'" id="usuario">
-           
             <div [hidden]="route.children.length !== 0">
               <app-usuarios-condominio></app-usuarios-condominio>
             </div>

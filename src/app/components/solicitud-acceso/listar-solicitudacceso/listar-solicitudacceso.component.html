@@ -27,7 +27,7 @@ The actual rendered columns are set as a property on the row definition" --
         <!-- Name Column -->
         <ng-container matColumnDef="estado">
           <th mat-header-cell *matHeaderCellDef>estado</th>
-          <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
+          <td mat-cell *matCellDef="let element">{{ obtenerEstado(element.estado) }}</td>
         </ng-container>
         <!-- Name Column -->
         <ng-container matColumnDef="usuario">

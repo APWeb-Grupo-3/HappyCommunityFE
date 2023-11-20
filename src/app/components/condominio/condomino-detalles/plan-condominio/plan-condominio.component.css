@@ -1,6 +1,7 @@
 
 .container {
-  
+  background-color: #f4f4f4;
+
     margin: 0 auto; 
     padding: 0 15px; 
   }
@@ -8,20 +9,41 @@
     text-align: right;
     margin-bottom: 15px; 
   }
+  
+  /* Estilos para el contenedor de tarjetas */
   .card-container {
     display: flex;
-    gap: 15px; /* Agregar espacio entre las tarjetas */
-  
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
   
+  /* Estilos para cada tarjeta */
   .example-card {
-    width: 15%; 
-    height: auto;
-    margin-bottom: 10px;
+    width: 48%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0C262C(144, 28, 28, 0.1);
   }
-  .mat-card-actions{
-  padding-left: 15px;
+  
+  /* Estilos para los títulos y subtítulos de las tarjetas */
+  mat-card-title,
+  mat-card-subtitle {
+    font-size: 1.2em;
+    color: #000000;
   }
+  
+  /* Estilos para el contenido de las tarjetas */
+  mat-card-content {
+    padding: 15px;
+  }
+  
+  /* Estilos para las acciones en las tarjetas */
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+  }
+  
   
   .btneditar{
     text-align: center;
