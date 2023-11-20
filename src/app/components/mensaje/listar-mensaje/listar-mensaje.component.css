@@ -56,27 +56,22 @@ body {
     padding: 15px;
   }
   
-  /* Estilos para los botones de acciones */
-  mat-card-actions {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-  }
-  
-  .accion01btn,
-  .accion02btn {
-    background-color: #0C262C;
-    color: #fff;
+  .btneditar{
+    text-align: center;
+    border-radius: 5px;
+    padding-inline: 15% ;
     border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+    background: rgb(175, 217, 227);
+    color: #0C262C;
   
-  .accion01btn:hover,
-  .accion02btn:hover {
-    background-color: #1565c0;
+  }
+  .btneliminar{
+    text-align: center;
+    border-radius: 5px;
+    padding-inline: 15% ;
+    border: none;
+    background: #0C262C;
+    color: #ffffff;
   }
   
   /* Estilos para el separador entre botones */

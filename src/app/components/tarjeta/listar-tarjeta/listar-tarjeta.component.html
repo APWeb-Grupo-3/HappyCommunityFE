@@ -29,14 +29,10 @@
               <p>CVV: {{ element.codigoSeguridad }}</p>
               <p>Usuario: {{ element.usuario.nombreUsuario }}</p>
             </mat-card-content>
-            <mat-card-actions>
-              <button class="accion01btn" (click)="editar(element.idTarjeta,true)">
-                <i class="fa-solid fa-pen-to-square"></i>
-              </button>
+            <mat-card-actions >
+              <button class="btneditar" (click)="editar(element.idTarjeta,true)"><i class="fa-solid fa-pen-to-square"></i></button>
               <span class="separator"></span>
-              <button class="accion02btn" (click)="eliminar(element.idTarjeta)">
-                <i class="fa-solid fa-trash"></i>
-              </button>
+              <button class="btneliminar" (click)="eliminar(element.idTarjeta)"><i class="fa-solid fa-trash"></i></button>
             </mat-card-actions>
           </mat-card>
         </ng-container>

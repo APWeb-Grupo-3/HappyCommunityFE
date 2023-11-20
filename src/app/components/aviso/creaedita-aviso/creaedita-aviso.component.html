@@ -16,7 +16,29 @@
           >
             El nombre es obligatorio.
           </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('titulo')?.hasError('maxlength')">
+            El nombre debe tener como maximo 25 caracteres.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('titulo')?.hasError('minlength')">
+            El nombre debe tener como minimo 4 caracteres.
+          </mat-error>
+        </mat-form-field>        
+
+        <mat-form-field class="example-full-width" style="margin-left: 20px;">
+          <mat-label>usuario</mat-label>
+          <mat-select formControlName="usuario">
+            <mat-option *ngFor="let p of listarUsuarios" [value]="p.idUsuario">
+              {{ p.nombreUsuario }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="obtenerControlCampo('usuario')?.errors?.['required']"
+          >
+            El Usuario es obligatorio.
+          </mat-error>
         </mat-form-field>
+
+        <br />
         <br />
 
         <mat-form-field class="example-full-width">
@@ -24,7 +46,7 @@
          
           <textarea 
           matInput placeholder="Descripcion"
-          formControlName="descripcion"
+          formControlName="descripcion"          
           ></textarea>
 
           <mat-error
@@ -32,7 +54,14 @@
           >
             El nombre es obligatorio.
           </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('descripcion')?.hasError('maxlength')">
+            El nombre debe tener como maximo 250 caracteres.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('descripcion')?.hasError('minlength')">
+            El nombre debe tener como minimo 2 caracteres.
+          </mat-error>
         </mat-form-field>
+        <br />
         <br />
 
         <mat-form-field appearance="fill" class="example-full-width">
@@ -54,24 +83,8 @@
             La fecha de emisión es obligatoria.
           </mat-error>
         </mat-form-field>
-        <br />
-
-        <mat-form-field class="example-full-width">
-          <mat-label>usuario</mat-label>
-          <mat-select formControlName="usuario">
-            <mat-option *ngFor="let p of listarUsuarios" [value]="p.idUsuario">
-              {{ p.nombreUsuario }}
-            </mat-option>
-          </mat-select>
-          <mat-error
-            *ngIf="obtenerControlCampo('usuario')?.errors?.['required']"
-          >
-            El Usuario es obligatorio.
-          </mat-error>
-        </mat-form-field>
-        <br />
-
-        <mat-form-field class="example-full-width">
+       
+        <mat-form-field class="example-full-width" style="margin-left: 20px;">
           <mat-label>condominio</mat-label>
           <mat-select formControlName="condominio">
             <mat-option

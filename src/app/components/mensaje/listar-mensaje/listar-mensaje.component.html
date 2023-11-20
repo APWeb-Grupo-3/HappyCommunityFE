@@ -27,20 +27,16 @@
               <p>Usuario: {{ element.usuario.nombreUsuario }}</p>
               <p>Receptor: {{ element.receptor.nombreUsuario }}</p>
             </mat-card-content>
-            <mat-card-actions>
-              <button class="accion01btn" (click)="editar(element.idMensaje,true)">
-                Actualizar
-              </button>
+            <mat-card-actions >
+              <button class="btneditar" (click)="editar(element.idMensaje,true)"><i class="fa-solid fa-pen-to-square"></i></button>
               <span class="separator"></span>
-              <button class="accion02btn" (click)="eliminar(element.idMensaje)">
-                Eliminar
-              </button>
+              <button class="btneliminar" (click)="eliminar(element.idMensaje)"><i class="fa-solid fa-trash"></i></button>
             </mat-card-actions>
           </mat-card>
         </ng-container>
       </div>
 
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+      
     </div>
   </body>
 </html>

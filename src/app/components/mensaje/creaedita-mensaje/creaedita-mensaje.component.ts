@@ -46,8 +46,8 @@ export class CreaeditaMensajeComponent  implements OnInit{
 
     this.form = this.formBuilder.group({
       idMensaje: [''],
-      titulo: ['', Validators.required],
-      descripcion: ['', Validators.required],
+      titulo: ['', [Validators.required, Validators.maxLength(25), Validators.minLength(4)]],
+      descripcion: ['', [Validators.required, Validators.maxLength(250), Validators.minLength(2)]],
       usuario: ['', Validators.required],
       receptor: ['', Validators.required],
   
