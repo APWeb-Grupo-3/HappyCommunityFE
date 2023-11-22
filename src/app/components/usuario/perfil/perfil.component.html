@@ -1,81 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="container">
-      <br />
-      <h2 style="text-align: center">Mis datos</h2>
-      
-      <table matTableExporter mat-table [dataSource]="dataSource" class="mat-elevation-z8" id="table-data">
-        <!--- Note that these columns can be defined in any order.
-The actual rendered columns are set as a property on the row definition" --
->
-    < !-- Position Column -->
-        <ng-container matColumnDef="codigo">
-          <th mat-header-cell *matHeaderCellDef>Código</th>
-          <td mat-cell *matCellDef="let element">{{ element.idUsuario }}</td>
-        </ng-container>
-        <!-- Name Column -->
-        <ng-container matColumnDef="username">
-          <th mat-header-cell *matHeaderCellDef>Usuario</th>
-          <td mat-cell *matCellDef="let element">{{ element.nombreUsuario }}</td>
-        </ng-container>
-       
-        <!-- Name Column -->
-        <ng-container matColumnDef="rol">
-          <th mat-header-cell *matHeaderCellDef>Rol</th>
-          <td mat-cell *matCellDef="let element">{{ element.rol.rol }}</td>
-        </ng-container>
-        <ng-container matColumnDef="correo">
-            <th mat-header-cell *matHeaderCellDef>Correo</th>
-            <td mat-cell *matCellDef="let element">{{ element.correo }}</td>
-          </ng-container>
-        <ng-container matColumnDef="genero">
-            <th mat-header-cell *matHeaderCellDef>Género</th>
-            <td mat-cell *matCellDef="let element">{{ element.genero }}</td>
-          </ng-container>
-          
-
-        <!-- Weight Column -->
-    
-        <ng-container matColumnDef="accion01">
-          <th mat-header-cell *matHeaderCellDef>Acciones</th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              class="accion01btn"
-              (click)="editar(element.idUsuario,true)"
-            >
-            <i class="fa-solid fa-pen-to-square"></i>
-            </button>
-          </td></ng-container
-        >
-
-        <ng-container matColumnDef="accion02">
-          <th mat-header-cell *matHeaderCellDef>Acciones</th>
-          <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              class="accion02btn"
-              (click)="eliminar(element.idUsuario)"
-            >
-            <i class="fa-solid fa-trash"></i>
-            </button>
-          </td></ng-container
-        >
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 25]"
-        showFirstLastButtons
-      ></mat-paginator>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <section *ngFor="let usuario of usuarios" class="seccion-perfil-usuario">
+    <div class="perfil-usuario-header">
+        <div class="perfil-usuario-portada">
+          <button  class="boton-portada" (click)="editar(usuario.idUsuario,true)" > <i class="fa-solid fa-pen-to-square"></i></button>
+            <div class="perfil-usuario-avatar">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="img-avatar">
+            </div>
+        </div>
     </div>
-  </body>
+    <div class="perfil-usuario-body">
+        <div class="perfil-usuario-bio">
+            <h3 class="titulo">{{ usuario.nombres }}  {{ usuario.apellidos }}</h3>
+        </div>
+        <div class="perfil-usuario-footer">
+          <!--fontawesome icons-->
+            <ul class="lista-datos">
+                <li><i class="icono fas fa-user-cog"></i>  {{ usuario.rol.rol }}</li>
+                <li><i class="icono fas fa-solid fa-envelope"></i> {{ usuario.correo }}</li>
+                <li><i class="icono fas fa-circle-notch"></i> {{ usuario.edad }}</li>
+            </ul>
+            <ul class="lista-datos">
+                <li><i class="icono fas fa-solid fa-user"></i> {{ usuario.nombreUsuario }}</li>
+                <li><i class="icono fas fa-phone-alt"></i> {{ usuario.telefono }}</li>
+                <li><i class="icono fas fa-venus-mars"></i> {{ usuario.genero }}</li>
+            </ul>
+        </div>
+    </div>
+</section>
+  
+</body>
 </html>

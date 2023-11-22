@@ -108,6 +108,9 @@
         <mat-error *ngIf="obtenerControlCampo('correo')?.hasError('maxlength')">
           El correo no puede tener más de 100 caracteres.
         </mat-error>
+        <mat-error *ngIf="obtenerControlCampo('correo')?.hasError('email')">
+          El correo no puede tener más de 100 caracteres.
+        </mat-error>
       </mat-form-field>
       
 

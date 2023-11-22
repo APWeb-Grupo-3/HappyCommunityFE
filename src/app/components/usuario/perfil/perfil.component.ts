@@ -14,22 +14,14 @@ import * as XLSX from 'xlsx'
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit{
-  dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
-  displayedColumns: string[] = [
-    'codigo',
-    'username',
-    'rol',
-    'correo',
-    'genero',
-    'accion01',
-    'accion02',
-  ];
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+ usuarios:Usuario[]=[];
+
+
   constructor(private lS:LoginService,private uS:UsuarioService,private matDialog:MatDialog){}
   ngOnInit(): void {
     this.uS.listUser(this.lS.showUsername()).subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
+      this.usuarios=data;
     });
     
   }
