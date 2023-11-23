@@ -10,7 +10,7 @@
       <h2 style="text-align: center">Mensajes enviados</h2>
       <div style="text-align: right">
         <button mat-raised-button class="nuevobtn" (click)="openDialog()">
-          Agregar Mensaje
+          Nuevo
         </button>
       </div>
       <br />
@@ -27,7 +27,7 @@
               <p>Usuario: {{ element.usuario.nombreUsuario }}</p>
               <p>Receptor: {{ element.receptor.nombreUsuario }}</p>
             </mat-card-content>
-            <mat-card-actions >
+            <mat-card-actions>
               <button class="btneditar" (click)="editar(element.idMensaje,true)"><i class="fa-solid fa-pen-to-square"></i></button>
               <span class="separator"></span>
               <button class="btneliminar" (click)="eliminar(element.idMensaje)"><i class="fa-solid fa-trash"></i></button>
@@ -36,7 +36,7 @@
         </ng-container>
       </div>
 
-      
+
     </div>
   </body>
 </html>

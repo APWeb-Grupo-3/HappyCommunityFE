@@ -3,7 +3,6 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
   }
   
   .container {
@@ -19,9 +18,12 @@ body {
   }
   
   /* Estilos para el botón Agregar Mensaje */
-  .nuevobtn {
-    background-color: #000000;
-    color: #fff;
+  .nuevobtn{
+    text-align: center;
+    border-radius: 15px;
+    border: none;
+    background: rgb(45, 45, 56);
+    color: #ffffff;
   }
   
   /* Estilos para el contenedor de tarjetas */

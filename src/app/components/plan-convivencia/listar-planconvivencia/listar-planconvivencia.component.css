@@ -13,7 +13,13 @@
   gap: 15px; /* Agregar espacio entre las tarjetas */
 
 }
-
+.nuevobtn{
+  text-align: center;
+  border-radius: 15px;
+  border: none;
+  background: rgb(45, 45, 56);
+  color: #ffffff;
+}
 .example-card {
   width: 15%; 
   height: auto;

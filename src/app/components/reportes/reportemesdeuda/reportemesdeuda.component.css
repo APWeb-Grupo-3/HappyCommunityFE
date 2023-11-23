@@ -14,3 +14,10 @@ padding-left: 30%;
   text-align: right;
   margin-right: 5%; 
 }
+.nuevobtn{
+  text-align: center;
+  border-radius: 15px;
+  border: none;
+  background: rgb(45, 45, 56);
+  color: #ffffff;
+}

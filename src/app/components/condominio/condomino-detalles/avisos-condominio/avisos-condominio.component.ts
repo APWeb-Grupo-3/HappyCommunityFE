@@ -20,6 +20,7 @@ export class AvisosCondominioComponent implements OnInit{
       this.id = data['id'];
       this.aS.listAvisosByCondominio(this.id).subscribe((data) => {
         this.avisos=data;
+        
       });
     });
     
