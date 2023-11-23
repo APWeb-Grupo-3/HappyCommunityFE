@@ -25,7 +25,7 @@ export class UsuariosCondominioComponent implements OnInit{
     'correo',
     'genero',
     'edad',
-    'telefono'
+    'telefono',
   ];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -49,4 +49,8 @@ export class UsuariosCondominioComponent implements OnInit{
     });
 
   }
+  verPerfil(id:number,edicion:boolean){
+    
+  }
+
 }

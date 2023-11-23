@@ -2,13 +2,12 @@
     <div style="text-align: center">
       <h2>Registro de Aviso</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-        <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-form-field class="example-full-width" *ngIf="edicion" style="margin-right: 20px;">
           <mat-label>idAviso</mat-label>
           <input matInput placeholder="Id" formControlName="idAviso" readonly/>
         </mat-form-field>
-        <br />
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" style="margin-right: 20px;">
           <mat-label>Titulo</mat-label>
           <input matInput placeholder="Titulo" formControlName="titulo" />
           <mat-error
@@ -17,14 +16,14 @@
             El nombre es obligatorio.
           </mat-error>
           <mat-error *ngIf="obtenerControlCampo('titulo')?.hasError('maxlength')">
-            El nombre debe tener como maximo 25 caracteres.
+            El nombre debe tener como máximo 25 caracteres.
           </mat-error>
           <mat-error *ngIf="obtenerControlCampo('titulo')?.hasError('minlength')">
-            El nombre debe tener como minimo 4 caracteres.
+            El nombre debe tener como mínimo 4 caracteres.
           </mat-error>
         </mat-form-field>        
 
-        <mat-form-field class="example-full-width" style="margin-left: 20px;">
+        <mat-form-field class="example-full-width">
           <mat-label>usuario</mat-label>
           <mat-select formControlName="usuario">
             <mat-option *ngFor="let p of listarUsuarios" [value]="p.idUsuario">
@@ -37,34 +36,12 @@
             El Usuario es obligatorio.
           </mat-error>
         </mat-form-field>
-
+        
         <br />
         <br />
 
-        <mat-form-field class="example-full-width">
-          <mat-label>descripcion</mat-label>
-         
-          <textarea 
-          matInput placeholder="Descripcion"
-          formControlName="descripcion"          
-          ></textarea>
 
-          <mat-error
-            *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"
-          >
-            El nombre es obligatorio.
-          </mat-error>
-          <mat-error *ngIf="obtenerControlCampo('descripcion')?.hasError('maxlength')">
-            El nombre debe tener como maximo 250 caracteres.
-          </mat-error>
-          <mat-error *ngIf="obtenerControlCampo('descripcion')?.hasError('minlength')">
-            El nombre debe tener como minimo 2 caracteres.
-          </mat-error>
-        </mat-form-field>
-        <br />
-        <br />
-
-        <mat-form-field appearance="fill" class="example-full-width">
+        <mat-form-field appearance="fill" class="example-full-width" style="margin-right: 20px;">
           <input
             matInput
             placeholder="Ingrese fecha de Publlicacón"
@@ -83,8 +60,8 @@
             La fecha de emisión es obligatoria.
           </mat-error>
         </mat-form-field>
-       
-        <mat-form-field class="example-full-width" style="margin-left: 20px;">
+
+        <mat-form-field class="example-full-width">
           <mat-label>condominio</mat-label>
           <mat-select formControlName="condominio">
             <mat-option
@@ -98,6 +75,28 @@
             *ngIf="obtenerControlCampo('condominio')?.errors?.['required']"
           >
             El condominio es obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br />
+
+        <mat-form-field class="descripcion">
+          <mat-label>descripcion</mat-label>
+         
+          <textarea 
+          matInput placeholder="Descripcion"
+          formControlName="descripcion"          
+          ></textarea>
+
+          <mat-error
+            *ngIf="obtenerControlCampo('descripcion')?.errors?.['required']"
+          >
+            El nombre es obligatorio.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('descripcion')?.hasError('maxlength')">
+            El nombre debe tener como maximo 250 caracteres.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('descripcion')?.hasError('minlength')">
+            El nombre debe tener como minimo 10 caracteres.
           </mat-error>
         </mat-form-field>
         <br />

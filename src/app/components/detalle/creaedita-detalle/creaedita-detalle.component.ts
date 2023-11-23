@@ -49,7 +49,7 @@ export class CreaeditaDetalleComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       idDetalle: [''],
-      subtotalDetalle: ['', Validators.required],
+      subtotalDetalle: ['', [Validators.required,Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       documentoPago: ['', Validators.required],
       servicio: ['', Validators.required],
     });

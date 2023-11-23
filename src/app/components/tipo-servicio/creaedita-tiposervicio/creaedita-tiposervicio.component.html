@@ -15,8 +15,14 @@
           >
             El nombre es obligatorio.
           </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('nombreTipoServicio')?.hasError('minlength')">
+            El nombre debe tener como mínimo 4 caracteres.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('nombreTipoServicio')?.hasError('maxlength')">
+            El nombre debe tener como máximo 30 caracteres.
+          </mat-error>
         </mat-form-field>
-        
+        <br />
         <br />
         <mat-form-field class="example-full-width">
           <mat-label>administrador</mat-label>
@@ -28,7 +34,9 @@
           <mat-error *ngIf="obtenerControlCampo('administrador')?.errors?.['required']">
             El administrador es obligatorio.
           </mat-error>
+
         </mat-form-field>
+        <br />
         <br />
 
         <button mat-raised-button class="aceptarbtn" >Aceptar</button>

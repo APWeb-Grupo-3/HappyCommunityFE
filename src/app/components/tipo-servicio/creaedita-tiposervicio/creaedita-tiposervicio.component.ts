@@ -46,8 +46,8 @@ export class CreaeditaTiposervicioComponent implements OnInit {
     }
     this.form = this.formBuilder.group({
       idTipoServicio: [''],
-      nombreTipoServicio: ['', Validators.required],
-      administrador:['',Validators.required]
+      nombreTipoServicio: ['', [Validators.required,Validators.minLength(4),Validators.maxLength(30)]],
+      administrador:['',[Validators.required]]
     });
     this.uS.listUser(this.lS.showUsername()).subscribe((data)=>{
       this.listaUsuario=data;

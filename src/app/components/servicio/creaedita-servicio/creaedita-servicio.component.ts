@@ -47,7 +47,7 @@ export class CreaeditaServicioComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       idServicio: [''],
-      descripcionServicio: ['', Validators.required],
+      descripcionServicio: ['', [Validators.required,Validators.minLength(4),Validators.maxLength(30)]],
       tipoServicio: ['', Validators.required],
     });
     this.tS.listTSA(this.lS.showUsername()).subscribe((data)=>{

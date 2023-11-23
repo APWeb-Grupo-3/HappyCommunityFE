@@ -26,6 +26,7 @@ export class CreaeditaTarjetaComponent implements OnInit {
   id: number = 0;
   edicion: boolean = false;
   listarUsuarios: Usuario[]=[];
+  fechaMin:Date=new Date(Date.now())
 
   tipos: { value: string; viewValue: string }[] = [
     { value: 'Debito', viewValue: 'Debito' },

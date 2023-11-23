@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
     this.secondFormGroup = this.formBuilder.group({
       nombres: ['', [Validators.required,Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(4),Validators.maxLength(100)]],
       apellidos: ['', [Validators.required,Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(4),Validators.maxLength(100)]],
-      correo: ['', [Validators.required,Validators.minLength(4),Validators.maxLength(100)]],
+      correo: ['', [Validators.required,Validators.email,Validators.minLength(4),Validators.maxLength(100)]],
     });
     this.thirdFormGroup = this.formBuilder.group({
       edad: ['', [Validators.required,Validators.pattern(/^[0-9]+$/), Validators.min(18), Validators.max(100)]],

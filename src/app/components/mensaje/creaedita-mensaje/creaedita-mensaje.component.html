@@ -3,13 +3,13 @@
       <h2>Registro de Mensaje</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
 
-        <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-form-field class="example-full-width" *ngIf="edicion" style="margin-right: 20px;">
           <mat-label>idMensaje</mat-label>
           <input matInput placeholder="Id" formControlName="idMensaje" readonly/>
         </mat-form-field>
-        <br />
+
         
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" style="margin-right: 20px;">
             <mat-label>Titulo</mat-label>
             <input matInput placeholder="Titulo" formControlName="titulo" />
             <mat-error
@@ -23,9 +23,7 @@
             <mat-error *ngIf="obtenerControlCampo('titulo')?.hasError('minlength')">
               El nombre debe tener como minimo 4 caracteres.
             </mat-error>
-          </mat-form-field>
-          <br />
-          <br />             
+          </mat-form-field>           
 
           <mat-form-field class="example-full-width">
             <mat-label>Usuario</mat-label>
@@ -38,8 +36,10 @@
               El Usuario es obligatorio.
             </mat-error>
           </mat-form-field>         
+          <br />  
+          <br />  
 
-          <mat-form-field class="example-full-width" style="margin-left: 20px;">
+          <mat-form-field class="example-full-width" style="margin-right: 20px;">
             <mat-label>Receptor</mat-label>
             <mat-select formControlName="receptor">
               <mat-option *ngFor="let p of listarUsuarios2" [value]="p.idUsuario">
@@ -52,8 +52,7 @@
               El nombre es obligatorio.
             </mat-error>
           </mat-form-field>
-          <br />  
-          <br />
+
           
           <mat-form-field class="example-full-width">
             <mat-label>Descripcion</mat-label>
