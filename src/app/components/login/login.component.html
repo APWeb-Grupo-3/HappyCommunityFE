@@ -38,8 +38,8 @@
                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
                       Bienvenido
                     </h5>
-
-                    <mat-form-field class="example-full-width">
+                    
+                    <mat-form-field class="example-full-width" formControlName="username">
                       <mat-label>Usuario</mat-label>
                       <input
                         matInput
@@ -48,7 +48,7 @@
                       />
                     </mat-form-field>
                     <br />
-                    <mat-form-field class="example-full-width">
+                    <mat-form-field class="example-full-width" formControlName="password">
                       <mat-label>Password</mat-label>
                       <input
                         type="password"
@@ -78,6 +78,7 @@
                         >Políticas de privacidad</a
                       >
                     </div>
+                  
                   </div>
                 </div>
               </div>
@@ -85,6 +86,7 @@
           </div>
         </div>
       </div>
+      
     </section>
   </body>
 </html>

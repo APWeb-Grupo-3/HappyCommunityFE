@@ -19,12 +19,15 @@
             El nombre debe tener al menos 5 caracteres.
           </mat-error>
           <mat-error *ngIf="obtenerControlCampo('nombre')?.hasError('maxlength')">
-            El nombre no debe tener más 100 caracteres.
+            El nombre no debe tener más 40 caracteres.
           </mat-error>
           <mat-error *ngIf="obtenerControlCampo('nombre')?.hasError('pattern')">
             Solo se permiten letras.
           </mat-error>
         </mat-form-field>
+        <br />
+        <br />
+
         <mat-form-field class="example-full-width">
           <mat-label>administrador</mat-label>
           <mat-select formControlName="administrador">

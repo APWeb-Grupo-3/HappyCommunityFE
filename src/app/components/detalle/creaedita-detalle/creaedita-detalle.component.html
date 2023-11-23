@@ -15,8 +15,12 @@
           >
             El subtotal es obligatorio.
           </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('subtotalDetalle')?.hasError('pattern')">
+            Solo se permite números.
+          </mat-error>
         </mat-form-field>
 
+        <br />
         <br />
 
         <mat-form-field class="example-full-width">
@@ -33,6 +37,7 @@
           </mat-error>
 
         </mat-form-field>
+        <br />
 
         <br />
 

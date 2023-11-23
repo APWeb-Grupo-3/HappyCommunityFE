@@ -121,6 +121,11 @@
               >
                 El correo es obligatorio.
               </mat-error>
+              <mat-error
+                *ngIf="obtenerControlCampo2('correo')?.errors?.['email']"
+              >
+                Ingrese un correo válido.
+              </mat-error>
               <mat-error *ngIf="obtenerControlCampo2('correo')?.hasError('minlength')">
                 El correo debe tener al menos 4 caracteres.
               </mat-error>
@@ -128,6 +133,8 @@
                 El correo no puede tener más de 100 caracteres.
               </mat-error>
             </mat-form-field>
+            <br />
+            <br />
 
             <div>
               <button mat-button matStepperPrevious>Atrás</button>

@@ -15,8 +15,15 @@
           >
             La descripción es obligatorio.
           </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('descripcionServicio')?.hasError('minlength')">
+            La descripción debe tener como mínimo 4 caracteres.
+          </mat-error>
+          <mat-error *ngIf="obtenerControlCampo('descripcionServicio')?.hasError('maxlength')">
+            La descripción debe tener como máximo 30 caracteres.
+          </mat-error>
         </mat-form-field>
 
+        <br />
         <br />
 
         <mat-form-field class="example-full-width">
@@ -35,6 +42,8 @@
         </mat-form-field>
 
         <br />
+        <br />
+
         <button mat-raised-button class="aceptarbtn" >Aceptar</button>
         <br>
 

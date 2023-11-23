@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { JwtRequest } from 'src/app/models/jwtRequest';
@@ -9,12 +10,18 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  constructor(private loginService: LoginService, private router: Router, private snackBar: MatSnackBar) { }
+export class LoginComponent implements OnInit{
+  constructor(private loginService: LoginService, private router: Router, private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder,
+    ) { }
   username: string = ""
   password: string = ""
   mensaje: string = ""
-  ngOnInit(): void {}
+  form: FormGroup = new FormGroup({});
+
+  ngOnInit(): void {
+
+  }
   login() {
     let request = new JwtRequest();
     request.username = this.username;

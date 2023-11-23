@@ -27,10 +27,7 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
   listaUsuarios1:Usuario[]=[]
   listaUsuarios2:Usuario[]=[]
 
-  minFecha: Date = moment().add('days').toDate();
-
-  fechaEmision=new FormControl(new Date());
-  fechaVencimiento=new FormControl(new Date());
+ 
 
   tipos: { value: string; viewValue: string }[] = [
     { value: 'Soles', viewValue: 'Soles' },
@@ -54,10 +51,21 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
 
 
     private dialogRef: MatDialogRef<CreaeditaUsuarioComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean }
-
+    @Inject(MAT_DIALOG_DATA) public data: { id: number,edicion:boolean },
+    
 
   ) {}
+  validarFechas(control: AbstractControl) {
+    const fechaEmision = this.form?.get('fechaEmision')?.value;
+    const fechaVencimiento = control.value;
+
+    // Realiza la validación
+    if (fechaEmision && fechaVencimiento && fechaVencimiento < fechaEmision) {
+      return { fechaInvalida: true };
+    }
+
+    return null;
+  }
   ngOnInit(): void {
     if(this.data&&this.data.id&&this.data.edicion){
       this.edicion=this.data.edicion
@@ -70,7 +78,7 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
       idDocumentoPago: [''],
       idReceptor: ['', [Validators.required]],
       fechaEmision: ['', [Validators.required]],
-      fechaVencimiento: ['', [Validators.required]],
+      fechaVencimiento: ['', [Validators.required,this.validarFechas.bind(this)]],
       moneda: ['', [Validators.required]],
       total: ['', ],
       estado: ['', [Validators.required]],
@@ -86,11 +94,15 @@ export class CreaeditaDocumentopagoComponent implements OnInit {
     this.tS.listTDR(this.lS.showUsername()).subscribe((data)=>{
       this.listaTipoDocumentoPagos=data;
     })
+
   }
+  
   nuevobtn() {
     //refresca la página
     location.reload();
   }
+
+  
   aceptar(): void {
     if (this.form.valid) {
       this.documentopago.idDocumentoPago = this.form.value.idDocumentoPago;

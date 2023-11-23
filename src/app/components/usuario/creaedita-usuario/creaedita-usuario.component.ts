@@ -60,7 +60,10 @@ export class CreaeditaUsuarioComponent implements OnInit {
       this.listaRolUsuarios=data;
     })
   }
-
+  nuevobtn() {
+    //refresca la página
+    location.reload();
+  }
   aceptar(): void {
     if (this.form.valid) {
       this.usuario.idUsuario = this.form.value.idUsuario;
@@ -79,7 +82,7 @@ export class CreaeditaUsuarioComponent implements OnInit {
           this.uS.list().subscribe((data) => {
             this.uS.setList(data);
             this.dialogRef.close();
-
+            this.nuevobtn();
           });
         });
       } else {

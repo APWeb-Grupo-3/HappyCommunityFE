@@ -65,7 +65,7 @@
                 placeholder="Fecha de vencimiento"
                 [matDatepicker]="pickerVencimiento"
                 formControlName="fechaVencimiento"
-                
+
 
               />
               <mat-hint>MM/DD/YYYY</mat-hint>
@@ -78,6 +78,9 @@
                 *ngIf="obtenerControlCampo('fechaVencimiento')?.errors?.['required']"
               >
                La fecha de vencimiento es obligatoria.
+              </mat-error>
+              <mat-error *ngIf="obtenerControlCampo('fechaVencimiento')?.errors?.['fechaInvalida']">
+                Seleccione una fecha de vencimiento válida.
               </mat-error>
             </mat-form-field>
             <br />

@@ -58,7 +58,7 @@ export class CreaditaTDPComponent implements OnInit{
 
     this.form = this.formBuilder.group({
       idTipoDocPago: [''],
-      nombre: ['', [Validators.required,Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(5),Validators.maxLength(100)]],
+      nombre: ['', [Validators.required,Validators.pattern(/^[a-zA-Z]+$/), Validators.minLength(5),Validators.maxLength(40)]],
       administrador:['',[Validators.required]]
     });
   }

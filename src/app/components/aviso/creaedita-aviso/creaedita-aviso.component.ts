@@ -60,7 +60,7 @@ export class CreaeditaAvisoComponent implements OnInit {
     this.form = this.formBuilder.group({
       idAviso: [''],
       titulo: ['', [Validators.required, Validators.maxLength(25), Validators.minLength(4)]],
-      descripcion: ['', [Validators.required, Validators.maxLength(250), Validators.minLength(2)]],
+      descripcion: ['', [Validators.required, Validators.maxLength(250), Validators.minLength(10)]],
       fechaPublicacion: ['', Validators.required],
       usuario: ['', Validators.required],
       condominio: ['', Validators.required],

@@ -50,10 +50,10 @@
           La direccion es obligatorio.
         </mat-error>
         <mat-error *ngIf="obtenerControlCampo('direccion')?.hasError('minlength')">
-          La direccion debe tener como minimo 4 caracteres.
+          La direccion debe tener como mínimo 4 caracteres.
         </mat-error>
         <mat-error *ngIf="obtenerControlCampo('direccion')?.hasError('maxlength')">
-          La direccion debe tener como minimo 100 caracteres.
+          La direccion debe tener como máximo 100 caracteres.
         </mat-error>
       </mat-form-field>
 

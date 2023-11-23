@@ -2,13 +2,12 @@
     <div style="text-align: center">
       <h2>Registro de Tarjeta</h2>
       <form [formGroup]="form" (submit)="aceptar()" class="example-form">
-        <mat-form-field class="example-full-width" *ngIf="edicion">
+        <mat-form-field class="example-full-width" *ngIf="edicion" style="margin-right: 20px;">
           <mat-label>idTarjeta</mat-label>
           <input matInput placeholder="Id" formControlName="idTarjeta" readonly/>
         </mat-form-field>
-        <br />
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="example-full-width" style="margin-right: 20px;">
           <mat-label>Tipo de Tarjeta</mat-label>
           <mat-select formControlName="tipoTarjeta">
             <mat-option *ngFor="let p of tipos" [value]="p.value">
@@ -21,7 +20,6 @@
             El tipo de tarjeta es obligatorio.
           </mat-error>
         </mat-form-field>
-        <br />
 
         <mat-form-field class="example-full-width">
           <mat-label>numeroTarjeta</mat-label>
@@ -43,6 +41,7 @@
         </mat-form-field>
         <br />
         <br /> 
+        <br /> 
 
         <mat-form-field appearance="fill" class="example-full-width">
             <input
@@ -50,6 +49,7 @@
               placeholder="Fecha de Vencimiento"
               [matDatepicker]="picker"
               formControlName="fechaVencimiento"
+              [min]="fechaMin"
             />
             <mat-hint>MM/YYYY</mat-hint>
             <mat-datepicker-toggle
@@ -65,8 +65,7 @@
           </mat-form-field>
           <br />
           <br /> 
-
-          <mat-form-field class="example-full-width">
+          <mat-form-field class="example-full-width" style="margin-right: 20px;">
             <mat-label>Código CVV</mat-label>
             <input
               matInput
@@ -84,8 +83,6 @@
               El nombre debe tener como minimo 3 caracteres y solo números.
             </mat-error>
           </mat-form-field>
-          <br /> 
-          <br /> 
 
           <mat-form-field class="example-full-width">
             <mat-label>Usuario</mat-label>
@@ -99,6 +96,8 @@
             </mat-error>
           </mat-form-field>
           <br />
+          <br />
+
           <button mat-raised-button class="aceptarbtn" >Aceptar</button>
           <br>
           
